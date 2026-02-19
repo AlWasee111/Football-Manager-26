@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.CubicCurve?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.footballmanager.footballmanager.Controller">
+   <children>
+      <CubicCurve controlX1="-50.0" controlX2="173.19998168945312" controlY1="-100.0" controlY2="216.60003662109375" endX="150.0" fill="DODGERBLUE" layoutX="298.0" layoutY="249.0" startX="-150.0" stroke="BLACK" />
+   </children>
+</AnchorPane>
