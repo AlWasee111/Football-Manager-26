@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.footballmanager.footballmanager.Controller">
+   <children>
+      <ImageView fitHeight="655.0" fitWidth="1000.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../night-view-football-stadium.jpg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="second" alignment="CENTER" editable="false" focusTraversable="false" layoutY="62.0" prefHeight="150.0" prefWidth="1000.0" text="Football Manager">
+         <font>
+            <Font name="Lucida Bright Demibold Italic" size="50.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>
