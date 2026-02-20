@@ -1,0 +1,11 @@
+.button:hover {
+    /* -fx-background-color: #ea0d65; */
+    -fx-background-color: linear-gradient(to bottom, #ea0d65, #ff4343);
+    -fx-cursor: hand;
+}
+
+.button:pressed {
+    /* -fx-background-color: #ce134b; */
+    -fx-background-color: linear-gradient(to bottom, #ea0d65, #ff4343);
+    -fx-translate-y: 2px;
+}

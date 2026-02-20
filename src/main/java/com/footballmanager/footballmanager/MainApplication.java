@@ -18,6 +18,7 @@ public class MainApplication extends Application {
 
         Image icon = new Image("icon2.jpg");
 
+        stage.setResizable(false);
         stage.getIcons().add(icon);
         stage.setTitle("Football Manager 26");
         stage.setScene(scene);
