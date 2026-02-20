@@ -14,12 +14,12 @@
             <Image url="@../../../background-stadium.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="login" alignment="CENTER" layoutX="415.0" layoutY="401.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="170.0" style="-fx-background-radius: 15;" text="Login">
+      <Button fx:id="LoginScreen" alignment="CENTER" layoutX="415.0" layoutY="401.0" mnemonicParsing="false" onAction="#LoginScreen" prefHeight="54.0" prefWidth="170.0" style="-fx-background-radius: 15;" text="Login">
          <font>
             <Font name="System Italic" size="25.0" />
          </font>
       </Button>
-      <Button fx:id="signup" alignment="CENTER" layoutX="415.0" layoutY="487.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="170.0" style="-fx-background-radius: 15;" text="Signup">
+      <Button fx:id="SignupScreen" alignment="CENTER" layoutX="415.0" layoutY="487.0" mnemonicParsing="false" onAction="#SignupScreen" prefHeight="54.0" prefWidth="170.0" style="-fx-background-radius: 15;" text="Signup">
          <font>
             <Font name="System Italic" size="25.0" />
          </font>
