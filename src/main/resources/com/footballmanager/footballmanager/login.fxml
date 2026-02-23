@@ -41,7 +41,7 @@
             <Font size="25.0" />
          </font>
       </Button>
-      <Button fx:id="EnterButton" layoutX="567.0" layoutY="470.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="191.0" style="-fx-background-radius: 15;" text="Enter">
+      <Button fx:id="EnterButton" layoutX="567.0" layoutY="470.0" mnemonicParsing="false" onAction="#LoginOrSignup" prefHeight="66.0" prefWidth="191.0" style="-fx-background-radius: 15;" text="Enter">
          <font>
             <Font size="25.0" />
          </font>

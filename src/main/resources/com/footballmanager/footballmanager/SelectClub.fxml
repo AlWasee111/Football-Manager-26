@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.footballmanager.footballmanager.LoginController">
+   <children>
+      <ImageView fitHeight="655.0" fitWidth="1000.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../background-stadium.jpg" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="316.0" layoutY="121.0" prefHeight="62.0" prefWidth="368.0" text="Select your new club:" textFill="#faf9f6">
+         <font>
+            <Font name="Agency FB" size="50.0" />
+         </font>
+      </Label>
+      <ComboBox layoutX="389.0" layoutY="328.0" prefHeight="54.0" prefWidth="222.0" promptText="                       Select Club" />
+   </children>
+</AnchorPane>

@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,6 +24,15 @@ public class LoginController {
 
     public void ChangeText(String message) {
         EnterButton.setText(message);
+    }
+
+    public void LoginOrSignup() {
+        if (EnterButton.getText() == "Login") {
+
+        }
+        else {
+
+        }
     }
 
     public void ReturnToMenu (ActionEvent event) throws IOException {
