@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -18,6 +19,10 @@ public class LoginController {
 
     @FXML
     private TextField ClubName;
+    @FXML
+    private TextField Password;
+    @FXML
+    private Label errorMessage;
 
     private Stage stage;
     private Scene scene;
@@ -35,10 +40,23 @@ public class LoginController {
     }
 
     public void EnterPage() {
+        String clubName = ClubName.getText().trim();
+        String pass = Password.getText();
         // Validate if club exists
-        String clubName = ClubName.getText();
-        if (!ClubExists(clubName))
-            System.out.println("Club does not exist!");
+        if (clubName.isEmpty()) {
+            errorMessage.setText("Club name cannot be empty!");
+            errorMessage.setVisible(true);
+        }
+        //If club name is empty
+        else if (!ClubExists(clubName)) {
+            errorMessage.setText("Club not availabe!");
+            errorMessage.setVisible(true);
+        }
+        //If password is empty
+        else if (pass.isEmpty()) {
+            errorMessage.setText("Password cannot be empty!");
+            errorMessage.setVisible(true);
+        }
     }
 
 
@@ -50,7 +68,7 @@ public class LoginController {
                 clubName.equalsIgnoreCase("Manchester United") || clubName.equalsIgnoreCase("Manchester City")) {
             return true;
         }
-        
+
         return false;
     }
 }

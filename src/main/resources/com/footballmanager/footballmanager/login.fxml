@@ -31,7 +31,7 @@
             <Font name="Monospaced Regular" size="30.0" />
          </font>
       </TextField>
-      <PasswordField layoutX="402.0" layoutY="350.0" prefHeight="54.0" prefWidth="330.0" style="-fx-background-radius: 20;">
+      <PasswordField fx:id="Password" layoutX="402.0" layoutY="350.0" prefHeight="54.0" prefWidth="330.0" style="-fx-background-radius: 20;">
          <font>
             <Font size="30.0" />
          </font>
@@ -46,5 +46,10 @@
             <Font size="25.0" />
          </font>
       </Button>
+      <Label fx:id="errorMessage" alignment="CENTER" layoutX="354.0" layoutY="592.0" prefHeight="30.0" prefWidth="315.0" style="-fx-background-color: #fa0606;" textFill="WHITE" visible="false">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
