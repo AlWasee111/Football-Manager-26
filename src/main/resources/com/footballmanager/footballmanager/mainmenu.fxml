@@ -14,7 +14,7 @@
             <Image url="@../../../background-stadium.jpg" />
          </image>
       </ImageView>
-      <Button alignment="CENTER" layoutX="659.0" layoutY="429.0" mnemonicParsing="false" onAction="#LoginScreen" prefHeight="54.0" prefWidth="170.0" style="-fx-background-radius: 20;" text="Login">
+      <Button alignment="CENTER" layoutX="534.0" layoutY="429.0" mnemonicParsing="false" onAction="#LoginScreen" prefHeight="54.0" prefWidth="170.0" style="-fx-background-radius: 20;" text="Login">
          <font>
             <Font name="System Italic" size="25.0" />
          </font>
@@ -24,7 +24,7 @@
             <Font name="Agency FB Bold" size="65.0" />
          </font>
       </Label>
-      <Button fx:id="exitButton" alignment="CENTER" layoutX="170.0" layoutY="430.0" mnemonicParsing="false" onAction="#ExitApplication" prefHeight="54.0" prefWidth="170.0" style="-fx-background-radius: 20;" text="Exit">
+      <Button fx:id="exitButton" alignment="CENTER" layoutX="291.0" layoutY="429.0" mnemonicParsing="false" onAction="#ExitApplication" prefHeight="54.0" prefWidth="170.0" style="-fx-background-radius: 20;" text="Exit">
          <font>
             <Font name="System Italic" size="25.0" />
          </font>

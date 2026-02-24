@@ -26,7 +26,7 @@
             <Font name="Agency FB" size="40.0" />
          </font>
       </Label>
-      <TextField layoutX="402.0" layoutY="261.0" prefHeight="66.0" prefWidth="330.0" style="-fx-background-radius: 20;">
+      <TextField fx:id="ClubName" layoutX="402.0" layoutY="261.0" prefHeight="66.0" prefWidth="330.0" style="-fx-background-radius: 20;">
          <font>
             <Font name="Monospaced Regular" size="30.0" />
          </font>
@@ -41,7 +41,7 @@
             <Font size="25.0" />
          </font>
       </Button>
-      <Button fx:id="EnterButton" layoutX="567.0" layoutY="470.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="191.0" style="-fx-background-radius: 15;" text="Enter">
+      <Button fx:id="EnterButton" layoutX="567.0" layoutY="470.0" mnemonicParsing="false" onAction="#EnterPage" prefHeight="66.0" prefWidth="191.0" style="-fx-background-radius: 15;" text="Enter">
          <font>
             <Font size="25.0" />
          </font>
