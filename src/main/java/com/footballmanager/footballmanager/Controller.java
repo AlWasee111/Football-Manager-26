@@ -11,9 +11,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class Controller {
+    @FXML
+    private Button exitButton;
+    @FXML
+    private AnchorPane MainScene;
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -21,9 +27,6 @@ public class Controller {
     public void LoginScreen (ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
         root = loader.load();
-
-        LoginController controller = loader.getController();
-        controller.ChangeText("Login");
 
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -33,18 +36,8 @@ public class Controller {
         stage.show();
     }
 
-    public void SignupScreen (ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
-        root = loader.load();
-
-        LoginController controller = loader.getController();
-        controller.ChangeText("Signup");
-
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Styles.css")).toExternalForm());
-        
-        stage.setScene(scene);
-        stage.show();
+    public void ExitApplication (ActionEvent event) {
+        stage = (Stage) MainScene.getScene().getWindow();
+        stage.close();
     }
 }

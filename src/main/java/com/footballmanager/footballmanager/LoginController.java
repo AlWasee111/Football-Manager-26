@@ -19,22 +19,6 @@ public class LoginController {
     private Scene scene;
     private Parent root;
 
-    @FXML
-    Button EnterButton;
-
-    public void ChangeText(String message) {
-        EnterButton.setText(message);
-    }
-
-    public void LoginOrSignup() {
-        if (EnterButton.getText() == "Login") {
-
-        }
-        else {
-
-        }
-    }
-
     public void ReturnToMenu (ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mainmenu.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

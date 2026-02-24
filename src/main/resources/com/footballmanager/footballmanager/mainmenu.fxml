@@ -7,19 +7,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.footballmanager.footballmanager.Controller">
+<AnchorPane fx:id="MainScene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.footballmanager.footballmanager.Controller">
    <children>
       <ImageView fitHeight="655.0" fitWidth="1000.0" pickOnBounds="true">
          <image>
             <Image url="@../../../background-stadium.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="LoginScreen" alignment="CENTER" layoutX="415.0" layoutY="401.0" mnemonicParsing="false" onAction="#LoginScreen" prefHeight="54.0" prefWidth="170.0" style="-fx-background-radius: 15;" text="Login">
-         <font>
-            <Font name="System Italic" size="25.0" />
-         </font>
-      </Button>
-      <Button fx:id="SignupScreen" alignment="CENTER" layoutX="415.0" layoutY="487.0" mnemonicParsing="false" onAction="#SignupScreen" prefHeight="54.0" prefWidth="170.0" style="-fx-background-radius: 15;" text="Signup">
+      <Button alignment="CENTER" layoutX="659.0" layoutY="429.0" mnemonicParsing="false" onAction="#LoginScreen" prefHeight="54.0" prefWidth="170.0" style="-fx-background-radius: 20;" text="Login">
          <font>
             <Font name="System Italic" size="25.0" />
          </font>
@@ -29,5 +24,10 @@
             <Font name="Agency FB Bold" size="65.0" />
          </font>
       </Label>
+      <Button fx:id="exitButton" alignment="CENTER" layoutX="170.0" layoutY="430.0" mnemonicParsing="false" onAction="#ExitApplication" prefHeight="54.0" prefWidth="170.0" style="-fx-background-radius: 20;" text="Exit">
+         <font>
+            <Font name="System Italic" size="25.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
