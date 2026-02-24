@@ -39,7 +39,7 @@ public class LoginController {
         stage.show();
     }
 
-    public void EnterPage() {
+    public void EnterPage(ActionEvent event) throws IOException {
         String clubName = ClubName.getText().trim();
         String pass = Password.getText();
         // Validate if club exists
@@ -47,20 +47,27 @@ public class LoginController {
             errorMessage.setText("Club name cannot be empty!");
             errorMessage.setVisible(true);
         }
-        //If club name is empty
+        // If club name is empty
         else if (!ClubExists(clubName)) {
             errorMessage.setText("Club not availabe!");
             errorMessage.setVisible(true);
         }
-        //If password is empty
+        // If password is empty
         else if (pass.isEmpty()) {
             errorMessage.setText("Password cannot be empty!");
             errorMessage.setVisible(true);
+        } else {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ClubMenu.fxml")));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Styles2.css")).toExternalForm());
+
+            stage.setScene(scene);
+            stage.show();
         }
     }
 
-
-    //Method to check if a club exists
+    // Method to check if a club exists
     private boolean ClubExists(String clubName) {
         if (clubName.equalsIgnoreCase("Barcelona") || clubName.equalsIgnoreCase("Real Madrid") ||
                 clubName.equalsIgnoreCase("Arsenal") || clubName.equalsIgnoreCase("Bayern") ||

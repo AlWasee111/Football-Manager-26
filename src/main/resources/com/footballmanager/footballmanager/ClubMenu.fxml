@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.footballmanager.footballmanager.LoginController">
+   <children>
+      <ImageView fitHeight="655.0" fitWidth="1000.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../FIFA-20-background.jpg" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="436.0" layoutY="80.0" prefHeight="43.0" prefWidth="127.0" text="HOME" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+      </Label>
+      <Button fx:id="Players" layoutX="394.0" layoutY="196.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="212.0" style="-fx-background-radius: 25;" text="Players">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Button>
+      <Button fx:id="TransferMarket" layoutX="394.0" layoutY="276.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="212.0" style="-fx-background-radius: 25;" text="Transfer Market">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Button>
+      <Button fx:id="Logout" layoutX="394.0" layoutY="357.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="212.0" style="-fx-background-radius: 25;" text="Logout">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

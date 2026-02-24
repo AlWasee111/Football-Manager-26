@@ -1,0 +1,18 @@
+.button {
+    -fx-text-fill: #ffffff;
+    -fx-border-width: 2;
+    -fx-border-radius: 25;
+    -fx-border-color: #0fe6f6;
+    -fx-background-color: transparent;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to right, #0fe6f6, #0b59ce);
+    -fx-cursor: hand;
+}
+
+.button:pressed {
+    /* -fx-background-color: #ce134b; */
+    -fx-background-color: linear-gradient(to right, #0fe6f6, #0b59ce);
+    -fx-translate-y: 2px;
+}
