@@ -50,7 +50,6 @@ public class LoginController implements Initializable {
     }
 
     public void EnterPage(ActionEvent event) throws IOException {
-//        String clubName = ClubName.getText().trim();
         String clubName = myCombobox.getValue();
         String pass = Password.getText();
         // Validate if club exists
