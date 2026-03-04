@@ -16,7 +16,7 @@ public class MainApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 1000, 650);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Styles.css")).toExternalForm());
 
-        Image icon = new Image("icon2.jpg");
+        Image icon = new Image("logo.jpg");
 
         stage.setResizable(true);
         stage.getIcons().add(icon);
