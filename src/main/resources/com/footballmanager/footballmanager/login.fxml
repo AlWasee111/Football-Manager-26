@@ -13,32 +13,32 @@
    <children>
       <ImageView fitHeight="655.0" fitWidth="1000.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../background-stadium.jpg" />
+            <Image url="@../../../bg01.jpeg" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" layoutX="165.0" layoutY="256.0" prefHeight="71.0" prefWidth="246.0" text="Enter Your Club :" textFill="#faf9f6">
+      <Label alignment="CENTER" layoutX="123.0" layoutY="213.0" prefHeight="71.0" prefWidth="323.0" text="Enter Your Club :" textFill="#faf9f6">
          <font>
-            <Font name="Agency FB" size="40.0" />
+            <Font name="Century Gothic Bold" size="40.0" />
          </font>
       </Label>
-      <Label layoutX="180.0" layoutY="346.0" prefHeight="71.0" prefWidth="246.0" text="Enter password :" textFill="#faf9f6">
+      <Label layoutX="127.0" layoutY="325.0" prefHeight="71.0" prefWidth="315.0" text="Enter password :" textFill="#faf9f6">
          <font>
-            <Font name="Agency FB" size="40.0" />
+            <Font name="Century Gothic Bold" size="40.0" />
          </font>
       </Label>
-      <PasswordField fx:id="Password" layoutX="402.0" layoutY="350.0" prefHeight="54.0" prefWidth="330.0" style="-fx-background-radius: 20;">
+      <PasswordField fx:id="Password" layoutX="498.0" layoutY="328.0" prefHeight="54.0" prefWidth="330.0" style="-fx-background-radius: 20;">
          <font>
             <Font size="30.0" />
          </font>
       </PasswordField>
-      <Button layoutX="242.0" layoutY="470.0" mnemonicParsing="false" onAction="#ReturnToMenu" prefHeight="66.0" prefWidth="191.0" style="-fx-background-radius: 15;" text="Back">
+      <Button layoutX="224.0" layoutY="470.0" mnemonicParsing="false" onAction="#ReturnToMenu" prefHeight="66.0" prefWidth="191.0" style="-fx-background-radius: 15;" text="Back">
          <font>
-            <Font size="25.0" />
+            <Font name="Century Gothic" size="25.0" />
          </font>
       </Button>
-      <Button fx:id="EnterButton" layoutX="567.0" layoutY="470.0" mnemonicParsing="false" onAction="#EnterPage" prefHeight="66.0" prefWidth="191.0" style="-fx-background-radius: 15;" text="Enter">
+      <Button fx:id="EnterButton" layoutX="536.0" layoutY="470.0" mnemonicParsing="false" onAction="#EnterPage" prefHeight="66.0" prefWidth="191.0" style="-fx-background-radius: 15;" text="Enter">
          <font>
-            <Font size="25.0" />
+            <Font name="Century Gothic" size="25.0" />
          </font>
       </Button>
       <Label fx:id="errorMessage" alignment="CENTER" layoutX="354.0" layoutY="592.0" prefHeight="30.0" prefWidth="315.0" style="-fx-background-color: #fa0606;" textFill="WHITE" visible="false">
@@ -46,6 +46,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <ComboBox fx:id="myCombobox" layoutX="402.0" layoutY="258.0" prefHeight="66.0" prefWidth="330.0" promptText="Select Club" style="-fx-background-radius: 20;" visibleRowCount="4" />
+      <ComboBox fx:id="myCombobox" layoutX="498.0" layoutY="215.0" prefHeight="66.0" prefWidth="330.0" promptText="Select Club" style="-fx-background-radius: 20;" visibleRowCount="4" />
    </children>
 </AnchorPane>
