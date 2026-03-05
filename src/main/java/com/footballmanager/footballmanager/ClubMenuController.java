@@ -23,4 +23,14 @@ public class ClubMenuController {
         stage.setScene(scene);
         stage.show();
     }
+    public void GoToPlayers(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("PlayerList.fxml"));
+        root = loader.load();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        //scene = new Scene(root);
+        scene = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
+        scene.getStylesheets().add(getClass().getResource("/ListStyle.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+    }
 }
