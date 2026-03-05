@@ -8,11 +8,15 @@
 
 .button:hover {
     -fx-background-color: linear-gradient(to right, #0fe6f6, #0b59ce);
+    -fx-background-radius: 23;
+    -fx-background-insets: 2;
     -fx-cursor: hand;
+    -fx-text-fill: black;
 }
 
 .button:pressed {
-    /* -fx-background-color: #ce134b; */
     -fx-background-color: linear-gradient(to right, #0fe6f6, #0b59ce);
+    -fx-background-radius: 23;
+    -fx-background-insets: 2;
     -fx-translate-y: 2px;
 }

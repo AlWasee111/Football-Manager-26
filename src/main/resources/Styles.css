@@ -1,20 +1,89 @@
+.button {
+    -fx-text-fill: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-border-color: rgba(241, 187, 50, 1);
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+
 .button:hover {
     -fx-background-color: linear-gradient(to bottom, #ea0d65, #ff4343);
+    -fx-background-radius: 18;
+    -fx-background-insets: 2;
     -fx-cursor: hand;
+    -fx-text-fill: black
 }
 
 .button:pressed {
-    /* -fx-background-color: #ce134b; */
     -fx-background-color: linear-gradient(to bottom, #ea0d65, #ff4343);
+    -fx-background-radius: 18;
+    -fx-background-insets: 2;
     -fx-translate-y: 2px;
 }
 
-.combo-box > .list-cell {
-    -fx-alignment: center;
-    -fx-font-size: 20px;
+/* Dropdown box background */
+.combo-box .list-view {
+    -fx-background-color: rgba(0, 0, 0, 0.5);
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-border-color: rgba(241, 187, 50, 1);
+    -fx-border-width: 2;
+    -fx-padding: 5;
+    -fx-background-insets: 0;
 }
 
-.combo-box .combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell {
-    -fx-alignment: center;
+.combo-box .list-cell:hover {
+    -fx-background-color: linear-gradient(to bottom, #ea0d65, #ff4343);
+    -fx-text-fill: black;
+    -fx-border-radius: 15;
+}
+
+.combo-box .list-cell:selected {
+    -fx-text-fill: linear-gradient(to bottom, #ea0d65, #ff4343);;
+    -fx-font-size: 22px;
+    -fx-font-family: "Century Gothic";
+}
+
+.combo-box .scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.combo-box-popup .scroll-bar .thumb {
+    -fx-background-color: rgba(241, 187, 50, 1);
+    -fx-background-radius: 5;
+}
+
+.combo-box .list-cell{
+    -fx-text-fill: white; /* text color */
+    -fx-font-size: 20px;
+    -fx-font-family: "Century Gothic";
+    -fx-background-radius: 15;
+    -fx-background-color: transparent; /* default background */
+}
+
+.combo-box {
+    -fx-background-color: #1e1e1e;
+    -fx-border-color: rgba(241, 187, 50, 1);
+    -fx-border-width: 2;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+}
+
+.password-field{
+    -fx-background-color: #1e1e1e;
+    -fx-border-color: rgba(241, 187, 50, 1);
+    -fx-border-width: 2;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-text-fill: linear-gradient(to bottom, #ea0d65, #ff4343);;
+}
+
+#errorText {
+    -fx-background-color: linear-gradient(to bottom, #ea0d65, #ff4343);
+    -fx-text-fill: black;
+    -fx-background-radius: 8;
     -fx-font-size: 18px;
+    -fx-font-family: "Century Gothic";
 }

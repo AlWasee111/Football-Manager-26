@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -33,6 +34,8 @@ public class LoginController implements Initializable {
 
     private final String[] clubs = {"Barcelona", "Arsenal", "Chelsea", "Manchester United",
             "Real Madrid", "Bayern", "PSG", "Manchester City"};
+    int idx = -1;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         myCombobox.getItems().addAll(clubs);
@@ -51,6 +54,7 @@ public class LoginController implements Initializable {
 
     public void EnterPage(ActionEvent event) throws IOException {
         String clubName = myCombobox.getValue();
+
         String pass = Password.getText();
         // Validate if club exists
         if (clubName == null) {
@@ -67,6 +71,9 @@ public class LoginController implements Initializable {
             errorMessage.setText("Password cannot be empty!");
             errorMessage.setVisible(true);
         } else {
+            idx = getClubIndex(clubName);
+            SelectedClub.clubIndex = idx;
+
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ClubMenu.fxml")));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
@@ -89,4 +96,16 @@ public class LoginController implements Initializable {
         return false;
     }
 
+    private int getClubIndex(String clubName){
+        for(int i = 0; i < clubs.length; i++){
+            if(clubName.equals(clubs[i])){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int getIdx(){
+        return idx;
+    }
 }

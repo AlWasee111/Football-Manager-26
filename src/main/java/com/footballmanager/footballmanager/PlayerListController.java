@@ -34,7 +34,12 @@ public class PlayerListController implements Initializable {
     private Scene scene;
     private Parent root;
 
-    File file = new File("src/main/resources/RMsquad.txt");
+    int idx = SelectedClub.clubIndex;
+
+    String[] squads = {"FCBsquad.txt", "ARSsquad.txt", "CHEsquad.txt", "MUsquad.txt",
+            "RMsquad.txt", "BMsquad.txt", "PSGsquad.txt", "MCsquad.txt"};
+
+    File file = new File("src/main/resources/" + squads[idx]);
     Scanner scanner;
 
     {

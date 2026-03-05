@@ -27,7 +27,7 @@
 
 /* Selected item */
 .list-cell:filled:selected, .list-cell:filled:selected:hover {
-    -fx-background-color: #00BFFF; /* highlight color */
+    -fx-background-color: linear-gradient(to right, #0fe6f6, #0b59ce); /* highlight color */
     -fx-text-fill: black; /* text color when selected */
     -fx-background-radius: 15;
 }
@@ -53,9 +53,10 @@
 
 .button:hover {
     -fx-background-color: linear-gradient(to right, #0fe6f6, #0b59ce);
-    -fx-background-radius: 25;
-    -fx-background-insets: 0;   /* fill entire button */
+    -fx-background-radius: 23;
+    -fx-background-insets: 2;   /* fill entire button */
     -fx-cursor: hand;
+    -fx-text-fill: black;
 }
 
 .button:pressed {

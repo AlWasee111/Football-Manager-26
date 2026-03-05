@@ -31,17 +31,17 @@
             <Font size="30.0" />
          </font>
       </PasswordField>
-      <Button layoutX="224.0" layoutY="470.0" mnemonicParsing="false" onAction="#ReturnToMenu" prefHeight="66.0" prefWidth="191.0" style="-fx-background-radius: 15;" text="Back">
+      <Button layoutX="187.0" layoutY="470.0" mnemonicParsing="false" onAction="#ReturnToMenu" prefHeight="54.0" prefWidth="170.0" style="-fx-background-radius: 15;" text="Back">
          <font>
-            <Font name="Century Gothic" size="25.0" />
+            <Font name="Century Gothic" size="31.0" />
          </font>
       </Button>
-      <Button fx:id="EnterButton" layoutX="536.0" layoutY="470.0" mnemonicParsing="false" onAction="#EnterPage" prefHeight="66.0" prefWidth="191.0" style="-fx-background-radius: 15;" text="Enter">
+      <Button fx:id="EnterButton" layoutX="593.0" layoutY="470.0" mnemonicParsing="false" onAction="#EnterPage" prefHeight="54.0" prefWidth="170.0" style="-fx-background-radius: 15;" text="Enter">
          <font>
-            <Font name="Century Gothic" size="25.0" />
+            <Font name="Century Gothic" size="31.0" />
          </font>
       </Button>
-      <Label fx:id="errorMessage" alignment="CENTER" layoutX="354.0" layoutY="592.0" prefHeight="30.0" prefWidth="315.0" style="-fx-background-color: #fa0606;" textFill="WHITE" visible="false">
+      <Label id="errorText" fx:id="errorMessage" alignment="CENTER" layoutX="272.0" layoutY="585.0" prefHeight="37.0" prefWidth="406.0" textFill="WHITE" visible="false">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
