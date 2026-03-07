@@ -15,7 +15,7 @@
                 <Image url="@../../../FIFA-20-background.jpg" />
             </image>
         </ImageView>
-        <ListView fx:id="PlayerList" layoutX="220.0" layoutY="176.0" prefHeight="367.0" prefWidth="583.0" />
+        <ListView fx:id="TransHubList" layoutX="220.0" layoutY="176.0" prefHeight="367.0" prefWidth="583.0" />
         <Label alignment="TOP_CENTER" layoutX="236.0" layoutY="64.0" prefHeight="74.0" prefWidth="528.0" text="Available Players" textFill="WHITE">
             <font>
                 <Font name="Century Gothic Bold" size="56.0" />
@@ -31,5 +31,10 @@
                 <Font size="18.0" />
             </font>
         </Button>
+      <Button fx:id="buyButton" layoutX="875.0" layoutY="583.0" mnemonicParsing="false" stylesheets="@../../../TransferHub.css" text="Buy" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

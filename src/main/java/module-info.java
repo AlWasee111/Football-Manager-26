@@ -12,6 +12,7 @@ module com.footballmanager.footballmanager {
     requires com.almasb.fxgl.all;
     requires javafx.graphics;
     requires javafx.base;
+    requires java.desktop;
 
     opens com.footballmanager.footballmanager to javafx.fxml;
     exports com.footballmanager.footballmanager;

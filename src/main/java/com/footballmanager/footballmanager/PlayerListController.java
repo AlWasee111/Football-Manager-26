@@ -14,10 +14,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -28,11 +27,13 @@ public class PlayerListController implements Initializable {
     @FXML
     private Label playerLabel;
     @FXML
-    private Button backButton;
+    private Button sellButton;
 
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    private String currentPlayer;
 
     int idx = SelectedClub.clubIndex;
 
@@ -42,9 +43,14 @@ public class PlayerListController implements Initializable {
     File file = new File("src/main/resources/" + squads[idx]);
     Scanner scanner;
 
+    ArrayList<String> players = new ArrayList<>();
+
     {
         try {
             scanner = new Scanner(file);
+            while (scanner.hasNextLine()){
+                players.add(scanner.nextLine());
+            }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -52,14 +58,15 @@ public class PlayerListController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        while (scanner.hasNextLine()){
-            PlayerList.getItems().add(scanner.nextLine());
+        for (String player : players){
+            PlayerList.getItems().add(player);
         }
 
         PlayerList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                String currentPlayer = PlayerList.getSelectionModel().getSelectedItem();
+                sellButton.setVisible(true);
+                currentPlayer = PlayerList.getSelectionModel().getSelectedItem();
                 playerLabel.setText(currentPlayer);
             }
         });
@@ -73,5 +80,22 @@ public class PlayerListController implements Initializable {
 
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void sellPlayer(ActionEvent event) throws IOException{
+        if(!currentPlayer.isEmpty()){
+            players.remove(currentPlayer);
+
+            PrintWriter printWriter = new PrintWriter(file);
+            for(String player : players){
+                printWriter.println(player);
+            }
+            printWriter.close();
+
+            File file1 = new File("src/main/resources/TransferList.txt");
+            FileWriter fileWriter = new FileWriter(file1,true);
+            fileWriter.write(currentPlayer + "\n");
+            fileWriter.close();
+        }
     }
 }

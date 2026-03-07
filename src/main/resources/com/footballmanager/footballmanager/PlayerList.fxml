@@ -31,5 +31,10 @@
             <Font size="18.0" />
          </font>
       </Button>
+      <Button fx:id="sellButton" layoutX="875.0" layoutY="583.0" mnemonicParsing="false" onAction="#sellPlayer" stylesheets="@../../../ListStyle.css" text="Sell" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
