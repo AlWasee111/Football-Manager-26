@@ -1,0 +1,66 @@
+/* ListView background and border */
+.list-view {
+    -fx-background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-border-color: #00BFFF; /* light blue border */
+    -fx-border-width: 2;
+    -fx-padding: 5;
+    -fx-control-inner-background: rgba(255, 255, 255, 0.1); /* background for cells */
+    -fx-background-insets: 0;
+}
+
+/* Each ListCell style */
+.list-cell {
+    -fx-text-fill: white; /* text color */
+    -fx-font-size: 20px;
+    -fx-font-family: "Century Gothic";
+    -fx-background-radius: 15;
+    -fx-background-color: transparent; /* default background */
+}
+
+/* Hover effect */
+.list-cell:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-background-radius: 15;
+}
+
+/* Selected item */
+.list-cell:filled:selected, .list-cell:filled:selected:hover {
+    -fx-background-color: linear-gradient(to right, #0fe6f6, #0b59ce); /* highlight color */
+    -fx-text-fill: black; /* text color when selected */
+    -fx-background-radius: 15;
+}
+
+/* ScrollBar */
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #00BFFF;
+    -fx-background-radius: 10;
+}
+
+.button {
+    -fx-text-fill: #ffffff;
+    -fx-border-width: 2;
+    -fx-border-radius: 25;
+    -fx-border-color: #0fe6f6;
+    -fx-background-color: transparent;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to right, #0fe6f6, #0b59ce);
+    -fx-background-radius: 23;
+    -fx-background-insets: 2;   /* fill entire button */
+    -fx-cursor: hand;
+    -fx-text-fill: black;
+}
+
+.button:pressed {
+    /* -fx-background-color: #ce134b; */
+    -fx-background-color: linear-gradient(to right, #0fe6f6, #0b59ce);
+    -fx-translate-y: 2px;
+}

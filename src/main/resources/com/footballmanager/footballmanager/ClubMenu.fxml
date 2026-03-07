@@ -24,7 +24,7 @@
             <Font size="23.0" />
          </font>
       </Button>
-      <Button fx:id="TransferMarket" layoutX="394.0" layoutY="276.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="212.0" style="-fx-background-radius: 25;" text="Transfer Market">
+      <Button fx:id="TransferMarket" layoutX="394.0" layoutY="276.0" mnemonicParsing="false" onAction="#GoToTransferHub" prefHeight="52.0" prefWidth="212.0" style="-fx-background-radius: 25;" text="Transfer Market">
          <font>
             <Font size="23.0" />
          </font>
