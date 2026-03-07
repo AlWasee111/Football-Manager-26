@@ -31,7 +31,7 @@
                 <Font size="18.0" />
             </font>
         </Button>
-      <Button fx:id="buyButton" layoutX="875.0" layoutY="583.0" mnemonicParsing="false" stylesheets="@../../../TransferHub.css" text="Buy" visible="false">
+      <Button fx:id="buyButton" layoutX="875.0" layoutY="583.0" mnemonicParsing="false" onAction="#buyPlayer" stylesheets="@../../../TransferHub.css" text="Buy" visible="false">
          <font>
             <Font size="18.0" />
          </font>

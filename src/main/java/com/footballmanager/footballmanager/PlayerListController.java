@@ -96,6 +96,8 @@ public class PlayerListController implements Initializable {
             FileWriter fileWriter = new FileWriter(file1,true);
             fileWriter.write(currentPlayer + "\n");
             fileWriter.close();
+
+            PlayerList.getItems().remove(currentPlayer);
         }
     }
 }

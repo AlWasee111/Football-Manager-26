@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import javax.swing.*;
 import java.io.*;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -35,9 +36,6 @@ public class TransferHubController implements Initializable {
 
     String currentPlayer;
 
-    public TransferHubController() throws FileNotFoundException {
-    }
-
     public void backToMenu(ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ClubMenu.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -48,12 +46,25 @@ public class TransferHubController implements Initializable {
     }
 
     File file = new File("src/main/resources/TransferList.txt");
-    Scanner scanner = new Scanner(file);
+    Scanner scanner;
+
+    ArrayList<String> players = new ArrayList<>();
+
+    {
+        try {
+            scanner = new Scanner(file);
+            while (scanner.hasNextLine()){
+                players.add(scanner.nextLine());
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        while (scanner.hasNextLine()){
-            TransHubList.getItems().add(scanner.nextLine());
+        for (String player : players){
+            TransHubList.getItems().add(player);
         }
 
         TransHubList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -68,6 +79,14 @@ public class TransferHubController implements Initializable {
 
     public void buyPlayer(ActionEvent event) throws IOException{
         if(!currentPlayer.isEmpty()){
+            players.remove(currentPlayer);
+
+            PrintWriter printWriter = new PrintWriter(file);
+            for(String player : players){
+                printWriter.println(player);
+            }
+            printWriter.close();
+
             int idx = SelectedClub.clubIndex;
             String[] squads = {"FCBsquad.txt", "ARSsquad.txt", "CHEsquad.txt", "MUsquad.txt",
                     "RMsquad.txt", "BMsquad.txt", "PSGsquad.txt", "MCsquad.txt"};
@@ -76,6 +95,8 @@ public class TransferHubController implements Initializable {
             FileWriter fileWriter = new FileWriter(file,true);
             fileWriter.write(currentPlayer + "\n");
             fileWriter.close();
+
+            TransHubList.getItems().remove(currentPlayer);
         }
     }
 }
