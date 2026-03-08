@@ -6,12 +6,20 @@ import java.util.Objects;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class MainMenuController {
     @FXML
@@ -35,8 +43,41 @@ public class MainMenuController {
         stage.show();
     }
 
-    public void ExitApplication (ActionEvent event) {
-        stage = (Stage) MainScene.getScene().getWindow();
-        stage.close();
+    public void ExitApplication(){
+        stage = (Stage) exitButton.getScene().getWindow();
+        Stage warningBox = new Stage();
+        warningBox.initStyle(StageStyle.UNDECORATED); //removes default top bar
+        warningBox.initModality(Modality.APPLICATION_MODAL); //can't access other stuffs
+
+        Label message = new Label("Are you sure you want to exit? :(");
+        message.getStyleClass().add("warning-message");
+
+        Button yes = new Button("Yes");
+        Button no = new Button("No");
+
+        yes.getStyleClass().add("warning-button");
+        no.getStyleClass().add("warning-button");
+
+        yes.setOnAction(event -> {
+            warningBox.close();
+            stage.close();
+        });
+        no.setOnAction(event -> {
+            warningBox.close();
+        });
+
+        HBox buttons = new HBox(25, yes, no);
+        buttons.setAlignment(Pos.CENTER);
+
+        VBox root = new VBox(40,message,buttons);
+        root.setAlignment(Pos.CENTER);
+
+        root.getStyleClass().add("warning-pane");
+
+        Scene scene = new Scene(root, 600, 350);
+        scene.getStylesheets().add(getClass().getResource("/Stylings/AlertStyle.css").toExternalForm());
+
+        warningBox.setScene(scene);
+        warningBox.showAndWait();
     }
 }

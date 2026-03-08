@@ -2,12 +2,24 @@ package com.footballmanager.footballmanager;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.layout.HBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Optional;
+
+import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.scene.paint.Color;
 
 public class MainApplication extends Application {
     @Override
@@ -23,7 +35,50 @@ public class MainApplication extends Application {
         stage.setTitle("Football Manager 26");
         stage.setScene(scene);
         stage.show();
+
+        stage.setOnCloseRequest(windowEvent -> {
+            windowEvent.consume();
+            logout(stage);
+        });
     }
+
+    public void logout(Stage stage){
+        Stage warningBox = new Stage();
+        warningBox.initStyle(StageStyle.UNDECORATED); //removes default top bar
+        warningBox.initModality(Modality.APPLICATION_MODAL); //can't access other stuffs
+
+        Label message = new Label("Are you sure you want to exit? :(");
+        message.getStyleClass().add("warning-message");
+
+        Button yes = new Button("Yes");
+        Button no = new Button("No");
+
+        yes.getStyleClass().add("warning-button");
+        no.getStyleClass().add("warning-button");
+
+        yes.setOnAction(event -> {
+            warningBox.close();
+            stage.close();
+        });
+        no.setOnAction(event -> {
+            warningBox.close();
+        });
+
+        HBox buttons = new HBox(25, yes, no);
+        buttons.setAlignment(Pos.CENTER);
+
+        VBox root = new VBox(40,message,buttons);
+        root.setAlignment(Pos.CENTER);
+
+        root.getStyleClass().add("warning-pane");
+
+        Scene scene = new Scene(root, 600, 350);
+        scene.getStylesheets().add(getClass().getResource("/Stylings/AlertStyle.css").toExternalForm());
+
+        warningBox.setScene(scene);
+        warningBox.showAndWait();
+    }
+
     public static void main(String[] args) {
         launch(args);
     }

@@ -38,10 +38,11 @@
     -fx-background-color: linear-gradient(to bottom, #ea0d65, #ff4343);
     -fx-text-fill: black;
     -fx-border-radius: 15;
+    -fx-cursor: hand;
 }
 
 .combo-box .list-cell:selected {
-    -fx-text-fill: linear-gradient(to bottom, #ea0d65, #ff4343);;
+    -fx-text-fill: linear-gradient(to bottom, #ea0d65, #ff4343);
     -fx-font-size: 22px;
     -fx-font-family: "Century Gothic";
 }

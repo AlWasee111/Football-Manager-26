@@ -45,6 +45,8 @@
 
 .button {
     -fx-text-fill: #ffffff;
+    -fx-font-family: "Century Gothic";
+    -fx-font-size: 18;
     -fx-border-width: 2;
     -fx-border-radius: 25;
     -fx-border-color: #0fe6f6;

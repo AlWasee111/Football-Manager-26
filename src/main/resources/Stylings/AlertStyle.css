@@ -1,0 +1,32 @@
+.warning-pane {
+    -fx-background-color: rgba(21, 20, 20, 1);
+    -fx-border-color: rgba(255,196,57,1);
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+}
+
+.warning-button {
+    -fx-background-color: transparent;
+    -fx-border-color: rgba(255,196,57,1);
+    -fx-border-radius: 20;
+    -fx-border-width: 2;
+    -fx-text-fill: white;
+    -fx-font-family: "Century Gothic";
+    -fx-font-size: 24px;
+}
+
+.warning-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #ea0d65, #ff4343);
+    -fx-background-radius: 18;
+    -fx-background-insets: 2;
+    -fx-text-fill: black;
+    -fx-cursor: hand;
+}
+
+.warning-message{
+    -fx-text-fill: linear-gradient(to bottom, #ea0d65, #ff4343);
+    -fx-font-family: "Century Gothic";
+    -fx-font-size: 28px;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+}

@@ -16,7 +16,7 @@
       </ImageView>
       <Label alignment="CENTER" layoutX="436.0" layoutY="80.0" prefHeight="43.0" prefWidth="127.0" text="HOME" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="35.0" />
+            <Font name="Century Gothic Bold" size="41.0" />
          </font>
       </Label>
       <Button fx:id="Players" layoutX="394.0" layoutY="196.0" mnemonicParsing="false" onAction="#GoToPlayers" prefHeight="52.0" prefWidth="212.0" style="-fx-background-radius: 25;" text="Players">

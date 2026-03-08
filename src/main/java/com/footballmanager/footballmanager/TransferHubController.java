@@ -6,13 +6,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.*;
 import java.net.URL;
@@ -76,26 +81,78 @@ public class TransferHubController implements Initializable {
         });
     }
 
-    public void buyPlayer(ActionEvent event) throws IOException{
+    public void buyPlayer(){
         if(!currentPlayer.isEmpty()){
-            players.remove(currentPlayer);
+            Stage warningBox = new Stage();
+            warningBox.initStyle(StageStyle.UNDECORATED); //removes default top bar
+            warningBox.initModality(Modality.APPLICATION_MODAL); //can't access other stuffs
 
-            PrintWriter printWriter = new PrintWriter(file);
-            for(String player : players){
-                printWriter.println(player);
-            }
-            printWriter.close();
+            Label message = new Label("Are you sure you want to buy " + currentPlayer + " ?");
+            message.getStyleClass().add("warning-message");
 
-            int idx = SelectedClub.clubIndex;
-            String[] squads = {"Squads/FCBsquad.txt", "Squads/ARSsquad.txt", "Squads/CHEsquad.txt", "Squads/MUsquad.txt",
-                    "Squads/RMsquad.txt", "Squads/BMsquad.txt", "Squads/PSGsquad.txt", "Squads/MCsquad.txt"};
+            Button yes = new Button("Yes");
+            Button no = new Button("No");
 
-            File file = new File("src/main/resources/" + squads[idx]);
-            FileWriter fileWriter = new FileWriter(file,true);
-            fileWriter.write(currentPlayer + "\n");
-            fileWriter.close();
+            yes.getStyleClass().add("warning-button");
+            no.getStyleClass().add("warning-button");
 
-            TransHubList.getItems().remove(currentPlayer);
+            yes.setOnAction(event -> {
+                warningBox.close();
+
+                players.remove(currentPlayer);
+
+                PrintWriter printWriter = null;
+                try {
+                    printWriter = new PrintWriter(file);
+                } catch (FileNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+                for(String player : players){
+                    printWriter.println(player);
+                }
+                printWriter.close();
+
+                int idx = SelectedClub.clubIndex;
+                String[] squads = {"Squads/FCBsquad.txt", "Squads/ARSsquad.txt", "Squads/CHEsquad.txt", "Squads/MUsquad.txt",
+                        "Squads/RMsquad.txt", "Squads/BMsquad.txt", "Squads/PSGsquad.txt", "Squads/MCsquad.txt"};
+
+                File file = new File("src/main/resources/" + squads[idx]);
+                FileWriter fileWriter = null;
+                try {
+                    fileWriter = new FileWriter(file,true);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                try {
+                    fileWriter.write(currentPlayer + "\n");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                try {
+                    fileWriter.close();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+                TransHubList.getItems().remove(currentPlayer);
+            });
+            no.setOnAction(event -> {
+                warningBox.close();
+            });
+
+            HBox buttons = new HBox(25, yes, no);
+            buttons.setAlignment(Pos.CENTER);
+
+            VBox root = new VBox(40,message,buttons);
+            root.setAlignment(Pos.CENTER);
+
+            root.getStyleClass().add("warning-pane");
+
+            Scene scene = new Scene(root, 600, 350);
+            scene.getStylesheets().add(getClass().getResource("/Stylings/AlertStyle3.css").toExternalForm());
+
+            warningBox.setScene(scene);
+            warningBox.showAndWait();
         }
     }
 }
