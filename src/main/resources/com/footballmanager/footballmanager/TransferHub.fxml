@@ -12,7 +12,7 @@
     <children>
         <ImageView fitHeight="655.0" fitWidth="1000.0">
             <image>
-                <Image url="@../../../FIFA-20-background.jpg" />
+                <Image url="@../../../Images/FIFA-20-background.jpg" />
             </image>
         </ImageView>
         <ListView fx:id="TransHubList" layoutX="220.0" layoutY="176.0" prefHeight="367.0" prefWidth="583.0" />
@@ -31,7 +31,7 @@
                 <Font size="18.0" />
             </font>
         </Button>
-      <Button fx:id="buyButton" layoutX="875.0" layoutY="583.0" mnemonicParsing="false" onAction="#buyPlayer" stylesheets="@../../../TransferHub.css" text="Buy" visible="false">
+      <Button fx:id="buyButton" layoutX="875.0" layoutY="583.0" mnemonicParsing="false" onAction="#buyPlayer" stylesheets="@../../../Stylings/TransferHub.css" text="Buy" visible="false">
          <font>
             <Font size="18.0" />
          </font>

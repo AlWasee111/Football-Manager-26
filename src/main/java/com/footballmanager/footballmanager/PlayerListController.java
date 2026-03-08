@@ -37,8 +37,8 @@ public class PlayerListController implements Initializable {
 
     int idx = SelectedClub.clubIndex;
 
-    String[] squads = {"FCBsquad.txt", "ARSsquad.txt", "CHEsquad.txt", "MUsquad.txt",
-            "RMsquad.txt", "BMsquad.txt", "PSGsquad.txt", "MCsquad.txt"};
+    String[] squads = {"Squads/FCBsquad.txt", "Squads/ARSsquad.txt", "Squads/CHEsquad.txt", "Squads/MUsquad.txt",
+            "Squads/RMsquad.txt", "Squads/BMsquad.txt", "Squads/PSGsquad.txt", "Squads/MCsquad.txt"};
 
     File file = new File("src/main/resources/" + squads[idx]);
     Scanner scanner;
@@ -76,7 +76,7 @@ public class PlayerListController implements Initializable {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ClubMenu.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Styles2.css")).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Stylings/Styles2.css")).toExternalForm());
 
         stage.setScene(scene);
         stage.show();
@@ -92,7 +92,7 @@ public class PlayerListController implements Initializable {
             }
             printWriter.close();
 
-            File file1 = new File("src/main/resources/TransferList.txt");
+            File file1 = new File("src/main/resources/Squads/TransferList.txt");
             FileWriter fileWriter = new FileWriter(file1,true);
             fileWriter.write(currentPlayer + "\n");
             fileWriter.close();

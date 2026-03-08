@@ -18,7 +18,7 @@ public class ClubMenuController {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mainmenu.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Styles.css")).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Stylings/Styles.css")).toExternalForm());
 
         stage.setScene(scene);
         stage.show();
@@ -29,7 +29,7 @@ public class ClubMenuController {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         //scene = new Scene(root);
         scene = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
-        scene.getStylesheets().add(getClass().getResource("/ListStyle.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/Stylings/ListStyle.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
@@ -39,7 +39,7 @@ public class ClubMenuController {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         //scene = new Scene(root);
         scene = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
-        scene.getStylesheets().add(getClass().getResource("/TransferHub.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/Stylings/TransferHub.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

@@ -13,7 +13,7 @@
    <children>
       <ImageView fitHeight="655.0" fitWidth="1000.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../bg01.jpeg" />
+            <Image url="@../../../Images/bg01.jpeg" />
          </image>
       </ImageView>
       <Label alignment="CENTER" layoutX="123.0" layoutY="213.0" prefHeight="71.0" prefWidth="323.0" text="Enter Your Club :" textFill="#faf9f6">

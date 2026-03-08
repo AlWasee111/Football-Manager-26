@@ -14,9 +14,9 @@ public class MainApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("mainmenu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1000, 650);
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Styles.css")).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Stylings/Styles.css")).toExternalForm());
 
-        Image icon = new Image("logo.jpg");
+        Image icon = new Image(getClass().getResourceAsStream("/images/logo.jpg"));
 
         stage.setResizable(true);
         stage.getIcons().add(icon);
