@@ -24,13 +24,15 @@ import javafx.scene.paint.Color;
 public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        PlayerClient.connect();
+
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("mainmenu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1000, 650);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Stylings/Styles.css")).toExternalForm());
 
         Image icon = new Image(getClass().getResourceAsStream("/images/logo.jpg"));
 
-        stage.setResizable(true);
+        stage.setResizable(false);
         stage.getIcons().add(icon);
         stage.setTitle("Football Manager 26");
         stage.setScene(scene);

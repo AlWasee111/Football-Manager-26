@@ -8,26 +8,26 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="MainScene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.footballmanager.footballmanager.MainMenuController">
-   <children>
-      <ImageView fitHeight="655.0" fitWidth="1000.0" pickOnBounds="true">
-         <image>
-            <Image url="@../../../Images/bg01.jpeg" />
-         </image>
-      </ImageView>
-      <Button alignment="TOP_CENTER" layoutX="534.0" layoutY="429.0" mnemonicParsing="false" onAction="#LoginScreen" prefHeight="54.0" prefWidth="170.0" style="-fx-background-radius: 20;" text="Login">
-         <font>
-            <Font name="Century Gothic" size="31.0" />
-         </font>
-      </Button>
-      <Label fx:id="Heading" alignment="CENTER" layoutY="138.0" prefHeight="150.0" prefWidth="1000.0" style="-fx-text-fill: #FAF9F6;" text="Football Manager 26">
-         <font>
-            <Font name="Century Gothic Bold" size="65.0" />
-         </font>
-      </Label>
-      <Button fx:id="exitButton" alignment="TOP_CENTER" layoutX="291.0" layoutY="429.0" mnemonicParsing="false" onAction="#ExitApplication" prefHeight="54.0" prefWidth="170.0" style="-fx-background-radius: 20;" text="Exit">
-         <font>
-            <Font name="Century Gothic" size="31.0" />
-         </font>
-      </Button>
-   </children>
+    <children>
+        <ImageView fitHeight="655.0" fitWidth="1000.0" pickOnBounds="true">
+            <image>
+                <Image url="@../../../Images/bg01.jpeg" />
+            </image>
+        </ImageView>
+        <Button alignment="TOP_CENTER" layoutX="534.0" layoutY="429.0" mnemonicParsing="false" onAction="#LoginScreen" prefHeight="54.0" prefWidth="170.0" style="-fx-background-radius: 20;" text="Login">
+            <font>
+                <Font name="Century Gothic" size="31.0" />
+            </font>
+        </Button>
+        <Label fx:id="Heading" alignment="CENTER" layoutY="138.0" prefHeight="150.0" prefWidth="1000.0" style="-fx-text-fill: #FAF9F6;" text="Football Manager 26">
+            <font>
+                <Font name="Century Gothic Bold" size="65.0" />
+            </font>
+        </Label>
+        <Button fx:id="exitButton" alignment="TOP_CENTER" layoutX="291.0" layoutY="429.0" mnemonicParsing="false" onAction="#ExitApplication" prefHeight="54.0" prefWidth="170.0" style="-fx-background-radius: 20;" text="Exit">
+            <font>
+                <Font name="Century Gothic" size="31.0" />
+            </font>
+        </Button>
+    </children>
 </AnchorPane>

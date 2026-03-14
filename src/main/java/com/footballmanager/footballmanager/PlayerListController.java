@@ -104,38 +104,7 @@ public class PlayerListController implements Initializable {
 
             yes.setOnAction(event -> {
                 warningBox.close();
-
-                players.remove(currentPlayer);
-
-                PrintWriter printWriter = null;
-                try {
-                    printWriter = new PrintWriter(file);
-                } catch (FileNotFoundException e) {
-                    throw new RuntimeException(e);
-                }
-                for(String player : players){
-                    printWriter.println(player);
-                }
-                printWriter.close();
-
-                File file1 = new File("src/main/resources/Squads/TransferList.txt");
-                FileWriter fileWriter = null;
-                try {
-                    fileWriter = new FileWriter(file1,true);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                try {
-                    fileWriter.write(currentPlayer + "\n");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                try {
-                    fileWriter.close();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-
+                PlayerClient.sendCommand("S",currentPlayer, SelectedClub.clubIndex);
                 PlayerList.getItems().remove(currentPlayer);
             });
             no.setOnAction(event -> {

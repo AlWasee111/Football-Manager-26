@@ -98,42 +98,7 @@ public class TransferHubController implements Initializable {
 
             yes.setOnAction(event -> {
                 warningBox.close();
-
-                players.remove(currentPlayer);
-
-                PrintWriter printWriter = null;
-                try {
-                    printWriter = new PrintWriter(file);
-                } catch (FileNotFoundException e) {
-                    throw new RuntimeException(e);
-                }
-                for(String player : players){
-                    printWriter.println(player);
-                }
-                printWriter.close();
-
-                int idx = SelectedClub.clubIndex;
-                String[] squads = {"Squads/FCBsquad.txt", "Squads/ARSsquad.txt", "Squads/CHEsquad.txt", "Squads/MUsquad.txt",
-                        "Squads/RMsquad.txt", "Squads/BMsquad.txt", "Squads/PSGsquad.txt", "Squads/MCsquad.txt"};
-
-                File file = new File("src/main/resources/" + squads[idx]);
-                FileWriter fileWriter = null;
-                try {
-                    fileWriter = new FileWriter(file,true);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                try {
-                    fileWriter.write(currentPlayer + "\n");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                try {
-                    fileWriter.close();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-
+                PlayerClient.sendCommand("B",currentPlayer, SelectedClub.clubIndex);
                 TransHubList.getItems().remove(currentPlayer);
             });
             no.setOnAction(event -> {
