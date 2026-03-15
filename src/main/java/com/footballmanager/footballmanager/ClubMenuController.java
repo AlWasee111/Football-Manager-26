@@ -47,6 +47,16 @@ public class ClubMenuController {
         stage.show();
     }
 
+    public void GoToScoutplayers(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ScoutTeams.fxml"));
+        root = loader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
+        scene.getStylesheets().add(getClass().getResource("/Stylings/ScoutTeams.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void logout(Stage stage){
         Stage warningBox = new Stage();
         warningBox.initStyle(StageStyle.UNDECORATED); //removes default top bar
