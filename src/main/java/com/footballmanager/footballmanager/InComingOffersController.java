@@ -19,46 +19,53 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
-public class TransferHubController implements Initializable {
+public class InComingOffersController implements Initializable {
     @FXML
-    private ListView<String> TransHubList;
+    private ListView<String> OfferList;
     @FXML
     private Label playerLabel;
     @FXML
-    private Button buyButton;
+    private Button acceptButton;
 
+    private Parent root;
     private Stage stage;
     private Scene scene;
-    private Parent root;
 
-    String currentPlayer;
+    private String currentOffer;
+    private String currentPlayer;
 
-    public void backToMenu(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ClubMenu.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Stylings/Styles2.css")).toExternalForm());
-        stage.setScene(scene);
-        stage.show();
-    }
+    int idx = SelectedClub.clubIndex;
+    int buyeridx;
 
-    File file = new File("src/main/resources/Squads/TransferList.txt");
+    String[] teams = {"FC Barcelona", "Arsenal FC" , "Chelsea FC", "Manchester United",
+            "Real Madrid CF", "FC Bayern München", "Paris Saint-Germain", "Manchester City"};
+
+    File file = new File("src/main/resources/Squads/TransferReq.txt");
     Scanner scanner;
 
-    ArrayList<String> players = new ArrayList<>();
+    ArrayList<String> offers = new ArrayList<>();
 
     {
         try {
             scanner = new Scanner(file);
             while (scanner.hasNextLine()){
-                players.add(scanner.nextLine());
+                String[] reqInfo = scanner.nextLine().split(",");
+                int reqTo = Integer.parseInt(reqInfo[2]);
+                if(reqTo == idx){
+                    String playerName = reqInfo[0];
+                    String reqForm = teams[Integer.parseInt(reqInfo[1])];
+                    String offer = playerName + " wanted by " + reqForm;
+                    offers.add(offer);
+                }
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -67,27 +74,47 @@ public class TransferHubController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        for (String player : players){
-            TransHubList.getItems().add(player);
+        for (String player : offers){
+            OfferList.getItems().add(player);
         }
 
-        TransHubList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+        OfferList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                buyButton.setVisible(true);
-                currentPlayer = TransHubList.getSelectionModel().getSelectedItem();
+                if (t1 == null) return;
+
+                acceptButton.setVisible(true);
+                currentOffer = OfferList.getSelectionModel().getSelectedItem();
+                String[] splitCurrentOffer = currentOffer.split(" wanted by ");
+                currentPlayer = splitCurrentOffer[0];
+                for(int i = 0; i < teams.length; i++){
+                    if(splitCurrentOffer[1].equals(teams[i])){
+                        buyeridx = i;
+                        break;
+                    }
+                }
                 playerLabel.setText(currentPlayer);
             }
         });
     }
 
-    public void buyPlayer(){
-        if(!currentPlayer.isEmpty()){
+    public void backToMenu(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ClubMenu.fxml")));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Stylings/Styles2.css")).toExternalForm());
+
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void sellPlayer(){
+        if(!currentOffer.isEmpty()){
             Stage warningBox = new Stage();
             warningBox.initStyle(StageStyle.UNDECORATED); //removes default top bar
             warningBox.initModality(Modality.APPLICATION_MODAL); //can't access other stuffs
 
-            Label message = new Label("Are you sure you want to buy " + currentPlayer + " ?");
+            Label message = new Label("Are you sure you want to sell " + currentPlayer + " ?");
             message.getStyleClass().add("warning-message");
 
             Button yes = new Button("Yes");
@@ -98,8 +125,8 @@ public class TransferHubController implements Initializable {
 
             yes.setOnAction(event -> {
                 warningBox.close();
-                PlayerClient.sendCommand("B",currentPlayer, SelectedClub.clubIndex, ScoutTeamsController.scoutIDX);
-                TransHubList.getItems().remove(currentPlayer);
+                PlayerClient.sendCommand("RS",currentOffer, SelectedClub.clubIndex, buyeridx);
+                OfferList.getItems().remove(currentOffer);
             });
             no.setOnAction(event -> {
                 warningBox.close();

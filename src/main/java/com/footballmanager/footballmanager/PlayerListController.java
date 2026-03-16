@@ -104,7 +104,7 @@ public class PlayerListController implements Initializable {
 
             yes.setOnAction(event -> {
                 warningBox.close();
-                PlayerClient.sendCommand("S",currentPlayer, SelectedClub.clubIndex);
+                PlayerClient.sendCommand("S",currentPlayer, SelectedClub.clubIndex, ScoutTeamsController.scoutIDX);
                 PlayerList.getItems().remove(currentPlayer);
             });
             no.setOnAction(event -> {

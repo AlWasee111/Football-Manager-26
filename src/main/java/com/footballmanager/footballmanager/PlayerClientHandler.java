@@ -21,12 +21,19 @@ public class PlayerClientHandler implements Runnable{
             while (true){
                 String receivedCommand = (String) ois.readObject();
                 String playerName = (String) ois.readObject();
-                Integer idx = (Integer) ois.readObject();
+                Integer from = (Integer) ois.readObject();
+                Integer to = (Integer) ois.readObject();
                 if(receivedCommand.equals("S")){
-                    TransferManager.sell(playerName, idx);
+                    TransferManager.sell(playerName, from);
                 }
                 else if(receivedCommand.equals("B")){
-                    TransferManager.buy(playerName, idx);
+                    TransferManager.buy(playerName, from);
+                }
+                else if(receivedCommand.equals("R")){
+                    RequestSender.sendRequest(playerName,from,to);
+                }
+                else if(receivedCommand.equals("RS")){
+                    TransferManager.reqSell(playerName, from, to);
                 }
             }
         } catch (IOException | ClassNotFoundException e) {

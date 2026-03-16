@@ -35,6 +35,8 @@ public class ScoutTeamSquadController implements Initializable {
     private Label playerLabel;
     @FXML
     private Button reqButton;
+    @FXML
+    private Label teamName;
 
     private Stage stage;
     private Scene scene;
@@ -46,6 +48,10 @@ public class ScoutTeamSquadController implements Initializable {
 
     String[] squads = {"Squads/FCBsquad.txt", "Squads/ARSsquad.txt", "Squads/CHEsquad.txt", "Squads/MUsquad.txt",
             "Squads/RMsquad.txt", "Squads/BMsquad.txt", "Squads/PSGsquad.txt", "Squads/MCsquad.txt"};
+
+    String[] teams = {"FC Barcelona", "Arsenal FC" , "Chelsea FC", "Manchester United",
+            "Real Madrid CF", "FC Bayern München", "Paris Saint-Germain", "Manchester City"};
+
 
     File file = new File("src/main/resources/" + squads[idx]);
     Scanner scanner;
@@ -65,6 +71,8 @@ public class ScoutTeamSquadController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        teamName.setText(teams[idx]);
+
         for (String player : players){
             PlayerList.getItems().add(player);
         }
@@ -106,8 +114,7 @@ public class ScoutTeamSquadController implements Initializable {
 
             yes.setOnAction(event -> {
                 warningBox.close();
-                //PlayerClient.sendCommand("S",currentPlayer, SelectedClub.clubIndex);
-                //PlayerList.getItems().remove(currentPlayer);
+                PlayerClient.sendCommand("R",currentPlayer, SelectedClub.clubIndex, ScoutTeamsController.scoutIDX);
             });
             no.setOnAction(event -> {
                 warningBox.close();

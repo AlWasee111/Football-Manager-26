@@ -14,30 +14,45 @@
             <Image url="@../../../Images/FIFA-20-background.jpg" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" layoutX="436.0" layoutY="80.0" prefHeight="43.0" prefWidth="127.0" text="HOME" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="437.0" layoutY="57.0" prefHeight="43.0" prefWidth="127.0" text="HOME" textFill="WHITE">
          <font>
             <Font name="Century Gothic Bold" size="41.0" />
          </font>
       </Label>
-      <Button fx:id="Players" layoutX="394.0" layoutY="196.0" mnemonicParsing="false" onAction="#GoToPlayers" prefHeight="52.0" prefWidth="212.0" style="-fx-background-radius: 25;" text="Players">
+      <Button fx:id="Players" layoutX="395.0" layoutY="136.0" mnemonicParsing="false" onAction="#GoToPlayers" prefHeight="52.0" prefWidth="212.0" style="-fx-background-radius: 25;" text="Players">
          <font>
             <Font size="23.0" />
          </font>
       </Button>
-      <Button fx:id="TransferMarket" layoutX="394.0" layoutY="276.0" mnemonicParsing="false" onAction="#GoToTransferHub" prefHeight="52.0" prefWidth="212.0" style="-fx-background-radius: 25;" text="Transfer Market">
+      <Button fx:id="TransferMarket" layoutX="395.0" layoutY="216.0" mnemonicParsing="false" onAction="#GoToTransferHub" prefHeight="52.0" prefWidth="212.0" style="-fx-background-radius: 25;" text="Transfer Market">
          <font>
             <Font size="23.0" />
          </font>
       </Button>
-      <Button fx:id="Logout" layoutX="394.0" layoutY="429.0" mnemonicParsing="false" onAction="#GoToMainMenu" prefHeight="52.0" prefWidth="212.0" style="-fx-background-radius: 25;" text="Logout">
+      <Button fx:id="Logout" layoutX="394.0" layoutY="456.0" mnemonicParsing="false" onAction="#GoToMainMenu" prefHeight="52.0" prefWidth="212.0" style="-fx-background-radius: 25;" text="Logout">
          <font>
             <Font size="23.0" />
          </font>
       </Button>
-      <Button fx:id="scoutPlayers" layoutX="394.0" layoutY="352.0" mnemonicParsing="false" onAction="#GoToScoutplayers" prefHeight="52.0" prefWidth="212.0" style="-fx-background-radius: 25;" text="Scout Players">
+      <Button fx:id="scoutPlayers" layoutX="394.0" layoutY="299.0" mnemonicParsing="false" onAction="#GoToScoutplayers" prefHeight="52.0" prefWidth="212.0" style="-fx-background-radius: 25;" text="Scout Players">
          <font>
             <Font size="23.0" />
          </font>
       </Button>
+      <Label fx:id="NotifyBadge" layoutX="581.0" layoutY="209.0" prefHeight="15.0" prefWidth="25.0" styleClass="notification-badge">
+         <font>
+            <Font name="Century Gothic" size="12.0" />
+         </font>
+      </Label>
+      <Button fx:id="incomingOffers" layoutX="395.0" layoutY="378.0" mnemonicParsing="false" onAction="#GoToIncomingOffers" prefHeight="52.0" prefWidth="212.0" style="-fx-background-radius: 25;" text="Incoming Offers">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Button>
+      <Label fx:id="OfferNotifyBadge" layoutX="582.0" layoutY="371.0" prefHeight="15.0" prefWidth="25.0" styleClass="notification-badge" visible="false">
+         <font>
+            <Font name="Century Gothic" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

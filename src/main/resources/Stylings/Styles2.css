@@ -22,3 +22,15 @@
     -fx-background-insets: 2;
     -fx-translate-y: 2px;
 }
+
+.notification-badge {
+    -fx-background-color: #e63946;
+    -fx-text-fill: white;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 999px;
+    -fx-min-width: 22px;
+    -fx-min-height: 22px;
+    -fx-alignment: center;
+    -fx-padding: 2 5 2 5;
+}

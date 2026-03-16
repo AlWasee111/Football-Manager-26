@@ -1,7 +1,9 @@
 package com.footballmanager.footballmanager;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -14,13 +16,75 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
+import java.util.Scanner;
 
-public class ClubMenuController {
+public class ClubMenuController implements Initializable {
+    @FXML
+    private Label NotifyBadge;
+    @FXML
+    private Label OfferNotifyBadge;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        updateTransferBadge();
+        updateOfferBadge();
+    }
+
+    private void updateTransferBadge(){
+        File file = new File("src/main/resources/Squads/TransferList.txt");
+        int count = 0;
+        try {
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNextLine()){
+                scanner.nextLine();
+                count++;
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        if(count > 0){
+            NotifyBadge.setVisible(true);
+            NotifyBadge.setText(String.valueOf(count));
+        }
+        else{
+            NotifyBadge.setVisible(false);
+        }
+    }
+
+    private void updateOfferBadge(){
+        File file = new File("src/main/resources/Squads/TransferReq.txt");
+        int count = 0;
+        try {
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNextLine()){
+                String[] reqInfo = scanner.nextLine().split(",");
+                int reqTo = Integer.parseInt(reqInfo[2]);
+                if(reqTo == SelectedClub.clubIndex) {
+                    count++;
+                }
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        if(count > 0){
+            OfferNotifyBadge.setVisible(true);
+            OfferNotifyBadge.setText(String.valueOf(count));
+        }
+        else{
+            OfferNotifyBadge.setVisible(false);
+        }
+    }
+
     private Stage stage;
     private Scene scene;
     private Parent root;
+
     public void GoToMainMenu (ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mainmenu.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -53,6 +117,16 @@ public class ClubMenuController {
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
         scene.getStylesheets().add(getClass().getResource("/Stylings/ScoutTeams.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void GoToIncomingOffers(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("IncomingOffers.fxml"));
+        root = loader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
+        scene.getStylesheets().add(getClass().getResource("/Stylings/IncomingOffers.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
