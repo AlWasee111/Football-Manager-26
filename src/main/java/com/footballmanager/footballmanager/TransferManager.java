@@ -146,4 +146,38 @@ public class TransferManager {
         }
         printWriter.close();
     }
+
+    public static synchronized void reqReject(String offerInfo, int sellFrom, int sellTo){
+        String[] splitInfo = offerInfo.split(" wanted by ");
+
+        File file = new File("src/main/resources/Squads/TransferReq.txt");
+        Scanner scanner;
+
+        ArrayList<String> offers = new ArrayList<>();
+        {
+            try {
+                scanner = new Scanner(file);
+                while (scanner.hasNextLine()){
+                    offers.add(scanner.nextLine());
+                }
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        String offerInfoToRemove = splitInfo[0] + "," + sellTo + "," + sellFrom;
+
+        offers.remove(offerInfoToRemove);
+
+        PrintWriter printWriter = null;
+        try {
+            printWriter = new PrintWriter(file);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        for (String offer : offers) {
+            printWriter.println(offer);
+        }
+        printWriter.close();
+    }
 }

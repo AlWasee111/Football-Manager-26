@@ -35,6 +35,9 @@ public class PlayerClientHandler implements Runnable{
                 else if(receivedCommand.equals("RS")){
                     TransferManager.reqSell(playerName, from, to);
                 }
+                else if(receivedCommand.equals("RR")){
+                    TransferManager.reqReject(playerName, from, to);
+                }
             }
         } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);

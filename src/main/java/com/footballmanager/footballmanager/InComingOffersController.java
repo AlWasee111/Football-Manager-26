@@ -114,25 +114,32 @@ public class InComingOffersController implements Initializable {
             warningBox.initStyle(StageStyle.UNDECORATED); //removes default top bar
             warningBox.initModality(Modality.APPLICATION_MODAL); //can't access other stuffs
 
-            Label message = new Label("Are you sure you want to sell " + currentPlayer + " ?");
+            Label message = new Label(currentPlayer + " is wanted by " + teams[buyeridx]);
             message.getStyleClass().add("warning-message");
 
-            Button yes = new Button("Yes");
-            Button no = new Button("No");
+            Button accept = new Button("Accept");
+            Button reject = new Button("Reject");
+            Button stall = new Button("Stall");
 
-            yes.getStyleClass().add("warning-button");
-            no.getStyleClass().add("warning-button");
+            accept.getStyleClass().add("warning-button");
+            reject.getStyleClass().add("warning-button");
+            stall.getStyleClass().add("warning-button");
 
-            yes.setOnAction(event -> {
+            accept.setOnAction(event -> {
                 warningBox.close();
                 PlayerClient.sendCommand("RS",currentOffer, SelectedClub.clubIndex, buyeridx);
                 OfferList.getItems().remove(currentOffer);
             });
-            no.setOnAction(event -> {
+            reject.setOnAction(event -> {
+                warningBox.close();
+                PlayerClient.sendCommand("RR",currentOffer, SelectedClub.clubIndex, buyeridx);
+                OfferList.getItems().remove(currentOffer);
+            });
+            stall.setOnAction(event -> {
                 warningBox.close();
             });
 
-            HBox buttons = new HBox(25, yes, no);
+            HBox buttons = new HBox(25, accept, stall, reject);
             buttons.setAlignment(Pos.CENTER);
 
             VBox root = new VBox(40,message,buttons);

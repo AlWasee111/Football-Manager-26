@@ -31,7 +31,7 @@
                 <Font size="18.0" />
             </font>
         </Button>
-        <Button fx:id="acceptButton" layoutX="875.0" layoutY="583.0" mnemonicParsing="false" onAction="#sellPlayer" stylesheets="@../../../Stylings/IncomingOffers.css" text="Accept" visible="false">
+        <Button fx:id="acceptButton" layoutX="855.0" layoutY="585.0" mnemonicParsing="false" onAction="#sellPlayer" stylesheets="@../../../Stylings/IncomingOffers.css" text="My Actions" visible="false">
             <font>
                 <Font size="18.0" />
             </font>
