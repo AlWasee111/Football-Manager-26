@@ -59,6 +59,7 @@
 .combo-box .list-cell{
     -fx-text-fill: white; /* text color */
     -fx-font-size: 20px;
+    -fx-alignment: center;
     -fx-font-family: "Century Gothic";
     -fx-background-radius: 15;
     -fx-background-color: transparent; /* default background */
