@@ -10,6 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -20,6 +22,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -29,9 +32,43 @@ public class ClubMenuController implements Initializable {
     private Label NotifyBadge;
     @FXML
     private Label OfferNotifyBadge;
+    @FXML
+    private Label teamName;
+    @FXML
+    private Label budgetLabel;
+    @FXML
+    private ImageView teamCrest;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        String[] teams = {"FC Barcelona", "Arsenal FC" , "Chelsea FC", "Manchester United",
+                "Real Madrid CF", "FC Bayern München", "Paris Saint-Germain", "Manchester City"};
+
+        String[] crests = {"Barcelona.png","Arsenal.png","Chelsea.png","ManchesterUnited.png",
+                "RealMadrid.png","Bayern.png","PSG.png","ManchesterCity.png"};
+        File file = new File("src/main/resources/Squads/SquadBudgets.txt");
+        Scanner scanner;
+        ArrayList<String> budgets = new ArrayList<>();
+        {
+            try {
+                scanner = new Scanner(file);
+                while (scanner.hasNextLine()){
+                    budgets.add(scanner.nextLine());
+                }
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        int idx = SelectedClub.clubIndex;
+
+        teamName.setText(teams[idx]);
+
+        Image image = new Image(getClass().getResourceAsStream("/Clubs/" + crests[idx]));
+        teamCrest.setImage(image);
+
+        budgetLabel.setText("Budget: €" + budgets.get(idx) + "M");
+
         updateTransferBadge();
         updateOfferBadge();
     }

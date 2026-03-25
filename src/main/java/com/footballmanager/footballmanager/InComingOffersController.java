@@ -42,6 +42,9 @@ public class InComingOffersController implements Initializable {
 
     private String currentOffer;
     private String currentPlayer;
+    double curFee;
+    String curBuyer;
+    //int curBuyerID;
 
     int idx = SelectedClub.clubIndex;
     int buyeridx;
@@ -63,7 +66,8 @@ public class InComingOffersController implements Initializable {
                 if(reqTo == idx){
                     String playerName = reqInfo[0];
                     String reqForm = teams[Integer.parseInt(reqInfo[1])];
-                    String offer = playerName + " wanted by " + reqForm;
+                    double fee = Double.parseDouble(reqInfo[3]);
+                    String offer = playerName + " - " + reqForm + " - €" + fee + "M";
                     offers.add(offer);
                 }
             }
@@ -85,10 +89,12 @@ public class InComingOffersController implements Initializable {
 
                 acceptButton.setVisible(true);
                 currentOffer = OfferList.getSelectionModel().getSelectedItem();
-                String[] splitCurrentOffer = currentOffer.split(" wanted by ");
+                String[] splitCurrentOffer = currentOffer.split(" - ");
                 currentPlayer = splitCurrentOffer[0];
+                curBuyer = splitCurrentOffer[1];
+                curFee = Double.parseDouble(splitCurrentOffer[2].replace("€", "").replace("M", "").trim());
                 for(int i = 0; i < teams.length; i++){
-                    if(splitCurrentOffer[1].equals(teams[i])){
+                    if(curBuyer.equals(teams[i])){
                         buyeridx = i;
                         break;
                     }
@@ -114,7 +120,7 @@ public class InComingOffersController implements Initializable {
             warningBox.initStyle(StageStyle.UNDECORATED); //removes default top bar
             warningBox.initModality(Modality.APPLICATION_MODAL); //can't access other stuffs
 
-            Label message = new Label(currentPlayer + " is wanted by " + teams[buyeridx]);
+            Label message = new Label("Name: " + currentPlayer + "\n" + "Wanted by: " + curBuyer + "\n" + "Price: €" + curFee + "M");
             message.getStyleClass().add("warning-message");
 
             Button accept = new Button("Accept");
@@ -127,12 +133,12 @@ public class InComingOffersController implements Initializable {
 
             accept.setOnAction(event -> {
                 warningBox.close();
-                PlayerClient.sendCommand("RS",currentOffer, SelectedClub.clubIndex, buyeridx);
+                PlayerClient.sendCommand("RS",currentOffer, SelectedClub.clubIndex, buyeridx, curFee);
                 OfferList.getItems().remove(currentOffer);
             });
             reject.setOnAction(event -> {
                 warningBox.close();
-                PlayerClient.sendCommand("RR",currentOffer, SelectedClub.clubIndex, buyeridx);
+                PlayerClient.sendCommand("RR",currentOffer, SelectedClub.clubIndex, buyeridx, curFee);
                 OfferList.getItems().remove(currentOffer);
             });
             stall.setOnAction(event -> {

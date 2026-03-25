@@ -79,7 +79,7 @@
     -fx-border-width: 2;
     -fx-border-radius: 20;
     -fx-background-radius: 20;
-    -fx-text-fill: linear-gradient(to bottom, #ea0d65, #ff4343);;
+    -fx-text-fill: linear-gradient(to bottom, #ea0d65, #ff4343);
 }
 
 #errorText {

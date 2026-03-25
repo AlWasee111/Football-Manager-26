@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -93,28 +94,45 @@ public class PlayerListController implements Initializable {
             warningBox.initStyle(StageStyle.UNDECORATED); //removes default top bar
             warningBox.initModality(Modality.APPLICATION_MODAL); //can't access other stuffs
 
-            Label message = new Label("Are you sure you want to sell " + currentPlayer + " ?");
+            Label message = new Label("Set transfer fee for " + currentPlayer + " in €M");
             message.getStyleClass().add("warning-message");
 
-            Button yes = new Button("Yes");
-            Button no = new Button("No");
+            TextField priceField = new TextField();
+            //priceField.setPrefHeight(45);
+            //priceField.setPrefWidth(250);
+            priceField.setPromptText("Enter Transfer Fee in €M");
+            priceField.getStyleClass().add("text-field");
 
-            yes.getStyleClass().add("warning-button");
-            no.getStyleClass().add("warning-button");
+            Label errorMessage = new Label("");
+            errorMessage.getStyleClass().add("error-text");
 
-            yes.setOnAction(event -> {
-                warningBox.close();
-                PlayerClient.sendCommand("S",currentPlayer, SelectedClub.clubIndex, ScoutTeamsController.scoutIDX);
-                PlayerList.getItems().remove(currentPlayer);
+            Button confirm = new Button("Confirm");
+            Button cancel = new Button("Cancel");
+
+            confirm.getStyleClass().add("warning-button");
+            cancel.getStyleClass().add("warning-button");
+
+            confirm.setOnAction(event -> {
+                String input = priceField.getText().trim();
+                double fee = Double.parseDouble(input);
+
+                if(fee < 0){
+                    errorMessage.setText("Invalid Transfer Fee! Enter a positive number.");
+                }
+                else {
+                    warningBox.close();
+                    PlayerClient.sendCommand("S",currentPlayer, SelectedClub.clubIndex, ScoutTeamsController.scoutIDX, fee);
+                    PlayerList.getItems().remove(currentPlayer);
+                }
             });
-            no.setOnAction(event -> {
+            cancel.setOnAction(event -> {
                 warningBox.close();
             });
 
-            HBox buttons = new HBox(25, yes, no);
+            HBox buttons = new HBox(25, confirm, cancel);
             buttons.setAlignment(Pos.CENTER);
 
-            VBox root = new VBox(40,message,buttons);
+            VBox root = new VBox(40,message,priceField,errorMessage,buttons);
             root.setAlignment(Pos.CENTER);
 
             root.getStyleClass().add("warning-pane");
