@@ -65,5 +65,10 @@
             <Font name="Century Gothic" size="18.0" />
          </font>
       </Label>
+      <Button id="musicButton" fx:id="musicButton" layoutX="880.0" layoutY="576.0" mnemonicParsing="false" onAction="#musicControl" prefHeight="52.0" prefWidth="94.0" style="-fx-background-radius: 20;" text="Music On">
+         <font>
+            <Font name="Century Gothic" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

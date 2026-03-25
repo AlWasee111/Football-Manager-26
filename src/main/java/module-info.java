@@ -13,6 +13,7 @@ module com.footballmanager.footballmanager {
     requires javafx.graphics;
     requires javafx.base;
     requires java.desktop;
+    requires javafx.media;
 
     opens com.footballmanager.footballmanager to javafx.fxml;
     exports com.footballmanager.footballmanager;

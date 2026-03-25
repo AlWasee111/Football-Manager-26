@@ -1,11 +1,14 @@
 package com.footballmanager.footballmanager;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -21,11 +24,13 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class MainMenuController {
+public class MainMenuController implements Initializable {
     @FXML
     private Button exitButton;
     @FXML
     private AnchorPane MainScene;
+    @FXML
+    private Button musicButton;
 
     private Stage stage;
     private Scene scene;
@@ -41,6 +46,19 @@ public class MainMenuController {
 
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void musicControl(ActionEvent event) throws IOException{
+        if(MusicPlayer.isPlay){
+            MusicPlayer.pauseMusic();
+            MusicPlayer.isPlay = false;
+            musicButton.setText("Music Off");
+        }
+        else{
+            MusicPlayer.playMusic();
+            MusicPlayer.isPlay = true;
+            musicButton.setText("Music On");
+        }
     }
 
     public void ExitApplication(){
@@ -79,5 +97,15 @@ public class MainMenuController {
 
         warningBox.setScene(scene);
         warningBox.showAndWait();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        if(MusicPlayer.isPlay){
+            musicButton.setText("Music On");
+        }
+        else{
+            musicButton.setText("Music Off");
+        }
     }
 }

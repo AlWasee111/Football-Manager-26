@@ -34,3 +34,28 @@
     -fx-alignment: center;
     -fx-padding: 2 5 2 5;
 }
+
+#musicButton {
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Century Gothic";
+    -fx-font-size: 14;
+    -fx-border-width: 2;
+    -fx-border-radius: 25;
+    -fx-border-color: #0fe6f6;
+    -fx-background-color: transparent;
+}
+
+#musicButton:hover {
+    -fx-background-color: linear-gradient(to right, #0fe6f6, #0b59ce);
+    -fx-background-radius: 23;
+    -fx-background-insets: 2;
+    -fx-cursor: hand;
+    -fx-text-fill: black;
+}
+
+#musicButton:pressed {
+    -fx-background-color: linear-gradient(to right, #0fe6f6, #0b59ce);
+    -fx-background-radius: 23;
+    -fx-background-insets: 2;
+    -fx-translate-y: 2px;
+}

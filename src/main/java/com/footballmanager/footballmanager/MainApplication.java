@@ -26,6 +26,8 @@ public class MainApplication extends Application {
     public void start(Stage stage) throws IOException {
         PlayerClient.connect();
 
+        MusicPlayer.playMusic();
+
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("mainmenu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1000, 650);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Stylings/Styles.css")).toExternalForm());

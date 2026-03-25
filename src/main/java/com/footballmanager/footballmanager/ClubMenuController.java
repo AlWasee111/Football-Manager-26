@@ -38,6 +38,8 @@ public class ClubMenuController implements Initializable {
     private Label budgetLabel;
     @FXML
     private ImageView teamCrest;
+    @FXML
+    private Button musicButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -68,6 +70,13 @@ public class ClubMenuController implements Initializable {
         teamCrest.setImage(image);
 
         budgetLabel.setText("Budget: €" + budgets.get(idx) + "M");
+
+        if(MusicPlayer.isPlay){
+            musicButton.setText("Music On");
+        }
+        else{
+            musicButton.setText("Music Off");
+        }
 
         updateTransferBadge();
         updateOfferBadge();
@@ -166,6 +175,19 @@ public class ClubMenuController implements Initializable {
         scene.getStylesheets().add(getClass().getResource("/Stylings/IncomingOffers.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void musicControl(ActionEvent event) throws IOException{
+        if(MusicPlayer.isPlay){
+            MusicPlayer.pauseMusic();
+            MusicPlayer.isPlay = false;
+            musicButton.setText("Music Off");
+        }
+        else{
+            MusicPlayer.playMusic();
+            MusicPlayer.isPlay = true;
+            musicButton.setText("Music On");
+        }
     }
 
     public void logout(Stage stage){
