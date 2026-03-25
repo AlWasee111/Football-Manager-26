@@ -5,7 +5,7 @@
     -fx-border-width: 2;
     -fx-border-radius: 25;
     -fx-border-color: #0fe6f6;
-    -fx-background-color: transparent;
+    -fx-background-color: rgba(0, 31, 52, 0.74);
 }
 
 .button:hover {
@@ -42,7 +42,7 @@
     -fx-border-width: 2;
     -fx-border-radius: 25;
     -fx-border-color: #0fe6f6;
-    -fx-background-color: transparent;
+    -fx-background-color: rgba(0, 31, 52, 0.74);
 }
 
 #musicButton:hover {
@@ -55,6 +55,32 @@
 
 #musicButton:pressed {
     -fx-background-color: linear-gradient(to right, #0fe6f6, #0b59ce);
+    -fx-background-radius: 23;
+    -fx-background-insets: 2;
+    -fx-translate-y: 2px;
+}
+
+#logoutButton {
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Century Gothic";
+    -fx-font-size: 20;
+    -fx-border-width: 2;
+    -fx-border-radius: 25;
+    -fx-border-color: #0fe6f6;
+    -fx-background-color: rgba(0, 31, 52, 0.74);
+}
+
+#logoutButton:hover {
+    -fx-background-color: linear-gradient(to right,rgba(255, 0, 26, 1) 26%, rgba(121, 9, 11, 1) 100%);
+    -fx-background-radius: 23;
+    -fx-background-insets: 2;
+    -fx-cursor: hand;
+    -fx-border-color: red;
+    -fx-text-fill: white;
+}
+
+#logoutButton:pressed {
+    -fx-background-color: linear-gradient(to right,rgba(255, 0, 26, 1) 26%, rgba(121, 9, 11, 1) 100%);
     -fx-background-radius: 23;
     -fx-background-insets: 2;
     -fx-translate-y: 2px;

@@ -177,6 +177,16 @@ public class ClubMenuController implements Initializable {
         stage.show();
     }
 
+    public void GoToNotificationHub(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("NotificationHub.fxml"));
+        root = loader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
+        scene.getStylesheets().add(getClass().getResource("/Stylings/NotificationHub.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void musicControl(ActionEvent event) throws IOException{
         if(MusicPlayer.isPlay){
             MusicPlayer.pauseMusic();
