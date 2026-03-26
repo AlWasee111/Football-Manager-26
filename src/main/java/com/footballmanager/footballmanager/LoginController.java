@@ -19,10 +19,7 @@ import javafx.stage.Stage;
 import java.io.*;
 import java.net.URL;
 import java.nio.Buffer;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 
 enum State {LOGIN, SIGNUP}
 public class LoginController implements Initializable {
@@ -138,6 +135,17 @@ public class LoginController implements Initializable {
     private void EnterClubmenu (String clubName, ActionEvent event) throws IOException{
         idx = getClubIndex(clubName);
         SelectedClub.clubIndex = idx;
+
+        File file = new File("src/main/resources/Squads/NotificationSeen.txt");
+        int i = 0;
+        try {
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNextLine()) {
+                NotificNumUpdate.updateCount[i++] = Integer.parseInt(scanner.nextLine());
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
 
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ClubMenu.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

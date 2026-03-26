@@ -151,6 +151,30 @@ public class TransferManager {
             }
             printWriter2.close();
         }
+
+        File file4 = new File("src/main/resources/Squads/Notifications.txt");
+        ArrayList<String> notifics = new ArrayList<>();
+        {
+            try {
+                scanner = new Scanner(file4);
+                while (scanner.hasNextLine()){
+                    notifics.add(scanner.nextLine());
+                }
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        notifics.add(playerName + "," + buyeridx + "," + selleridx + "," + fee + ",A");
+        PrintWriter printWriter3 = null;
+        try {
+            printWriter3 = new PrintWriter(file4);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        for (String notific : notifics) {
+            printWriter3.println(notific);
+        }
+        printWriter3.close();
     }
 
     public static synchronized void reqSell(String offerInfo, int sellFrom, int sellTo, double fee){
@@ -222,5 +246,29 @@ public class TransferManager {
             printWriter.println(offer);
         }
         printWriter.close();
+
+        File file4 = new File("src/main/resources/Squads/Notifications.txt");
+        ArrayList<String> notifics = new ArrayList<>();
+        {
+            try {
+                scanner = new Scanner(file4);
+                while (scanner.hasNextLine()){
+                    notifics.add(scanner.nextLine());
+                }
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        notifics.add(splitInfo[0] + "," + sellTo + "," + sellFrom + "," + fee + ",R");
+        PrintWriter printWriter3 = null;
+        try {
+            printWriter3 = new PrintWriter(file4);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        for (String notific : notifics) {
+            printWriter3.println(notific);
+        }
+        printWriter3.close();
     }
 }

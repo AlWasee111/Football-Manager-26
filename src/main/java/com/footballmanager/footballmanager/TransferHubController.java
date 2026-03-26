@@ -75,8 +75,8 @@ public class TransferHubController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        for (String player : players){
-            String[] playerInfo = player.split(",");
+        for (int i = players.size() - 1; i >= 0; i--){
+            String[] playerInfo = players.get(i).split(",");
             String name = playerInfo[0];
             int seller = Integer.parseInt(playerInfo[1]);
             double fee = Double.parseDouble(playerInfo[2]);

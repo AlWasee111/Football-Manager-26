@@ -78,8 +78,8 @@ public class InComingOffersController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        for (String player : offers){
-            OfferList.getItems().add(player);
+        for (int i = offers.size() - 1; i >= 0; i--){
+            OfferList.getItems().add(offers.get(i));
         }
 
         OfferList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {

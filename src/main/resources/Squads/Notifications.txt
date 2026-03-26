@@ -1,0 +1,3 @@
+Benjamin Sesko,5,3,123.23,R
+Joshua Zirkzee,3,3,89.0,A
+Wisdom Mike,4,5,1.2,A

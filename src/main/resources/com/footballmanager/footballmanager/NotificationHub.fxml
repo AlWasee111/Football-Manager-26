@@ -15,23 +15,13 @@
                 <Image url="@../../../Images/FIFA-20-background.jpg" />
             </image>
         </ImageView>
-        <ListView fx:id="OfferList" layoutX="220.0" layoutY="176.0" prefHeight="367.0" prefWidth="583.0" stylesheets="@../../../Stylings/IncomingOffers.css" />
-        <Label alignment="TOP_CENTER" layoutX="245.0" layoutY="66.0" prefHeight="74.0" prefWidth="544.0" text="Notifications" textFill="WHITE">
+        <ListView fx:id="NotificationList" layoutX="186.0" layoutY="163.0" prefHeight="391.0" prefWidth="662.0" stylesheets="@../../../Stylings/NotificationHub.css" />
+        <Label alignment="TOP_CENTER" layoutX="245.0" layoutY="66.0" prefHeight="74.0" prefWidth="544.0" text="Updates" textFill="WHITE">
             <font>
                 <Font name="Century Gothic Bold" size="56.0" />
             </font>
         </Label>
-        <Label fx:id="playerLabel" alignment="TOP_CENTER" layoutX="331.0" layoutY="576.0" prefHeight="17.0" prefWidth="339.0" textFill="WHITE">
-            <font>
-                <Font name="Century Gothic Bold" size="31.0" />
-            </font>
-        </Label>
-        <Button fx:id="backButton" layoutX="46.0" layoutY="583.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="43.0" prefWidth="98.0" stylesheets="@../../../Stylings/IncomingOffers.css" text="Back">
-            <font>
-                <Font size="18.0" />
-            </font>
-        </Button>
-        <Button fx:id="acceptButton" layoutX="855.0" layoutY="585.0" mnemonicParsing="false" stylesheets="@../../../Stylings/IncomingOffers.css" text="My Actions" visible="false">
+        <Button fx:id="backButton" layoutX="46.0" layoutY="583.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="43.0" prefWidth="98.0" stylesheets="@../../../Stylings/NotificationHub.css" text="Back">
             <font>
                 <Font size="18.0" />
             </font>

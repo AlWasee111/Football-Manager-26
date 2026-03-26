@@ -21,6 +21,7 @@ import javafx.stage.StageStyle;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -40,6 +41,8 @@ public class ClubMenuController implements Initializable {
     private ImageView teamCrest;
     @FXML
     private Button musicButton;
+    @FXML
+    private Label NotificBagde;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -78,6 +81,7 @@ public class ClubMenuController implements Initializable {
             musicButton.setText("Music Off");
         }
 
+        updateNotifBadge();
         updateTransferBadge();
         updateOfferBadge();
     }
@@ -127,6 +131,33 @@ public class ClubMenuController implements Initializable {
         }
     }
 
+    private void updateNotifBadge() {
+        File file = new File("src/main/resources/Squads/Notifications.txt");
+        int idx = SelectedClub.clubIndex;
+        int total = 0;
+
+        try {
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNextLine()) {
+                String[] info = scanner.nextLine().split(",");
+                int buyer  = Integer.parseInt(info[1]);
+                int seller = Integer.parseInt(info[2]);
+                if (idx == buyer || idx == seller) total++;
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        int unseen = total - NotificNumUpdate.updateCount[idx];
+
+        if (unseen > 0) {
+            NotificBagde.setVisible(true);
+            NotificBagde.setText(String.valueOf(unseen));
+        } else {
+            NotificBagde.setVisible(false);
+        }
+    }
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -136,6 +167,7 @@ public class ClubMenuController implements Initializable {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         logout(stage);
     }
+
     public void GoToPlayers(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("PlayerList.fxml"));
         root = loader.load();
@@ -146,6 +178,7 @@ public class ClubMenuController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
     public void GoToTransferHub(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("TransferHub.fxml"));
         root = loader.load();
@@ -178,6 +211,33 @@ public class ClubMenuController implements Initializable {
     }
 
     public void GoToNotificationHub(ActionEvent event) throws IOException{
+        File file = new File("src/main/resources/Squads/Notifications.txt");
+        int idx = SelectedClub.clubIndex;
+        int total = 0;
+        try {
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNextLine()) {
+                String[] info = scanner.nextLine().split(",");
+                int buyer  = Integer.parseInt(info[1]);
+                int seller = Integer.parseInt(info[2]);
+                if (idx == buyer || idx == seller) total++;
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        NotificNumUpdate.updateCount[idx] = total;
+
+        try{
+            PrintWriter printWriter = new PrintWriter(new File("src/main/resources/Squads/NotificationSeen.txt"));
+            for(int seeNum : NotificNumUpdate.updateCount){
+                printWriter.println(seeNum);
+            }
+            printWriter.close();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("NotificationHub.fxml"));
         root = loader.load();
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
