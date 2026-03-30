@@ -1,9 +1,7 @@
-Thibaut Courtois
 Andriy Lunin
 Dani Carvajal
 Trent Alexander‑Arnold
 Éder Militão
-David Alaba
 Raúl Asencio
 Antonio Rüdiger
 Dean Huijsen
@@ -24,3 +22,6 @@ Gonzalo García
 Vinícius Júnior
 Rodrygo
 Wisdom Mike
+Raúl Asencio
+Pedri
+Lamine Yamal

@@ -1,0 +1,98 @@
+package com.footballmanager.footballmanager;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.stage.Stage;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Objects;
+
+public class AccountDeleteController {
+    @FXML
+    private PasswordField password;
+    @FXML
+    private Label errorMessage;
+
+    private String club;
+    private String passwordPath = "src/main/resources/Passwords/password.txt";
+    private final String[] clubs = {"Barcelona", "Arsenal", "Chelsea", "Manchester United",
+            "Real Madrid", "Bayern", "PSG", "Manchester City"};
+
+    public void InvokeAccountDelete(ActionEvent event) throws IOException {
+        String currentClub;
+        String currentPassword = null;
+        int clubIndex = SelectedClub.clubIndex;
+        String targetClubName = clubs[clubIndex];
+
+        if (password.getText().isEmpty()){
+            errorMessage.setText("Please enter your current password!");
+            errorMessage.setVisible(true);
+        }
+
+        //DELETE ER AGE AKTA EXTRA WARNING DITE PAROS
+        else {
+            BufferedReader reader = new BufferedReader(new FileReader(passwordPath));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("_Password_");
+                if (parts[0].equals(targetClubName)) {
+                    club = line;
+                    break;
+                }
+            }
+            reader.close();
+
+            currentClub = (club.split("_Password_"))[0];
+            currentPassword = (club.split("_Password_"))[1];
+
+            if (!password.getText().equals(currentPassword)) {
+                errorMessage.setText("Wrong password entered!");
+                errorMessage.setVisible(true);
+            }
+            else {
+                ArrayList<String> passwords = new ArrayList<>();
+                reader = new BufferedReader(new FileReader(passwordPath));
+
+                while ((line = reader.readLine()) != null) {
+                    String[] parsed = line.split("_Password_");
+
+                    if (currentClub.equals(parsed[0]))
+                        continue;
+                    else
+                        passwords.add(line);
+                }
+
+                reader.close();
+
+                try (PrintWriter writer = new PrintWriter(new FileWriter(passwordPath))) {
+                    for (String lines : passwords) {
+                        writer.println(lines);
+                    }
+                }
+
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mainmenu.fxml")));
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Stylings/Styles.css")).toExternalForm());
+                stage.setScene(scene);
+                stage.show();
+            }
+        }
+    }
+
+    public void backToAccount(ActionEvent event) throws IOException {
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Account.fxml")));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Stylings/Styles2.css")).toExternalForm());
+            stage.setScene(scene);
+            stage.show();
+    }
+}

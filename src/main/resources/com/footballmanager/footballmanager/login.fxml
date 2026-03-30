@@ -47,7 +47,7 @@
          </font>
       </Label>
       <ComboBox fx:id="myCombobox" layoutX="498.0" layoutY="215.0" prefHeight="66.0" prefWidth="330.0" promptText="Select Club" style="-fx-background-radius: 20;" visibleRowCount="4" />
-      <Button fx:id="loginState" layoutX="390.0" layoutY="470.0" mnemonicParsing="false" onAction="#ChangeState" prefHeight="54.0" prefWidth="170.0" style="-fx-background-radius: 15;" text="Signup">
+      <Button layoutX="390.0" layoutY="470.0" mnemonicParsing="false" onAction="#GotoSignupPage" prefHeight="54.0" prefWidth="170.0" style="-fx-background-radius: 15;" text="Signup">
          <font>
             <Font name="Century Gothic" size="31.0" />
          </font>

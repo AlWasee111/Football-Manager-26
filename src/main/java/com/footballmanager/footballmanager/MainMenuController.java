@@ -1,5 +1,6 @@
 package com.footballmanager.footballmanager;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -35,17 +36,32 @@ public class MainMenuController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private String passwordPath = "src/main/resources/Passwords/password.txt";
 
     public void LoginScreen (ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
-        root = loader.load();
+        File file = new File(passwordPath);
+        if (file.length() == 0) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("SignUp.fxml"));
+            root = loader.load();
 
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Stylings/Styles.css")).toExternalForm());
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Stylings/Styles.css")).toExternalForm());
 
-        stage.setScene(scene);
-        stage.show();
+            stage.setScene(scene);
+            stage.show();
+        }
+        else {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+            root = loader.load();
+
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Stylings/Styles.css")).toExternalForm());
+
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
     public void musicControl(ActionEvent event) throws IOException{

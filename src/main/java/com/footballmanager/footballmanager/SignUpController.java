@@ -21,10 +21,12 @@ import java.net.URL;
 import java.nio.Buffer;
 import java.util.*;
 
-public class LoginController implements Initializable {
+public class SignUpController implements Initializable {
 
     @FXML
     private TextField Password;
+    @FXML
+    private TextField ConfirmPassword;
     @FXML
     private Label errorMessage;
     @FXML
@@ -59,7 +61,12 @@ public class LoginController implements Initializable {
             System.out.println("Something went wrong!");
         }
 
-        myCombobox.getItems().addAll(signedUp);
+        for (String club : clubs) {
+            if (!signedUp.contains(club))
+                nonSignedUp.add(club);
+        }
+
+        myCombobox.getItems().addAll(nonSignedUp);
     }
 
     // Returns to main menu if back button is clicked
@@ -76,7 +83,7 @@ public class LoginController implements Initializable {
     public void EnterPage(ActionEvent event) throws IOException {
         String clubName = myCombobox.getValue();
         String pass = Password.getText();
-
+        String confirmPass = ConfirmPassword.getText();
         // If club name is empty
         if (clubName == null) {
             errorMessage.setText("Club name cannot be empty!");
@@ -92,25 +99,22 @@ public class LoginController implements Initializable {
             errorMessage.setText("Password cannot be empty!");
             errorMessage.setVisible(true);
         }
-        //Login with existing club
+        else if (confirmPass.isEmpty()) {
+            errorMessage.setText("Please confirm your password!");
+            errorMessage.setVisible(true);
+        }
+        else if (!pass.equals(confirmPass)) {
+            errorMessage.setText("Passwords don't match!");
+            errorMessage.setVisible(true);
+        }
+        //Login with new club
         else {
-            BufferedReader reader = new BufferedReader(new FileReader(passwordPath));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] parsedStrings = line.split("_Password_");
-                String parsedClubName = parsedStrings[0];
-                String parsedPassword = parsedStrings[1];
-                if (parsedClubName.equals(clubName) && !parsedPassword.equals(pass)) {
-                    errorMessage.setText("Wrong password!");
-                    errorMessage.setVisible(true);
-                    reader.close();
-                    break;
-                } else if (parsedClubName.equals(clubName) && parsedPassword.equals(pass)) {
-                    reader.close();
-                    EnterClubmenu(clubName, event);
-                    break;
-                }
+            try (FileWriter fileWriter = new FileWriter(passwordPath, true);
+                 PrintWriter printWriter = new PrintWriter(fileWriter)) {
+                printWriter.println(clubName + "_Password_" + pass);
             }
+
+            EnterClubmenu(clubName, event);
         }
     }
 
@@ -162,13 +166,14 @@ public class LoginController implements Initializable {
         return idx;
     }
 
-    public void GotoSignupPage(ActionEvent event) throws IOException {
-        if (clubs.length == myCombobox.getItems().size()) {
-            errorMessage.setText("No clubs available for signup!");
+    public void GotoLoginPage(ActionEvent event) throws IOException {
+        File file = new File(passwordPath);
+        if (file.length() == 0) {
+            errorMessage.setText("No club available for login!");
             errorMessage.setVisible(true);
         }
         else {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("SignUp.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
             root = loader.load();
 
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

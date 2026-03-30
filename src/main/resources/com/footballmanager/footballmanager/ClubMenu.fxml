@@ -80,5 +80,10 @@
             <Font name="Century Gothic" size="12.0" />
          </font>
       </Label>
+      <Button id="musicButton" layoutX="748.0" layoutY="574.0" mnemonicParsing="false" onAction="#GotoAccount" prefHeight="52.0" prefWidth="94.0" style="-fx-background-radius: 20;" text="Account">
+         <font>
+            <Font name="Century Gothic" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
