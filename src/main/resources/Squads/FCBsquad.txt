@@ -1,26 +1,22 @@
-Marc‑André ter Stegen
-Joan García
-Wojciech Szczęsny
-Alejandro Balde
-Ronald Araujo
-Pau Cubarsí
-Andreas Christensen
-Gerard Martín
-Jules Koundé
-Eric García
-João Cancelo
-Gavi
-Fermín López
-Marc Casadó
-Dani Olmo
-Frenkie de Jong
-Marc Bernal
-Ferran Torres
-Robert Lewandowski
-Raphinha
-Marcus Rashford
-Roony Bardghji
-Dro Fernández
-Jofre Torrents
-Thibaut Courtois
-David Alaba
+Marc-André ter Stegen,GK,86,280000.0,GER,terStegen
+Joan García,GK,83,70000.0,ESP,JoanGarcía
+Wojciech Szczęsny,GK,84,150000.0,POL,Szczęsny
+Alejandro Balde,LB,83,180000.0,ESP,Balde
+Ronald Araujo,CB,83,260000.0,URU,Araujo
+Pau Cubarsí,CB,82,140000.0,ESP,Cubarsí
+Andreas Christensen,CB,80,200000.0,DEN,Christensen
+Gerard Martín,LB,74,60000.0,ESP,GerardMartín
+Jules Koundé,RB,87,240000.0,FRA,Koundé
+Eric García,CB,79,150000.0,ESP,EricGarcía
+João Cancelo,RB,84,260000.0,POR,Cancelo
+Gavi,CM,83,240000.0,ESP,Gavi
+Fermín López,CM,80,160000.0,ESP,Fermín
+Marc Casadó,CDM,79,100000.0,ESP,Casadó
+Dani Olmo,CAM,85,220000.0,ESP,Olmo
+Frenkie de Jong,CM,87,300000.0,NED,deJong
+Ferran Torres,RW,83,200000.0,ESP,Torres
+Robert Lewandowski,ST,88,320000.0,POL,Lewandowski
+Raphinha,RW,89,240000.0,BRA,Raphinha
+Marcus Rashford,LW,80,260000.0,ENG,Rashford
+Pedri,CM,89,320000.0,ESP,Pedri
+Lamine Yamal,RW,89,260000.0,ESP,Yamal

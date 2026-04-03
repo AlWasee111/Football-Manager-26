@@ -13,6 +13,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -33,6 +35,8 @@ public class TransferHubController implements Initializable {
     private Label playerLabel;
     @FXML
     private Button buyButton;
+    @FXML
+    private ImageView playerCard;
 
     private Stage stage;
     private Scene scene;
@@ -60,13 +64,17 @@ public class TransferHubController implements Initializable {
     File file = new File("src/main/resources/Squads/TransferList.txt");
     Scanner scanner;
 
-    ArrayList<String> players = new ArrayList<>();
+    ArrayList<Player> players = new ArrayList<>();
 
     {
         try {
             scanner = new Scanner(file);
             while (scanner.hasNextLine()){
-                players.add(scanner.nextLine());
+                String[] splitInfo = scanner.nextLine().split(",");
+                Player player = new Player(splitInfo[0],splitInfo[1],Integer.parseInt(splitInfo[2]),Double.parseDouble(splitInfo[3]),splitInfo[4],splitInfo[5]);
+                player.setSeller(Integer.parseInt(splitInfo[6]));
+                player.setFee(Double.parseDouble(splitInfo[7]));
+                players.add(player);
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -76,10 +84,9 @@ public class TransferHubController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         for (int i = players.size() - 1; i >= 0; i--){
-            String[] playerInfo = players.get(i).split(",");
-            String name = playerInfo[0];
-            int seller = Integer.parseInt(playerInfo[1]);
-            double fee = Double.parseDouble(playerInfo[2]);
+            String name = players.get(i).name;
+            int seller = players.get(i).seller;
+            double fee = players.get(i).fee;
             TransHubList.getItems().add(name + " - " + teams[seller] + " - €" + fee + "M");
         }
 
@@ -94,15 +101,22 @@ public class TransferHubController implements Initializable {
                 curName = curPlayerInfo[0];
                 curSeller = curPlayerInfo[1];
                 curFee = Double.parseDouble(curPlayerInfo[2].replace("€", "").replace("M", "").trim());
-                for(int i = 0; i < teams.length; i++){
-                    if(curSeller.equals(teams[i])){
-                        curSellerID = i;
-                        break;
-                    }
-                }
+                curSellerID = getPlayer(curName).seller;
+                String cardPath = getPlayer(curName).cardPath;
+                Image image = new Image(getClass().getResourceAsStream("/playerCards/" + cardPath + ".png"));
+                playerCard.setImage(image);
                 playerLabel.setText(curName);
             }
         });
+    }
+
+    private Player getPlayer(String name){
+        for(Player player : players){
+            if(name.equals(player.name)){
+                return player;
+            }
+        }
+        return null;
     }
 
     public void buyPlayer(){
@@ -148,8 +162,10 @@ public class TransferHubController implements Initializable {
 
                 if(curFee <= buyerBudget || SelectedClub.clubIndex == curSellerID){
                     warningBox.close();
-                    PlayerClient.sendCommand("B",curName, SelectedClub.clubIndex, curSellerID, curFee);
-                    TransHubList.getItems().remove(currentPlayer);
+                    Player curPlayer = getPlayer(curName);
+                    curPlayer.setBuyer(SelectedClub.clubIndex);
+                    PlayerClient.sendCommand("B",curPlayer);
+                    TransHubList.getItems().remove(curPlayer.name + " - " + teams[curPlayer.seller] + " - €" + curPlayer.fee + "M");
                 }
                 else{
                     errorMessage.setText("You do not have enough budget!");

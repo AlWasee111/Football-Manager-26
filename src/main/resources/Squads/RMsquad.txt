@@ -1,27 +1,25 @@
-Andriy Lunin
-Dani Carvajal
-Trent Alexander‑Arnold
-Éder Militão
-Raúl Asencio
-Antonio Rüdiger
-Dean Huijsen
-Álvaro Carreras
-Fran García
-Ferland Mendy
-Eduardo Camavinga
-Fede Valverde
-Aurélien Tchouaméni
-Arda Güler
-Dani Ceballos
-Jude Bellingham
-Brahim Díaz
-Franco Mastantuono
-Endrick
-Kylian Mbappé
-Gonzalo García
-Vinícius Júnior
-Rodrygo
-Wisdom Mike
-Raúl Asencio
-Pedri
-Lamine Yamal
+Andriy Lunin,GK,81,120000.0,UKR,Lunin
+Dani Carvajal,RB,85,220000.0,ESP,Carvajal
+Trent Alexander-Arnold,RB,86,300000.0,ENG,Trent
+Éder Militão,CB,84,260000.0,BRA,Militao
+Raúl Asencio,CB,77,50000.0,ESP,Asencio
+Antonio Rüdiger,CB,86,280000.0,GER,Rüdiger
+Dean Huijsen,CB,82,160000.0,ESP,Huijsen
+Álvaro Carreras,LB,80,120000.0,ESP,Carreras
+Fran García,LB,79,140000.0,ESP,Fran
+Ferland Mendy,LB,81,200000.0,FRA,Mendy
+Eduardo Camavinga,CM,83,260000.0,FRA,Camavinga
+Fede Valverde,CM,89,300000.0,URU,Valverde
+Aurélien Tchouaméni,CDM,84,280000.0,FRA,Tchouaméni
+Arda Güler,CAM,81,220000.0,TUR,Güler
+Dani Ceballos,CM,81,160000.0,ESP,Ceballos
+Jude Bellingham,CAM,90,350000.0,ENG,Bellingham
+Brahim Díaz,CAM,82,200000.0,MOR,Brahim
+Franco Mastantuono,CAM,77,150000.0,ARG,Mastantuono
+Endrick,ST,77,200000.0,BRA,Endrick
+Kylian Mbappé,ST,91,400000.0,FRA,Mbappe
+Gonzalo García,ST,76,100000.0,ESP,Gonzalo
+Vinícius Júnior,LW,89,350000.0,BRA,Vini
+Rodrygo,RW,85,300000.0,BRA,Rodrygo
+Thibaut Courtois,GK,89,350000.0,BEL,Courtois
+David Alaba,CB,82,280000.0,AUS,Alaba

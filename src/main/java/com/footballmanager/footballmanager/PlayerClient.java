@@ -18,13 +18,10 @@ public class PlayerClient {
         }
     }
 
-    public static void sendCommand(String command, String playerName, int from, int to, double fee){
+    public static void sendCommand(String command, Player player){
         try {
             oos.writeObject(command);
-            oos.writeObject(playerName);
-            oos.writeObject(from);
-            oos.writeObject(to);
-            oos.writeObject(fee);
+            oos.writeObject(player);
             oos.flush();
         } catch (IOException e) {
             throw new RuntimeException(e);

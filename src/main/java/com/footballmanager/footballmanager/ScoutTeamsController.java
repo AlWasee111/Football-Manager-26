@@ -12,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -26,6 +28,8 @@ public class ScoutTeamsController implements Initializable {
     private Label TeamLabel;
     @FXML
     private Button scoutButton;
+    @FXML
+    private ImageView teamCrest;
 
     String selectedTeam;
 
@@ -35,6 +39,9 @@ public class ScoutTeamsController implements Initializable {
 
     String[] teams = {"FC Barcelona", "Arsenal FC" , "Chelsea FC", "Manchester United",
             "Real Madrid CF", "FC Bayern München", "Paris Saint-Germain", "Manchester City"};
+
+    String[] crests = {"Barcelona.png","Arsenal.png","Chelsea.png","ManchesterUnited.png",
+            "RealMadrid.png","Bayern.png","PSG.png","ManchesterCity.png"};
 
     int teamIncharge = SelectedClub.clubIndex;
     static int scoutIDX;
@@ -59,6 +66,8 @@ public class ScoutTeamsController implements Initializable {
                         break;
                     }
                 }
+                Image image = new Image(getClass().getResourceAsStream("/Clubs/" + crests[scoutIDX]));
+                teamCrest.setImage(image);
             }
         });
     }

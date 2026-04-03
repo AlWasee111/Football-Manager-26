@@ -15,7 +15,7 @@
                 <Image url="@../../../Images/FIFA-20-background.jpg" />
             </image>
         </ImageView>
-        <ListView fx:id="TransHubList" layoutX="220.0" layoutY="176.0" prefHeight="367.0" prefWidth="583.0" />
+        <ListView fx:id="TransHubList" layoutX="46.0" layoutY="176.0" prefHeight="367.0" prefWidth="583.0" stylesheets="@../../../Stylings/TransferHub.css" />
         <Label alignment="TOP_CENTER" layoutX="236.0" layoutY="64.0" prefHeight="74.0" prefWidth="528.0" text="Available Players" textFill="WHITE">
             <font>
                 <Font name="Century Gothic Bold" size="56.0" />
@@ -26,15 +26,16 @@
                 <Font name="Century Gothic Bold" size="31.0" />
             </font>
         </Label>
-        <Button fx:id="backButton" layoutX="46.0" layoutY="583.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="43.0" prefWidth="98.0" text="Back">
+        <Button fx:id="backButton" layoutX="46.0" layoutY="583.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="43.0" prefWidth="98.0" stylesheets="@../../../Stylings/TransferHub.css" text="Back">
             <font>
                 <Font size="18.0" />
             </font>
         </Button>
-      <Button fx:id="buyButton" layoutX="875.0" layoutY="583.0" mnemonicParsing="false" onAction="#buyPlayer" stylesheets="@../../../Stylings/TransferHub.css" text="Buy" visible="false">
+      <Button fx:id="buyButton" layoutX="881.0" layoutY="585.0" mnemonicParsing="false" onAction="#buyPlayer" stylesheets="@../../../Stylings/TransferHub.css" text="Buy" visible="false">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
+      <ImageView fx:id="playerCard" fitHeight="428.0" fitWidth="330.0" layoutX="670.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true" />
     </children>
 </AnchorPane>

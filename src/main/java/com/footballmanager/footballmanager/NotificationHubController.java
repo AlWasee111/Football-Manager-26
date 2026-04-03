@@ -66,15 +66,15 @@ public class NotificationHubController implements Initializable {
                     String Notification = playerName + " transfer rejected by " + teams[selleridx];
                     notifics.add(Notification);
                 }
-                else if(idx == buyeridx && idx == selleridx){
+                else if(!optType.equals("R") && idx == buyeridx && idx == selleridx){
                     String Notification = playerName + " retained from transferlist";
                     notifics.add(Notification);
                 }
-                else if(idx == buyeridx){
+                else if(!optType.equals("R") && idx == buyeridx){
                     String notification = playerName + " bought from " + teams[selleridx] + " for €" + fee + "M";
                     notifics.add(notification);
                 }
-                else if(idx == selleridx){
+                else if(!optType.equals("R") && idx == selleridx){
                     String notification = playerName + " sold to " + teams[buyeridx] + " for €" + fee + "M";
                     notifics.add(notification);
                 }

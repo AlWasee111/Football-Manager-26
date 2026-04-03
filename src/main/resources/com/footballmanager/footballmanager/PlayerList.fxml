@@ -15,13 +15,13 @@
             <Image url="@../../../Images/FIFA-20-background.jpg" />
          </image>
       </ImageView>
-      <ListView fx:id="PlayerList" layoutX="220.0" layoutY="176.0" prefHeight="367.0" prefWidth="583.0" stylesheets="@../../../Stylings/ListStyle.css" />
+      <ListView fx:id="PlayerList" layoutX="40.0" layoutY="176.0" prefHeight="367.0" prefWidth="583.0" stylesheets="@../../../Stylings/ListStyle.css" />
       <Label alignment="TOP_CENTER" layoutX="400.0" layoutY="66.0" prefHeight="45.0" prefWidth="200.0" text="Players" textFill="WHITE">
          <font>
             <Font name="Century Gothic Bold" size="56.0" />
          </font>
       </Label>
-      <Label fx:id="playerLabel" alignment="TOP_CENTER" layoutX="331.0" layoutY="576.0" prefHeight="17.0" prefWidth="339.0" textFill="WHITE">
+      <Label fx:id="playerLabel" alignment="TOP_CENTER" layoutX="286.0" layoutY="583.0" prefHeight="39.0" prefWidth="465.0" textFill="WHITE">
          <font>
             <Font name="Century Gothic Bold" size="31.0" />
          </font>
@@ -36,5 +36,6 @@
             <Font size="18.0" />
          </font>
       </Button>
+      <ImageView fx:id="playerCard" fitHeight="442.0" fitWidth="296.0" layoutX="678.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

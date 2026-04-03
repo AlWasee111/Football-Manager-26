@@ -20,24 +20,21 @@ public class PlayerClientHandler implements Runnable{
             ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
             while (true){
                 String receivedCommand = (String) ois.readObject();
-                String playerName = (String) ois.readObject();
-                Integer from = (Integer) ois.readObject();
-                Integer to = (Integer) ois.readObject();
-                Double fee = (Double) ois.readObject();
+                Player player = (Player) ois.readObject();
                 if(receivedCommand.equals("S")){
-                    TransferManager.sell(playerName, from, fee);
+                    TransferManager.sell(player);
                 }
                 else if(receivedCommand.equals("B")){
-                    TransferManager.buy(playerName, from, to , fee);
+                    TransferManager.buy(player);
                 }
                 else if(receivedCommand.equals("R")){
-                    RequestSender.sendRequest(playerName,from,to,fee);
+                    RequestSender.sendRequest(player);
                 }
                 else if(receivedCommand.equals("RS")){
-                    TransferManager.reqSell(playerName, from, to, fee);
+                    TransferManager.reqSell(player);
                 }
                 else if(receivedCommand.equals("RR")){
-                    TransferManager.reqReject(playerName, from, to, fee);
+                    TransferManager.reqReject(player);
                 }
             }
         } catch (IOException | ClassNotFoundException e) {

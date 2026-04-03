@@ -13,6 +13,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -35,6 +37,8 @@ public class InComingOffersController implements Initializable {
     private Label playerLabel;
     @FXML
     private Button acceptButton;
+    @FXML
+    private ImageView playerCard;
 
     private Parent root;
     private Stage stage;
@@ -55,20 +59,19 @@ public class InComingOffersController implements Initializable {
     File file = new File("src/main/resources/Squads/TransferReq.txt");
     Scanner scanner;
 
-    ArrayList<String> offers = new ArrayList<>();
+    ArrayList<Player> players = new ArrayList<>();
 
     {
         try {
             scanner = new Scanner(file);
             while (scanner.hasNextLine()){
-                String[] reqInfo = scanner.nextLine().split(",");
-                int reqTo = Integer.parseInt(reqInfo[2]);
-                if(reqTo == idx){
-                    String playerName = reqInfo[0];
-                    String reqForm = teams[Integer.parseInt(reqInfo[1])];
-                    double fee = Double.parseDouble(reqInfo[3]);
-                    String offer = playerName + " - " + reqForm + " - €" + fee + "M";
-                    offers.add(offer);
+                String[] splitInfo = scanner.nextLine().split(",");
+                Player playerInfo = new Player(splitInfo[0],splitInfo[1],Integer.parseInt(splitInfo[2]),Double.parseDouble(splitInfo[3]),splitInfo[4],splitInfo[5]);
+                playerInfo.setSeller(Integer.parseInt(splitInfo[6]));
+                playerInfo.setBuyer(Integer.parseInt(splitInfo[7]));
+                playerInfo.setFee(Double.parseDouble(splitInfo[8]));
+                if(playerInfo.seller == idx){
+                    players.add(playerInfo);
                 }
             }
         } catch (FileNotFoundException e) {
@@ -78,8 +81,11 @@ public class InComingOffersController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        for (int i = offers.size() - 1; i >= 0; i--){
-            OfferList.getItems().add(offers.get(i));
+        for (int i = players.size() - 1; i >= 0; i--){
+            String name = players.get(i).name;
+            int buyer = players.get(i).buyer;
+            double fee = players.get(i).fee;
+            OfferList.getItems().add(name + " - " + teams[buyer] + " - €" + fee + "M");
         }
 
         OfferList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -93,15 +99,21 @@ public class InComingOffersController implements Initializable {
                 currentPlayer = splitCurrentOffer[0];
                 curBuyer = splitCurrentOffer[1];
                 curFee = Double.parseDouble(splitCurrentOffer[2].replace("€", "").replace("M", "").trim());
-                for(int i = 0; i < teams.length; i++){
-                    if(curBuyer.equals(teams[i])){
-                        buyeridx = i;
-                        break;
-                    }
-                }
+                String cardPath = getPlayer(currentPlayer).cardPath;
+                Image image = new Image(getClass().getResourceAsStream("/playerCards/" + cardPath + ".png"));
+                playerCard.setImage(image);
                 playerLabel.setText(currentPlayer);
             }
         });
+    }
+
+    private Player getPlayer(String name){
+        for(Player player : players){
+            if(name.equals(player.name)){
+                return player;
+            }
+        }
+        return null;
     }
 
     public void backToMenu(ActionEvent event) throws IOException {
@@ -133,12 +145,14 @@ public class InComingOffersController implements Initializable {
 
             accept.setOnAction(event -> {
                 warningBox.close();
-                PlayerClient.sendCommand("RS",currentOffer, SelectedClub.clubIndex, buyeridx, curFee);
+                Player curPlayer = getPlayer(currentPlayer);
+                PlayerClient.sendCommand("RS",curPlayer);
                 OfferList.getItems().remove(currentOffer);
             });
             reject.setOnAction(event -> {
                 warningBox.close();
-                PlayerClient.sendCommand("RR",currentOffer, SelectedClub.clubIndex, buyeridx, curFee);
+                Player curPlayer = getPlayer(currentPlayer);
+                PlayerClient.sendCommand("RR",curPlayer);
                 OfferList.getItems().remove(currentOffer);
             });
             stall.setOnAction(event -> {

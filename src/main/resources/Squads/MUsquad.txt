@@ -1,21 +1,17 @@
-Altay Bayindir
-Tom Heaton
-Senne Lammens
-Dermot Mee
-Rhys Bennett
-Diogo Dalot
-Matthijs de Ligt
-Harry Maguire
-Tyrell Malacia
-Lisandro Martinez
-Noussair Mazraoui
-Luke Shaw
-Casemiro
-Bruno Fernandes
-Mason Mount
-Manuel Ugarte
-Amad
-Matheus Cunha
-Bryan Mbeumo
-Benjamin Sesko
-Joshua Zirkzee
+Altay Bayindir,GK,75,80000.0,TUR,Bayındır
+Senne Lammens,GK,78,40000.0,BEL,Lammens
+Diogo Dalot,RB,79,160000.0,POR,Dalot
+Matthijs de Ligt,CB,82,260000.0,NED,deLigt
+Harry Maguire,CB,80,190000.0,ENG,Maguire
+Lisandro Martinez,CB,81,240000.0,ARG,Martínez
+Noussair Mazraoui,RB,80,170000.0,MOR,Mazraoui
+Luke Shaw,LB,79,200000.0,ENG,Shaw
+Casemiro,CDM,80,300000.0,BRA,Casemiro
+Bruno Fernandes,CAM,87,320000.0,POR,Fernandes
+Mason Mount,CM,77,200000.0,ENG,Mount
+Manuel Ugarte,CDM,79,220000.0,URU,Ugarte
+Amad,RW,79,140000.0,IVO,Amad
+Matheus Cunha,CAM,83,180000.0,BRA,Cunha
+Bryan Mbeumo,RW,84,180000.0,CAM,Mbeumo
+Benjamin Sesko,ST,80,200000.0,SLO,Šeško
+Joshua Zirkzee,ST,77,180000.0,NED,Zirkzee

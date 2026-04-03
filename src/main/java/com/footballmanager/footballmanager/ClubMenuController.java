@@ -115,7 +115,7 @@ public class ClubMenuController implements Initializable {
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()){
                 String[] reqInfo = scanner.nextLine().split(",");
-                int reqTo = Integer.parseInt(reqInfo[2]);
+                int reqTo = Integer.parseInt(reqInfo[6]);
                 if(reqTo == SelectedClub.clubIndex) {
                     count++;
                 }
@@ -143,7 +143,11 @@ public class ClubMenuController implements Initializable {
                 String[] info = scanner.nextLine().split(",");
                 int buyer  = Integer.parseInt(info[1]);
                 int seller = Integer.parseInt(info[2]);
-                if (idx == buyer || idx == seller) total++;
+                String opt = info[4];
+                if (!opt.equals("R") && idx == buyer || idx == seller) total++;
+                else if(opt.equals("R") && idx == buyer){
+                    total++;
+                }
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -221,7 +225,11 @@ public class ClubMenuController implements Initializable {
                 String[] info = scanner.nextLine().split(",");
                 int buyer  = Integer.parseInt(info[1]);
                 int seller = Integer.parseInt(info[2]);
-                if (idx == buyer || idx == seller) total++;
+                String opt = info[4];
+                if (!opt.equals("R") && idx == buyer || idx == seller) total++;
+                else if(opt.equals("R") && idx == buyer){
+                    total++;
+                }
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);

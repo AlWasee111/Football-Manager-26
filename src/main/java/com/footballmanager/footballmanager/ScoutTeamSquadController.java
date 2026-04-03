@@ -14,6 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -38,6 +40,8 @@ public class ScoutTeamSquadController implements Initializable {
     private Button reqButton;
     @FXML
     private Label teamName;
+    @FXML
+    private ImageView playerCard;
 
     private Stage stage;
     private Scene scene;
@@ -57,13 +61,14 @@ public class ScoutTeamSquadController implements Initializable {
     File file = new File("src/main/resources/" + squads[idx]);
     Scanner scanner;
 
-    ArrayList<String> players = new ArrayList<>();
+    ArrayList<Player> players = new ArrayList<>();
 
     {
         try {
             scanner = new Scanner(file);
             while (scanner.hasNextLine()){
-                players.add(scanner.nextLine());
+                String[] splitPlayer = scanner.nextLine().split(",");
+                players.add(new Player(splitPlayer[0],splitPlayer[1],Integer.parseInt(splitPlayer[2]),Double.parseDouble(splitPlayer[3]),splitPlayer[4],splitPlayer[5]));
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -74,8 +79,8 @@ public class ScoutTeamSquadController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         teamName.setText(teams[idx]);
 
-        for (String player : players){
-            PlayerList.getItems().add(player);
+        for (Player player : players){
+            PlayerList.getItems().add(player.name);
         }
 
         PlayerList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -83,9 +88,21 @@ public class ScoutTeamSquadController implements Initializable {
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 reqButton.setVisible(true);
                 currentPlayer = PlayerList.getSelectionModel().getSelectedItem();
+                String cardPath = getPlayer(currentPlayer).cardPath;
+                Image image = new Image(getClass().getResourceAsStream("/playerCards/" + cardPath + ".png"));
+                playerCard.setImage(image);
                 playerLabel.setText(currentPlayer);
             }
         });
+    }
+
+    private Player getPlayer(String name){
+        for(Player player : players){
+            if(name.equals(player.name)){
+                return player;
+            }
+        }
+        return null;
     }
 
     public void GoToScoutplayers(ActionEvent event) throws IOException{
@@ -150,7 +167,11 @@ public class ScoutTeamSquadController implements Initializable {
                 }
                 else {
                     warningBox.close();
-                    PlayerClient.sendCommand("R",currentPlayer, SelectedClub.clubIndex, ScoutTeamsController.scoutIDX, fee);
+                    Player player = getPlayer(currentPlayer);
+                    player.setFee(fee);
+                    player.setBuyer(SelectedClub.clubIndex);
+                    player.setSeller(ScoutTeamsController.scoutIDX);
+                    PlayerClient.sendCommand("R",player);
                     PlayerList.getItems().remove(currentPlayer);
                 }
             });
