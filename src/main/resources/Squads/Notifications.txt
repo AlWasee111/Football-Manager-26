@@ -28,3 +28,14 @@ David Alaba,0,4,10.0,A
 David Alaba,4,0,30.0,A
 Lamine Yamal,4,0,1.0,A
 Lamine Yamal,0,4,2.0,A
+Viktor Gyökeres,4,1,1.0,A
+Kai Havertz,4,1,1.0,A
+Luis Díaz,4,5,10.0,A
+Ousmane Dembélé,6,6,1.0,A
+Désiré Doué,6,6,1.0,A
+Kai Havertz,1,4,2.5,A
+Viktor Gyökeres,1,4,45.68,A
+Luis Díaz,5,4,12.0,A
+Viktor Gyökeres,4,1,1.0,A
+Viktor Gyökeres,0,1,1.0,A
+Facundo Buonanotte,2,2,1.0,A

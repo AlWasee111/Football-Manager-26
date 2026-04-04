@@ -1,36 +1,41 @@
 .button {
     -fx-text-fill: #ffffff;
     -fx-font-family: "Century Gothic";
-    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-font-size: 22;
     -fx-border-width: 2;
-    -fx-border-radius: 25;
     -fx-border-color: #0fe6f6;
-    -fx-background-color: rgba(0, 31, 52, 0.74);
+    -fx-border-radius: 8;
+    -fx-background-color: linear-gradient(to right, rgba(3, 3, 10, 1) 5%, rgba(1, 55, 87, 1) 100%);
+    -fx-background-radius: 8;
+    -fx-background-insets: 0;
 }
 
 .button:hover {
     -fx-background-color: linear-gradient(to right, #0fe6f6, #0b59ce);
-    -fx-background-radius: 23;
-    -fx-background-insets: 2;
+    -fx-background-radius: 8;        /* must match base — or it goes square/pill */
+    -fx-background-insets: 0;
     -fx-cursor: hand;
     -fx-text-fill: black;
+    -fx-font-weight: bold;
 }
 
 .button:pressed {
     -fx-background-color: linear-gradient(to right, #0fe6f6, #0b59ce);
-    -fx-background-radius: 23;
-    -fx-background-insets: 2;
-    -fx-translate-y: 2px;
+    -fx-background-radius: 8;
+    -fx-background-insets: 0;
+    -fx-translate-y: 2;
+    -fx-font-weight: bold;
 }
 
 .notification-badge {
     -fx-background-color: #e63946;
     -fx-text-fill: white;
-    -fx-font-size: 11px;
+    -fx-font-size: 11;
     -fx-font-weight: bold;
-    -fx-background-radius: 999px;
-    -fx-min-width: 22px;
-    -fx-min-height: 22px;
+    -fx-background-radius: 999;
+    -fx-min-width: 22;
+    -fx-min-height: 22;
     -fx-alignment: center;
     -fx-padding: 2 5 2 5;
 }
@@ -40,56 +45,60 @@
     -fx-font-family: "Century Gothic";
     -fx-font-size: 14;
     -fx-border-width: 2;
-    -fx-border-radius: 25;
+    -fx-border-radius: 8;
     -fx-border-color: #0fe6f6;
-    -fx-background-color: rgba(0, 31, 52, 0.74);
+    -fx-background-color: linear-gradient(to right, rgba(3, 3, 10, 1) 5%, rgba(1, 55, 87, 1) 100%);
+    -fx-background-radius: 8;
+    -fx-background-insets: 0;
 }
 
 #musicButton:hover {
     -fx-background-color: linear-gradient(to right, #0fe6f6, #0b59ce);
-    -fx-background-radius: 23;
-    -fx-background-insets: 2;
+    -fx-background-radius: 8;
+    -fx-background-insets: 0;
     -fx-cursor: hand;
     -fx-text-fill: black;
 }
 
 #musicButton:pressed {
     -fx-background-color: linear-gradient(to right, #0fe6f6, #0b59ce);
-    -fx-background-radius: 23;
-    -fx-background-insets: 2;
-    -fx-translate-y: 2px;
+    -fx-background-radius: 8;
+    -fx-background-insets: 0;
+    -fx-translate-y: 2;
 }
 
 #logoutButton {
     -fx-text-fill: #ffffff;
     -fx-font-family: "Century Gothic";
-    -fx-font-size: 20;
+    -fx-font-size: 22;
     -fx-border-width: 2;
-    -fx-border-radius: 25;
+    -fx-border-radius: 8;
     -fx-border-color: #0fe6f6;
-    -fx-background-color: rgba(0, 31, 52, 0.74);
+    -fx-background-color: linear-gradient(to right, rgba(3, 3, 10, 1) 5%, rgba(1, 55, 87, 1) 100%);
+    -fx-background-radius: 8;
+    -fx-background-insets: 0;
 }
 
 #logoutButton:hover {
-    -fx-background-color: linear-gradient(to right,rgba(255, 0, 26, 1) 26%, rgba(121, 9, 11, 1) 100%);
-    -fx-background-radius: 23;
-    -fx-background-insets: 2;
+    -fx-background-color: linear-gradient(to right, rgba(255, 0, 26, 1) 26%, rgba(121, 9, 11, 1) 100%);
+    -fx-background-radius: 8;
+    -fx-background-insets: 0;
     -fx-cursor: hand;
     -fx-border-color: red;
     -fx-text-fill: white;
 }
 
 #logoutButton:pressed {
-    -fx-background-color: linear-gradient(to right,rgba(255, 0, 26, 1) 26%, rgba(121, 9, 11, 1) 100%);
-    -fx-background-radius: 23;
-    -fx-background-insets: 2;
-    -fx-translate-y: 2px;
+    -fx-background-color: linear-gradient(to right, rgba(255, 0, 26, 1) 26%, rgba(121, 9, 11, 1) 100%);
+    -fx-background-radius: 8;
+    -fx-background-insets: 0;
+    -fx-translate-y: 2;
 }
 
 #errorText {
     -fx-background-color: linear-gradient(to bottom, #ea0d65, #ff4343);
     -fx-text-fill: black;
     -fx-background-radius: 8;
-    -fx-font-size: 18px;
+    -fx-font-size: 18;
     -fx-font-family: "Century Gothic";
 }

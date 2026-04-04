@@ -18,5 +18,4 @@ Leandro Trossard,LW,83,150000.0,BEL,Trossard
 Noni Madueke,RW,80,120000.0,ENG,Madueke
 Eberechi Eze,CAM,83,180000.0,ENG,Eze
 Myles Lewis-Skelly,CM,78,40000.0,ENG,Lewis-Skelly
-Viktor Gyökeres,ST,87,180000.0,SWE,Gyökeres
 Kai Havertz,ST,82,220000.0,GER,Havertz

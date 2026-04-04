@@ -1,15 +1,15 @@
-Lucas Chevalier,GK,83,140000,FRA,Chevalier
-Matvei Safonov,GK,78,130000,RUS,Safonov
-Achraf Hakimi,RB,89,260000,MOR,Hakimi
-Marquinhos,CB,87,280000,BRA,Marquinhos
-Lucas Hernández,CB,81,220000,FRA,Hernández
-Nuno Mendes,LB,86,240000,POR,Nuno
-Willian Pacho,CB,86,180000,ECU,Pacho
-Fabián Ruiz,CM,85,200000,ESP,Ruiz
-Vitinha,CM,89,240000,POR,Vitinha
-Warren Zaïre-Emery,CM,80,260000,FRA,Zaïre-Emery
-João Neves,CM,86,250000,POR,Neves
-Khvicha Kvaratskhelia,LW,87,280000,GOR,Kvaratskhelia
-Gonçalo Ramos,ST,80,220000,POR,GonçaloRamos
-Ousmane Dembélé,RW,90,260000,FRA,Dembélé
-Désiré Doué,CAM,85,200000,FRA,Doué
+Lucas Chevalier,GK,83,140000.0,FRA,Chevalier
+Matvei Safonov,GK,78,130000.0,RUS,Safonov
+Achraf Hakimi,RB,89,260000.0,MOR,Hakimi
+Marquinhos,CB,87,280000.0,BRA,Marquinhos
+Lucas Hernández,CB,81,220000.0,FRA,Hernández
+Nuno Mendes,LB,86,240000.0,POR,Nuno
+Willian Pacho,CB,86,180000.0,ECU,Pacho
+Fabián Ruiz,CM,85,200000.0,ESP,Ruiz
+Vitinha,CM,89,240000.0,POR,Vitinha
+Warren Zaïre-Emery,CM,80,260000.0,FRA,Zaïre-Emery
+João Neves,CM,86,250000.0,POR,Neves
+Khvicha Kvaratskhelia,LW,87,280000.0,GOR,Kvaratskhelia
+Gonçalo Ramos,ST,80,220000.0,POR,GonçaloRamos
+Ousmane Dembélé,RW,90,260000.0,FRA,Dembélé
+Désiré Doué,CAM,85,200000.0,FRA,Doué
