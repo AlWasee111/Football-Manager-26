@@ -1,5 +1,6 @@
 package com.footballmanager.footballmanager;
 
+import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,6 +16,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.*;
 import java.net.URL;
@@ -81,16 +83,19 @@ public class LoginController implements Initializable {
         if (clubName == null) {
             errorMessage.setText("Club name cannot be empty!");
             errorMessage.setVisible(true);
+            fadeOutWarning(errorMessage);
         }
         //If club doesn't exist
         else if (!ClubExists(clubName)) {
             errorMessage.setText("Club not availabe!");
             errorMessage.setVisible(true);
+            fadeOutWarning(errorMessage);
         }
         // If password is empty
         else if (pass.isEmpty()) {
             errorMessage.setText("Password cannot be empty!");
             errorMessage.setVisible(true);
+            fadeOutWarning(errorMessage);
         }
         //Login with existing club
         else {
@@ -103,6 +108,7 @@ public class LoginController implements Initializable {
                 if (parsedClubName.equals(clubName) && !parsedPassword.equals(pass)) {
                     errorMessage.setText("Wrong password!");
                     errorMessage.setVisible(true);
+                    fadeOutWarning(errorMessage);
                     reader.close();
                     break;
                 } else if (parsedClubName.equals(clubName) && parsedPassword.equals(pass)) {
@@ -166,6 +172,7 @@ public class LoginController implements Initializable {
         if (clubs.length == myCombobox.getItems().size()) {
             errorMessage.setText("No clubs available for signup!");
             errorMessage.setVisible(true);
+            fadeOutWarning(errorMessage);
         }
         else {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SignUp.fxml"));
@@ -178,5 +185,14 @@ public class LoginController implements Initializable {
             stage.setScene(scene);
             stage.show();
         }
+    }
+
+    public void fadeOutWarning(Label warningField) {
+        FadeTransition fade = new FadeTransition(Duration.millis(6500), warningField);
+
+        fade.setFromValue(1.0);
+        fade.setToValue(0.0);
+
+        fade.play();
     }
 }

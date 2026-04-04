@@ -1,5 +1,6 @@
 package com.footballmanager.footballmanager;
 
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.awt.*;
 import java.io.*;
@@ -38,10 +40,12 @@ public class ChangePasswordController {
         if (oldPass.getText().isEmpty()) {
             errorMessage.setText("Please give your old password!");
             errorMessage.setVisible(true);
+            fadeOutWarning(errorMessage);
         }
         else if (newPass.getText().isEmpty()) {
             errorMessage.setText("New password cannot be empty!");
             errorMessage.setVisible(true);
+            fadeOutWarning(errorMessage);
         }
         else {
             BufferedReader reader = new BufferedReader(new FileReader(passwordPath));
@@ -63,6 +67,7 @@ public class ChangePasswordController {
             if (!oldPass.getText().equals(password)) {
                 errorMessage.setText("Wrong password entered!");
                 errorMessage.setVisible(true);
+                fadeOutWarning(errorMessage);
             }
             else {
                 ArrayList<String> passwords = new ArrayList<>();
@@ -87,6 +92,7 @@ public class ChangePasswordController {
 
                 errorMessage.setText("Password changed successfully!");
                 errorMessage.setVisible(true);
+                fadeOutWarning(errorMessage);
             }
         }
     }
@@ -98,5 +104,14 @@ public class ChangePasswordController {
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Stylings/Styles2.css")).toExternalForm());
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void fadeOutWarning(Label warningField) {
+        FadeTransition fade = new FadeTransition(Duration.millis(6500), warningField);
+
+        fade.setFromValue(1.0);
+        fade.setToValue(0.0);
+
+        fade.play();
     }
 }

@@ -16,12 +16,12 @@
                 <Image url="@../../../Images/bg01.jpeg" />
             </image>
         </ImageView>
-        <Label fx:id="myLabel" alignment="CENTER" layoutX="123.0" layoutY="165.0" prefHeight="71.0" prefWidth="323.0" text="Enter Your Club :" textFill="#faf9f6">
+        <Label fx:id="myLabel" layoutX="123.0" layoutY="165.0" prefHeight="71.0" prefWidth="323.0" text="Choose Club" textFill="#faf9f6">
             <font>
                 <Font name="Century Gothic Bold" size="40.0" />
             </font>
         </Label>
-        <Label layoutX="127.0" layoutY="334.0" prefHeight="71.0" prefWidth="315.0" text="Confirm             :" textFill="#faf9f6">
+        <Label layoutX="127.0" layoutY="334.0" prefHeight="71.0" prefWidth="315.0" text="Confirm" textFill="#faf9f6">
             <font>
                 <Font name="Century Gothic Bold" size="40.0" />
             </font>
@@ -52,7 +52,7 @@
                 <Font name="Century Gothic" size="31.0" />
             </font>
         </Button>
-      <Label layoutX="127.0" layoutY="251.0" prefHeight="71.0" prefWidth="315.0" text="Enter password :" textFill="#faf9f6">
+      <Label layoutX="127.0" layoutY="251.0" prefHeight="71.0" prefWidth="315.0" text="Enter password" textFill="#faf9f6">
          <font>
             <Font name="Century Gothic Bold" size="40.0" />
          </font>
@@ -62,5 +62,20 @@
             <Font size="30.0" />
          </font>
       </PasswordField>
+      <Label alignment="CENTER" layoutX="428.0" layoutY="165.0" prefHeight="71.0" prefWidth="28.0" text=":" textFill="#faf9f6">
+         <font>
+            <Font name="Century Gothic Bold" size="40.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="428.0" layoutY="251.0" prefHeight="71.0" prefWidth="28.0" text=":" textFill="#faf9f6">
+         <font>
+            <Font name="Century Gothic Bold" size="40.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="428.0" layoutY="334.0" prefHeight="71.0" prefWidth="28.0" text=":" textFill="#faf9f6">
+         <font>
+            <Font name="Century Gothic Bold" size="40.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

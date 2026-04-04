@@ -1,5 +1,6 @@
 package com.footballmanager.footballmanager;
 
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -34,6 +36,7 @@ public class AccountDeleteController {
         if (password.getText().isEmpty()){
             errorMessage.setText("Please enter your current password!");
             errorMessage.setVisible(true);
+            fadeOutWarning(errorMessage);
         }
 
         //DELETE ER AGE AKTA EXTRA WARNING DITE PAROS
@@ -55,6 +58,7 @@ public class AccountDeleteController {
             if (!password.getText().equals(currentPassword)) {
                 errorMessage.setText("Wrong password entered!");
                 errorMessage.setVisible(true);
+                fadeOutWarning(errorMessage);
             }
             else {
                 ArrayList<String> passwords = new ArrayList<>();
@@ -94,5 +98,14 @@ public class AccountDeleteController {
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Stylings/Styles2.css")).toExternalForm());
             stage.setScene(scene);
             stage.show();
+    }
+
+    public void fadeOutWarning(Label warningField) {
+        FadeTransition fade = new FadeTransition(Duration.millis(6500), warningField);
+
+        fade.setFromValue(1.0);
+        fade.setToValue(0.0);
+
+        fade.play();
     }
 }

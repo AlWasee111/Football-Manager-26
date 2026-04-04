@@ -1,5 +1,6 @@
 package com.footballmanager.footballmanager;
 
+import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,6 +16,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.*;
 import java.net.URL;
@@ -88,24 +90,29 @@ public class SignUpController implements Initializable {
         if (clubName == null) {
             errorMessage.setText("Club name cannot be empty!");
             errorMessage.setVisible(true);
+            fadeOutWarning(errorMessage);
         }
         //If club doesn't exist
         else if (!ClubExists(clubName)) {
             errorMessage.setText("Club not availabe!");
             errorMessage.setVisible(true);
+            fadeOutWarning(errorMessage);
         }
         // If password is empty
         else if (pass.isEmpty()) {
             errorMessage.setText("Password cannot be empty!");
             errorMessage.setVisible(true);
+            fadeOutWarning(errorMessage);
         }
         else if (confirmPass.isEmpty()) {
             errorMessage.setText("Please confirm your password!");
             errorMessage.setVisible(true);
+            fadeOutWarning(errorMessage);
         }
         else if (!pass.equals(confirmPass)) {
             errorMessage.setText("Passwords don't match!");
             errorMessage.setVisible(true);
+            fadeOutWarning(errorMessage);
         }
         //Login with new club
         else {
@@ -171,6 +178,7 @@ public class SignUpController implements Initializable {
         if (file.length() == 0) {
             errorMessage.setText("No club available for login!");
             errorMessage.setVisible(true);
+            fadeOutWarning(errorMessage);
         }
         else {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
@@ -183,5 +191,14 @@ public class SignUpController implements Initializable {
             stage.setScene(scene);
             stage.show();
         }
+    }
+
+    public void fadeOutWarning(Label warningField) {
+        FadeTransition fade = new FadeTransition(Duration.millis(6500), warningField);
+
+        fade.setFromValue(1.0);
+        fade.setToValue(0.0);
+
+        fade.play();
     }
 }
