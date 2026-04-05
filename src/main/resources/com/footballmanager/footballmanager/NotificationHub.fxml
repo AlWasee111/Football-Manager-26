@@ -12,7 +12,7 @@
     <children>
         <ImageView fitHeight="655.0" fitWidth="1000.0">
             <image>
-                <Image url="@../../../Images/FIFA-20-background.jpg" />
+                <Image url="@../../../Images/bg02.jpg" />
             </image>
         </ImageView>
         <ListView fx:id="NotificationList" layoutX="186.0" layoutY="163.0" prefHeight="391.0" prefWidth="662.0" stylesheets="@../../../Stylings/NotificationHub.css" />

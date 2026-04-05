@@ -102,3 +102,15 @@
     -fx-font-size: 18;
     -fx-font-family: "Century Gothic";
 }
+
+.password-field {
+    -fx-background-color: rgba(3, 3, 10, 0.95);
+    -fx-border-color: #0fe6f6;
+    -fx-border-width: 2;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-text-fill: #0fe6f6;
+    -fx-font-family: "Century Gothic";
+    -fx-font-size: 20;
+    -fx-prompt-text-fill: rgba(15, 230, 246, 0.45);
+}

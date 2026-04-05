@@ -12,7 +12,7 @@
     <children>
         <ImageView fitHeight="655.0" fitWidth="1000.0">
             <image>
-                <Image url="@../../../Images/FIFA-20-background.jpg" />
+                <Image url="@../../../Images/bg02.jpg" />
             </image>
         </ImageView>
         <Label alignment="TOP_CENTER" layoutX="301.0" layoutY="68.0" prefHeight="33.0" prefWidth="399.0" text="Delete account" textFill="WHITE">
