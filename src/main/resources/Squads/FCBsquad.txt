@@ -20,4 +20,3 @@ Raphinha,RW,89,240000.0,BRA,Raphinha
 Marcus Rashford,LW,80,260000.0,ENG,Rashford
 Pedri,CM,89,320000.0,ESP,Pedri
 Lamine Yamal,RW,89,260000.0,ESP,Yamal
-Viktor Gyökeres,ST,87,180000.0,SWE,Gyökeres

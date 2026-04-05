@@ -5,33 +5,35 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="MainScene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.footballmanager.footballmanager.MainMenuController">
     <children>
-        <ImageView fitHeight="655.0" fitWidth="1000.0" pickOnBounds="true">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#001621" height="650.0" stroke="BLACK" strokeType="INSIDE" width="635.0" />
+        <ImageView fitHeight="650.0" fitWidth="398.0" layoutX="634.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../../Images/bg01.jpeg" />
+                <Image url="@../../../Images/cover.jpg" />
             </image>
         </ImageView>
-        <Button alignment="TOP_CENTER" layoutX="534.0" layoutY="429.0" mnemonicParsing="false" onAction="#LoginScreen" prefHeight="54.0" prefWidth="170.0" style="-fx-background-radius: 20;" text="Login">
+        <Button layoutX="341.0" layoutY="386.0" mnemonicParsing="false" onAction="#LoginScreen" prefHeight="70.0" prefWidth="150.0" text="Login">
             <font>
                 <Font name="Century Gothic" size="31.0" />
             </font>
         </Button>
-        <Label fx:id="Heading" alignment="CENTER" layoutY="138.0" prefHeight="150.0" prefWidth="1000.0" style="-fx-text-fill: #FAF9F6;" text="Football Manager 26">
+        <Label fx:id="Heading" alignment="CENTER" layoutX="26.0" layoutY="109.0" prefHeight="80.0" prefWidth="583.0" style="-fx-text-fill: #FAF9F6;" text="Football Manager 26">
             <font>
-                <Font name="Century Gothic Bold" size="65.0" />
+                <Font name="Century Gothic Bold" size="50.0" />
             </font>
         </Label>
-        <Button fx:id="exitButton" alignment="TOP_CENTER" layoutX="291.0" layoutY="429.0" mnemonicParsing="false" onAction="#ExitApplication" prefHeight="54.0" prefWidth="170.0" style="-fx-background-radius: 20;" text="Exit">
+        <Button fx:id="exitButton" layoutX="104.0" layoutY="386.0" mnemonicParsing="false" onAction="#ExitApplication" prefHeight="70.0" prefWidth="150.0" text="Exit">
             <font>
                 <Font name="Century Gothic" size="31.0" />
             </font>
         </Button>
-      <Button id="musicButton" fx:id="musicButton" layoutX="871.0" layoutY="564.0" mnemonicParsing="false" onAction="#musicControl" prefHeight="50.0" prefWidth="93.0" style="-fx-background-radius: 20;" text="Music On">
+      <Button id="musicButton" fx:id="musicButton" layoutX="518.0" layoutY="582.0" mnemonicParsing="false" onAction="#musicControl" prefHeight="48.0" prefWidth="91.0" text="Music On">
          <font>
-            <Font name="Century Gothic" size="15.0" />
+            <Font name="Century Gothic" size="14.0" />
          </font>
       </Button>
     </children>

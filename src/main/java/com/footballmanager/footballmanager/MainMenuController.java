@@ -112,6 +112,10 @@ public class MainMenuController implements Initializable {
         scene.getStylesheets().add(getClass().getResource("/Stylings/AlertStyle.css").toExternalForm());
 
         warningBox.setScene(scene);
+
+        warningBox.setX(stage.getX() + (stage.getWidth()  - 600) / 2);
+        warningBox.setY(stage.getY() + (stage.getHeight() - 350) / 2);
+
         warningBox.showAndWait();
     }
 

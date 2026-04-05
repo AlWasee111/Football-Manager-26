@@ -1,49 +1,99 @@
+/* ── Buttons ─────────────────────────────────────────────────── */
 .button {
-    -fx-text-fill: white;
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Century Gothic";
+    -fx-font-weight: bold;
+    -fx-font-size: 24;
     -fx-border-width: 2;
-    -fx-border-radius: 20;
-    -fx-background-radius: 20;
-    -fx-border-color: rgba(241, 187, 50, 1);
-    -fx-background-color: transparent;
+    -fx-border-color: #0fe6f6;
+    -fx-border-radius: 8;
+    -fx-background-color: linear-gradient(to right, rgba(3, 3, 10, 1) 5%, rgba(1, 55, 87, 1) 100%);
+    -fx-background-radius: 8;
     -fx-background-insets: 0;
 }
 
 .button:hover {
-    -fx-background-color: linear-gradient(to bottom, #ea0d65, #ff4343);
-    -fx-background-radius: 18;
-    -fx-background-insets: 2;
+    -fx-background-color: linear-gradient(to right, #0fe6f6, #0b59ce);
+    -fx-background-radius: 8;        /* must match base — or it goes square/pill */
+    -fx-background-insets: 0;
     -fx-cursor: hand;
-    -fx-text-fill: black
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
 }
 
 .button:pressed {
-    -fx-background-color: linear-gradient(to bottom, #ea0d65, #ff4343);
-    -fx-background-radius: 18;
-    -fx-background-insets: 2;
-    -fx-translate-y: 2px;
+    -fx-background-color: linear-gradient(to right, #0fe6f6, #0b59ce);
+    -fx-background-radius: 8;
+    -fx-background-insets: 0;
+    -fx-translate-y: 2;
+    -fx-font-weight: bold;
 }
 
-/* Dropdown box background */
+#musicButton {
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Century Gothic";
+    -fx-font-size: 14;
+    -fx-border-width: 2;
+    -fx-border-radius: 8;
+    -fx-border-color: #0fe6f6;
+    -fx-background-color: linear-gradient(to right, rgba(3, 3, 10, 1) 5%, rgba(1, 55, 87, 1) 100%);
+    -fx-background-radius: 8;
+    -fx-background-insets: 0;
+}
+
+#musicButton:hover {
+    -fx-background-color: linear-gradient(to right, #0fe6f6, #0b59ce);
+    -fx-background-radius: 8;
+    -fx-background-insets: 0;
+    -fx-cursor: hand;
+    -fx-text-fill: black;
+}
+
+#musicButton:pressed {
+    -fx-background-color: linear-gradient(to right, #0fe6f6, #0b59ce);
+    -fx-background-radius: 8;
+    -fx-background-insets: 0;
+    -fx-translate-y: 2;
+}
+
+/* ── ComboBox (dropdown) ─────────────────────────────────────── */
+.combo-box {
+    -fx-background-color: rgba(3, 3, 10, 0.95);
+    -fx-border-color: #0fe6f6;
+    -fx-border-width: 2;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
 .combo-box .list-view {
-    -fx-background-color: rgba(0, 0, 0, 0.5);
-    -fx-background-radius: 15;
-    -fx-border-radius: 15;
-    -fx-border-color: rgba(241, 187, 50, 1);
+    -fx-background-color: rgba(0, 22, 33, 0.95);
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #0fe6f6;
     -fx-border-width: 2;
     -fx-padding: 5;
     -fx-background-insets: 0;
 }
 
+.combo-box .list-cell {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-alignment: center;
+    -fx-font-family: "Century Gothic";
+    -fx-background-radius: 6;
+    -fx-background-color: transparent;
+}
+
 .combo-box .list-cell:hover {
-    -fx-background-color: linear-gradient(to bottom, #ea0d65, #ff4343);
+    -fx-background-color: linear-gradient(to right, #0fe6f6, #0b59ce);
     -fx-text-fill: black;
-    -fx-border-radius: 15;
+    -fx-background-radius: 6;
     -fx-cursor: hand;
 }
 
 .combo-box .list-cell:selected {
-    -fx-text-fill: linear-gradient(to bottom, #ea0d65, #ff4343);
-    -fx-font-size: 22px;
+    -fx-text-fill: #0fe6f6;
+    -fx-font-size: 18px;
     -fx-font-family: "Century Gothic";
 }
 
@@ -52,40 +102,28 @@
 }
 
 .combo-box-popup .scroll-bar .thumb {
-    -fx-background-color: rgba(241, 187, 50, 1);
+    -fx-background-color: #0fe6f6;
     -fx-background-radius: 5;
 }
 
-.combo-box .list-cell{
-    -fx-text-fill: white; /* text color */
-    -fx-font-size: 20px;
-    -fx-alignment: center;
+/* ── Password Field ──────────────────────────────────────────── */
+.password-field {
+    -fx-background-color: rgba(3, 3, 10, 0.95);
+    -fx-border-color: #0fe6f6;
+    -fx-border-width: 2;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-text-fill: #0fe6f6;
     -fx-font-family: "Century Gothic";
-    -fx-background-radius: 15;
-    -fx-background-color: transparent; /* default background */
+    -fx-font-size: 15;
+    -fx-prompt-text-fill: rgba(15, 230, 246, 0.45);
 }
 
-.combo-box {
-    -fx-background-color: #1e1e1e;
-    -fx-border-color: rgba(241, 187, 50, 1);
-    -fx-border-width: 2;
-    -fx-border-radius: 20;
-    -fx-background-radius: 20;
-}
-
-.password-field{
-    -fx-background-color: #1e1e1e;
-    -fx-border-color: rgba(241, 187, 50, 1);
-    -fx-border-width: 2;
-    -fx-border-radius: 20;
-    -fx-background-radius: 20;
-    -fx-text-fill: linear-gradient(to bottom, #ea0d65, #ff4343);
-}
-
+/* ── Error Label ─────────────────────────────────────────────── */
 #errorText {
     -fx-background-color: linear-gradient(to bottom, #ea0d65, #ff4343);
     -fx-text-fill: black;
     -fx-background-radius: 8;
-    -fx-font-size: 18px;
+    -fx-font-size: 18;
     -fx-font-family: "Century Gothic";
 }

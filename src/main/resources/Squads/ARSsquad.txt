@@ -19,3 +19,4 @@ Noni Madueke,RW,80,120000.0,ENG,Madueke
 Eberechi Eze,CAM,83,180000.0,ENG,Eze
 Myles Lewis-Skelly,CM,78,40000.0,ENG,Lewis-Skelly
 Kai Havertz,ST,82,220000.0,GER,Havertz
+Viktor Gyökeres,ST,87,180000.0,SWE,Gyökeres

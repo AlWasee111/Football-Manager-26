@@ -7,72 +7,64 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.footballmanager.footballmanager.SignUpController">
     <children>
-        <ImageView fitHeight="655.0" fitWidth="1000.0" pickOnBounds="true">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#001621" height="650.0" stroke="BLACK" strokeType="INSIDE" width="635.0" />
+        <ImageView fitHeight="650.0" fitWidth="398.0" layoutX="634.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../../Images/bg01.jpeg" />
+                <Image url="@../../../Images/cover.jpg" />
             </image>
         </ImageView>
-        <Label fx:id="myLabel" layoutX="123.0" layoutY="165.0" prefHeight="71.0" prefWidth="323.0" text="Choose Club" textFill="#faf9f6">
+        <Label fx:id="myLabel" alignment="CENTER" layoutX="22.0" layoutY="172.0" prefHeight="32.0" prefWidth="258.0" text="Choose Club        :" textFill="#faf9f6">
             <font>
-                <Font name="Century Gothic Bold" size="40.0" />
+                <Font name="Century Gothic Bold" size="25.0" />
             </font>
         </Label>
-        <Label layoutX="127.0" layoutY="334.0" prefHeight="71.0" prefWidth="315.0" text="Confirm" textFill="#faf9f6">
+        <Label alignment="CENTER" layoutX="29.0" layoutY="345.0" prefHeight="32.0" prefWidth="244.0" text="Confirm password :" textFill="#faf9f6">
             <font>
-                <Font name="Century Gothic Bold" size="40.0" />
+                <Font name="Century Gothic Bold" size="25.0" />
             </font>
         </Label>
-        <PasswordField fx:id="ConfirmPassword" layoutX="497.0" layoutY="336.0" prefHeight="66.0" prefWidth="330.0" style="-fx-background-radius: 20;">
+        <PasswordField fx:id="ConfirmPassword" layoutX="306.0" layoutY="344.0" prefHeight="35.0" prefWidth="250.0" style="-fx-background-radius: 20;">
             <font>
-                <Font size="30.0" />
+                <Font size="15.0" />
             </font>
         </PasswordField>
-        <Button layoutX="187.0" layoutY="470.0" mnemonicParsing="false" onAction="#ReturnToMenu" prefHeight="54.0" prefWidth="170.0" style="-fx-background-radius: 15;" text="Back">
+        <Button layoutX="50.0" layoutY="496.0" mnemonicParsing="false" onAction="#ReturnToMenu" prefHeight="30.0" prefWidth="130.0" text="Back">
             <font>
-                <Font name="Century Gothic" size="31.0" />
+                <Font name="Century Gothic" size="20.0" />
             </font>
         </Button>
-        <Button fx:id="EnterButton" layoutX="593.0" layoutY="470.0" mnemonicParsing="false" onAction="#EnterPage" prefHeight="54.0" prefWidth="170.0" style="-fx-background-radius: 15;" text="Enter">
+        <Button fx:id="EnterButton" layoutX="442.0" layoutY="496.0" mnemonicParsing="false" onAction="#EnterPage" prefHeight="30.0" prefWidth="130.0" text="Enter">
             <font>
-                <Font name="Century Gothic" size="31.0" />
+                <Font name="Century Gothic" size="20.0" />
             </font>
         </Button>
-        <Label id="errorText" fx:id="errorMessage" alignment="CENTER" layoutX="272.0" layoutY="585.0" prefHeight="37.0" prefWidth="406.0" textFill="WHITE" visible="false">
+        <Label id="errorText" fx:id="errorMessage" alignment="CENTER" layoutX="115.0" layoutY="585.0" prefHeight="37.0" prefWidth="406.0" textFill="WHITE" visible="false">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </Label>
-        <ComboBox fx:id="myCombobox" layoutX="497.0" layoutY="168.0" prefHeight="66.0" prefWidth="330.0" promptText="Select Club" style="-fx-background-radius: 20;" visibleRowCount="4" />
-        <Button layoutX="390.0" layoutY="470.0" mnemonicParsing="false" onAction="#GotoLoginPage" prefHeight="54.0" prefWidth="170.0" style="-fx-background-radius: 15;" text="Login">
+        <ComboBox fx:id="myCombobox" layoutX="306.0" layoutY="171.0" prefHeight="35.0" prefWidth="250.0" promptText="Select Club" style="-fx-background-radius: 20;" visibleRowCount="4" />
+        <Button layoutX="241.0" layoutY="496.0" mnemonicParsing="false" onAction="#GotoLoginPage" prefHeight="30.0" prefWidth="130.0" text="Login">
             <font>
-                <Font name="Century Gothic" size="31.0" />
+                <Font name="Century Gothic" size="20.0" />
             </font>
         </Button>
-      <Label layoutX="127.0" layoutY="251.0" prefHeight="71.0" prefWidth="315.0" text="Enter password" textFill="#faf9f6">
+      <Label alignment="CENTER" layoutX="29.0" layoutY="257.0" prefHeight="32.0" prefWidth="244.0" text="Enter password     :" textFill="#faf9f6">
          <font>
-            <Font name="Century Gothic Bold" size="40.0" />
+            <Font name="Century Gothic Bold" size="25.0" />
          </font>
       </Label>
-      <PasswordField fx:id="Password" layoutX="497.0" layoutY="253.0" prefHeight="66.0" prefWidth="330.0" style="-fx-background-radius: 20;">
+      <PasswordField fx:id="Password" layoutX="306.0" layoutY="256.0" prefHeight="35.0" prefWidth="250.0" style="-fx-background-radius: 20;">
          <font>
-            <Font size="30.0" />
+            <Font size="15.0" />
          </font>
       </PasswordField>
-      <Label alignment="CENTER" layoutX="428.0" layoutY="165.0" prefHeight="71.0" prefWidth="28.0" text=":" textFill="#faf9f6">
-         <font>
-            <Font name="Century Gothic Bold" size="40.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="428.0" layoutY="251.0" prefHeight="71.0" prefWidth="28.0" text=":" textFill="#faf9f6">
-         <font>
-            <Font name="Century Gothic Bold" size="40.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="428.0" layoutY="334.0" prefHeight="71.0" prefWidth="28.0" text=":" textFill="#faf9f6">
+      <Label alignment="CENTER" layoutX="99.0" layoutY="37.0" prefHeight="48.0" prefWidth="422.0" text="Sign Up with a club!" textFill="WHITE">
          <font>
             <Font name="Century Gothic Bold" size="40.0" />
          </font>

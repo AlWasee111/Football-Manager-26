@@ -34,7 +34,7 @@ public class MainApplication extends Application {
 
         Image icon = new Image(getClass().getResourceAsStream("/images/logo.jpg"));
 
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.getIcons().add(icon);
         stage.setTitle("Football Manager 26");
         stage.setScene(scene);
@@ -80,6 +80,10 @@ public class MainApplication extends Application {
         scene.getStylesheets().add(getClass().getResource("/Stylings/AlertStyle.css").toExternalForm());
 
         warningBox.setScene(scene);
+
+        warningBox.setX(stage.getX() + (stage.getWidth()  - 600) / 2);
+        warningBox.setY(stage.getY() + (stage.getHeight() - 350) / 2);
+
         warningBox.showAndWait();
     }
 

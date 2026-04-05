@@ -39,3 +39,6 @@ Luis Díaz,5,4,12.0,A
 Viktor Gyökeres,4,1,1.0,A
 Viktor Gyökeres,0,1,1.0,A
 Facundo Buonanotte,2,2,1.0,A
+Désiré Doué,7,6,12.0,R
+Désiré Doué,6,6,12.0,A
+Viktor Gyökeres,1,4,23.45,A
