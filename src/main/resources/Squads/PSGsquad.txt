@@ -12,4 +12,3 @@ João Neves,CM,86,250000.0,POR,Neves
 Khvicha Kvaratskhelia,LW,87,280000.0,GOR,Kvaratskhelia
 Gonçalo Ramos,ST,80,220000.0,POR,GonçaloRamos
 Ousmane Dembélé,RW,90,260000.0,FRA,Dembélé
-Désiré Doué,CAM,85,200000.0,FRA,Doué

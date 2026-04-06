@@ -15,6 +15,8 @@ public class TransferManager {
         Scanner scanner;
         ArrayList<Player> players = new ArrayList<>();
 
+        boolean playerExist = false;
+
         {
             try {
                 scanner = new Scanner(file);
@@ -23,10 +25,17 @@ public class TransferManager {
                     if(!splitPlayer[0].equals(player.name)){
                         players.add(new Player(splitPlayer[0],splitPlayer[1],Integer.parseInt(splitPlayer[2]),Double.parseDouble(splitPlayer[3]),splitPlayer[4],splitPlayer[5]));
                     }
+                    else{
+                        playerExist = true;
+                    }
                 }
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             }
+        }
+
+        if(!playerExist){
+            return;
         }
 
         PrintWriter printWriter = null;
@@ -73,6 +82,8 @@ public class TransferManager {
         File file1 = new File("src/main/resources/Squads/TransferList.txt");
         Scanner scanner;
 
+        boolean playerExist = false;
+
         ArrayList<Player> players = new ArrayList<>();
         {
             try {
@@ -85,10 +96,17 @@ public class TransferManager {
                         playerInfo.setFee(Double.parseDouble(splitPlayer[7]));
                         players.add(playerInfo);
                     }
+                    else{
+                        playerExist = true;
+                    }
                 }
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             }
+        }
+
+        if(!playerExist){
+            return;
         }
 
         PrintWriter printWriter = null;

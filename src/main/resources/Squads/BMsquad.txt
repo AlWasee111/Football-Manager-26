@@ -16,3 +16,4 @@ Serge Gnabry,LM,82,220000.0,GER,Gnabry
 Harry Kane,ST,89,350000.0,ENG,Kane
 Nicolas Jackson,ST,80,150000.0,SEN,Jackson
 Luis Díaz,LW,85,240000.0,COL,Díaz
+Désiré Doué,CAM,85,200000.0,FRA,Doué
