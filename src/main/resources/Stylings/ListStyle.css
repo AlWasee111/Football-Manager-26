@@ -70,3 +70,52 @@
     -fx-translate-y: 2;
     -fx-font-weight: bold;
 }
+
+.combo-box {
+    -fx-background-color: rgba(3, 3, 10, 0.95);
+    -fx-border-color: #0fe6f6;
+    -fx-border-width: 2;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+.combo-box .list-view {
+    -fx-background-color: rgba(0, 22, 33, 0.95);
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #0fe6f6;
+    -fx-border-width: 2;
+    -fx-padding: 5;
+    -fx-background-insets: 0;
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-alignment: center;
+    -fx-font-family: "Century Gothic";
+    -fx-background-radius: 6;
+    -fx-background-color: transparent;
+}
+
+.combo-box .list-cell:hover {
+    -fx-background-color: linear-gradient(to right, #0fe6f6, #0b59ce);
+    -fx-text-fill: black;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.combo-box .list-cell:selected {
+    -fx-text-fill: #0fe6f6;
+    -fx-font-size: 16px;
+    -fx-font-family: "Century Gothic";
+}
+
+.combo-box .scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.combo-box-popup .scroll-bar .thumb {
+    -fx-background-color: #0fe6f6;
+    -fx-background-radius: 5;
+}

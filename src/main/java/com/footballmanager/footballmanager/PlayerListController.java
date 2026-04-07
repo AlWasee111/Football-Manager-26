@@ -10,10 +10,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -38,6 +35,14 @@ public class PlayerListController implements Initializable {
     private Button sellButton;
     @FXML
     private ImageView playerCard;
+    @FXML
+    private ComboBox<String> ratingList;
+    @FXML
+    private ComboBox<String> posList;
+    @FXML
+    private ComboBox<String> nationList;
+    @FXML
+    private ComboBox<String> salaryList;
 
     private Stage stage;
     private Scene scene;
@@ -49,6 +54,11 @@ public class PlayerListController implements Initializable {
 
     String[] squads = {"Squads/FCBsquad.txt", "Squads/ARSsquad.txt", "Squads/CHEsquad.txt", "Squads/MUsquad.txt",
             "Squads/RMsquad.txt", "Squads/BMsquad.txt", "Squads/PSGsquad.txt", "Squads/MCsquad.txt"};
+
+    String[] ratings = {"60+","70+","80+","85+","90+"};
+    String[] nations = {"ARG", "AUS", "BEL", "BRA", "CAM", "COL", "CRO", "DEN", "ECU", "EGY", "ENG", "ESP", "FRA", "GER", "GHA", "GOR", "ITA", "IVO", "JAP", "KOR", "MOR", "NED", "NOR", "POL", "POR", "RUS", "SEN", "SLO", "SWE", "TUR", "UKR", "URU", "UZB"};
+    String[] positions = {"GK","CB","RB","LB","CDM","CM","RM","LM","LW","RW","ST"};
+    String[] salaries = {"30000+", "40000+", "50000+", "60000+", "70000+", "80000+", "90000+", "100000+", "110000+", "120000+", "130000+", "140000+", "150000+", "160000+", "170000+", "180000+", "190000+", "200000+", "210000+", "220000+", "230000+", "240000+", "250000+", "260000+", "270000+", "280000+", "290000+", "300000+", "310000+", "320000+", "330000+", "340000+", "350000+", "360000+", "370000+", "380000+", "390000+", "400000+"};
 
     File file = new File("src/main/resources/" + squads[idx]);
     Scanner scanner;
@@ -70,6 +80,11 @@ public class PlayerListController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ratingList.getItems().addAll(ratings);
+        posList.getItems().addAll(positions);
+        nationList.getItems().addAll(nations);
+        salaryList.getItems().addAll(salaries);
+
         for (Player playerInfo : playerInfos){
             PlayerList.getItems().add(playerInfo.name);
         }
@@ -77,8 +92,10 @@ public class PlayerListController implements Initializable {
         PlayerList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                sellButton.setVisible(true);
                 currentPlayer = PlayerList.getSelectionModel().getSelectedItem();
+                if (currentPlayer == null) return;
+
+                sellButton.setVisible(true);
                 playerLabel.setText(currentPlayer);
                 String cardPath = getPlayer(currentPlayer).cardPath;
                 Image image = new Image(getClass().getResourceAsStream("/playerCards/" + cardPath + ".png"));
@@ -104,6 +121,51 @@ public class PlayerListController implements Initializable {
 
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void filter(ActionEvent event) throws IOException{
+        String selectedPos = posList.getValue();
+        String selectedNation = nationList.getValue();
+        String selectedRating = ratingList.getValue();
+        String selectedSalary = salaryList.getValue();
+
+        PlayerList.getItems().clear();
+
+        for(Player playerInfo : playerInfos){
+            if(selectedPos != null && !playerInfo.pos.equals(selectedPos)){
+                continue;
+            }
+            if(selectedNation != null && !playerInfo.nation.equals(selectedNation)){
+                continue;
+            }
+            if(selectedRating != null){
+                int minRating = Integer.parseInt(selectedRating.replace("+",""));
+                if(playerInfo.rating < minRating){
+                    continue;
+                }
+            }
+            if(selectedSalary != null){
+                double minSalary = Double.parseDouble(selectedSalary.replace("+",""));
+                if(playerInfo.salary < minSalary){
+                    continue;
+                }
+            }
+
+            PlayerList.getItems().add(playerInfo.name);
+        }
+    }
+
+    public void resetFilter(){
+        posList.setValue(null);
+        nationList.setValue(null);
+        ratingList.setValue(null);
+        salaryList.setValue(null);
+
+        PlayerList.getItems().clear();
+
+        for(Player playerInfo : playerInfos){
+            PlayerList.getItems().add(playerInfo.name);
+        }
     }
 
     public void sellPlayer(){
@@ -145,6 +207,7 @@ public class PlayerListController implements Initializable {
                     curPlayerInfo.setFee(fee);
                     PlayerClient.sendCommand("S",curPlayerInfo);
                     PlayerList.getItems().remove(currentPlayer);
+                    playerInfos.remove(curPlayerInfo);
                 }
             });
             cancel.setOnAction(event -> {

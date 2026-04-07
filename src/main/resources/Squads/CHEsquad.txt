@@ -17,4 +17,3 @@ Cole Palmer,CAM,87,280000.0,ENG,Palmer
 Joao Pedro,ST,79,180000.0,BRA,JPedro
 Estevao Willian,RW,78,120000.0,BRA,Estêvão
 Alejandro Garnacho,CAM,77,200000.0,ARG,Garnacho
-Facundo Buonanotte,RM,75,130000.0,ARG,Buonanotte

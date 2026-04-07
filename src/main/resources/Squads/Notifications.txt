@@ -43,3 +43,6 @@ Désiré Doué,7,6,12.0,R
 Désiré Doué,6,6,12.0,A
 Viktor Gyökeres,1,4,23.45,A
 Désiré Doué,5,6,12.0,A
+Viktor Gyökeres,1,1,1.0,A
+David Alaba,1,4,1.0,A
+Benoit Badiashile,3,2,2.0,R

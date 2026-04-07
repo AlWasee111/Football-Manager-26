@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
@@ -37,6 +38,14 @@ public class TransferHubController implements Initializable {
     private Button buyButton;
     @FXML
     private ImageView playerCard;
+    @FXML
+    private ComboBox<String> ratingList;
+    @FXML
+    private ComboBox<String> posList;
+    @FXML
+    private ComboBox<String> nationList;
+    @FXML
+    private ComboBox<String> salaryList;
 
     private Stage stage;
     private Scene scene;
@@ -60,6 +69,10 @@ public class TransferHubController implements Initializable {
 
     String[] teams = {"FC Barcelona", "Arsenal FC" , "Chelsea FC", "Manchester United",
             "Real Madrid CF", "FC Bayern München", "Paris Saint-Germain", "Manchester City"};
+    String[] ratings = {"60+","70+","80+","85+","90+"};
+    String[] nations = {"ARG", "AUS", "BEL", "BRA", "CAM", "COL", "CRO", "DEN", "ECU", "EGY", "ENG", "ESP", "FRA", "GER", "GHA", "GOR", "ITA", "IVO", "JAP", "KOR", "MOR", "NED", "NOR", "POL", "POR", "RUS", "SEN", "SLO", "SWE", "TUR", "UKR", "URU", "UZB"};
+    String[] positions = {"GK","CB","RB","LB","CDM","CM","RM","LM","LW","RW","ST"};
+    String[] salaries = {"30000+", "40000+", "50000+", "60000+", "70000+", "80000+", "90000+", "100000+", "110000+", "120000+", "130000+", "140000+", "150000+", "160000+", "170000+", "180000+", "190000+", "200000+", "210000+", "220000+", "230000+", "240000+", "250000+", "260000+", "270000+", "280000+", "290000+", "300000+", "310000+", "320000+", "330000+", "340000+", "350000+", "360000+", "370000+", "380000+", "390000+", "400000+"};
 
     File file = new File("src/main/resources/Squads/TransferList.txt");
     Scanner scanner;
@@ -83,6 +96,11 @@ public class TransferHubController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ratingList.getItems().addAll(ratings);
+        posList.getItems().addAll(positions);
+        nationList.getItems().addAll(nations);
+        salaryList.getItems().addAll(salaries);
+
         for (int i = players.size() - 1; i >= 0; i--){
             String name = players.get(i).name;
             int seller = players.get(i).seller;
@@ -117,6 +135,54 @@ public class TransferHubController implements Initializable {
             }
         }
         return null;
+    }
+
+    public void filter(ActionEvent event) throws IOException{
+        String selectedPos = posList.getValue();
+        String selectedNation = nationList.getValue();
+        String selectedRating = ratingList.getValue();
+        String selectedSalary = salaryList.getValue();
+
+        TransHubList.getItems().clear();
+
+        for(Player playerInfo : players){
+            if(selectedPos != null && !playerInfo.pos.equals(selectedPos)){
+                continue;
+            }
+            if(selectedNation != null && !playerInfo.nation.equals(selectedNation)){
+                continue;
+            }
+            if(selectedRating != null){
+                int minRating = Integer.parseInt(selectedRating.replace("+",""));
+                if(playerInfo.rating < minRating){
+                    continue;
+                }
+            }
+            if(selectedSalary != null){
+                double minSalary = Double.parseDouble(selectedSalary.replace("+",""));
+                if(playerInfo.salary < minSalary){
+                    continue;
+                }
+            }
+
+            TransHubList.getItems().add(playerInfo.name + " - " + teams[playerInfo.seller] + " - €" + playerInfo.fee + "M");
+        }
+    }
+
+    public void resetFilter(){
+        posList.setValue(null);
+        nationList.setValue(null);
+        ratingList.setValue(null);
+        salaryList.setValue(null);
+
+        TransHubList.getItems().clear();
+
+        for(int i = players.size() - 1; i >= 0; i--){
+            String name = players.get(i).name;
+            int seller = players.get(i).seller;
+            double fee = players.get(i).fee;
+            TransHubList.getItems().add(name + " - " + teams[seller] + " - €" + fee + "M");
+        }
     }
 
     public void buyPlayer(){
@@ -167,6 +233,7 @@ public class TransferHubController implements Initializable {
                     curPlayer.setBuyer(SelectedClub.clubIndex);
                     PlayerClient.sendCommand("B",curPlayer);
                     TransHubList.getItems().remove(curPlayer.name + " - " + teams[curPlayer.seller] + " - €" + curPlayer.fee + "M");
+                    players.remove(curPlayer);
                 }
                 else{
                     errorMessage.setText("You do not have enough budget!");
