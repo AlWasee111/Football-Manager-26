@@ -29,12 +29,12 @@ public class MainApplication extends Application {
         MusicPlayer.playMusic();
 
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("mainmenu.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1000, 650);
+        Scene scene = new Scene(fxmlLoader.load(), 1440, 900);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Stylings/Styles.css")).toExternalForm());
 
         Image icon = new Image(getClass().getResourceAsStream("/images/logo.jpg"));
 
-        stage.setResizable(true);
+        stage.setResizable(false);
         stage.getIcons().add(icon);
         stage.setTitle("Football Manager 26");
         stage.setScene(scene);

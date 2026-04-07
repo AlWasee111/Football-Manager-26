@@ -7,29 +7,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.footballmanager.footballmanager.AccountController">
+<AnchorPane prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.footballmanager.footballmanager.AccountController">
     <children>
-        <ImageView fitHeight="655.0" fitWidth="1000.0">
+        <ImageView fitHeight="900.0" fitWidth="1440.0">
             <image>
                 <Image url="@../../../Images/bg02.jpg" />
             </image>
         </ImageView>
-        <Label alignment="TOP_CENTER" layoutX="301.0" layoutY="68.0" prefHeight="33.0" prefWidth="399.0" text="Account Actions" textFill="WHITE">
+        <Label alignment="TOP_CENTER" layoutX="394.0" layoutY="63.0" prefHeight="93.0" prefWidth="612.0" text="Account Actions" textFill="WHITE">
             <font>
-                <Font name="Century Gothic Bold" size="45.0" />
+                <Font name="Century Gothic Bold" size="50.0" />
             </font>
         </Label>
-        <Button fx:id="backButton" layoutX="46.0" layoutY="583.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="43.0" prefWidth="98.0" stylesheets="@../../../Stylings/ListStyle.css" text="Back">
+        <Button fx:id="backButton" layoutX="35.0" layoutY="813.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="50.0" prefWidth="130.0" stylesheets="@../../../Stylings/ListStyle.css" text="Back">
             <font>
                 <Font size="18.0" />
             </font>
         </Button>
-        <Button fx:id="changePass" layoutX="364.0" layoutY="253.0" mnemonicParsing="false" onAction="#ChangePassword" prefHeight="59.0" prefWidth="272.0" text="Change Password">
+        <Button fx:id="changePass" layoutX="545.0" layoutY="301.0" mnemonicParsing="false" onAction="#ChangePassword" prefHeight="70.0" prefWidth="310.0" text="Change Password">
             <font>
                 <Font name="Century Gothic" size="18.0" />
             </font>
         </Button>
-        <Button fx:id="deleteAccButton" layoutX="364.0" layoutY="351.0" mnemonicParsing="false" onAction="#DeleteAccount" prefHeight="59.0" prefWidth="272.0" text="Delete account">
+        <Button fx:id="deleteAccButton" layoutX="545.0" layoutY="466.0" mnemonicParsing="false" onAction="#DeleteAccount" prefHeight="70.0" prefWidth="310.0" text="Delete account">
             <font>
                 <Font name="Century Gothic" size="18.0" />
             </font>

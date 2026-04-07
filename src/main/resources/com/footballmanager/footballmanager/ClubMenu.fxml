@@ -7,80 +7,80 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.footballmanager.footballmanager.ClubMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.footballmanager.footballmanager.ClubMenuController">
    <children>
-      <ImageView fitHeight="655.0" fitWidth="1000.0" pickOnBounds="true">
+      <ImageView fitHeight="900.0" fitWidth="1440.0" pickOnBounds="true">
          <image>
             <Image url="@../../../Images/bg02.jpg" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" layoutX="437.0" layoutY="57.0" prefHeight="43.0" prefWidth="127.0" text="HOME" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="600.0" layoutY="48.0" prefHeight="66.0" prefWidth="240.0" text="HOME" textFill="WHITE">
          <font>
-            <Font name="Century Gothic Bold" size="41.0" />
+            <Font name="Century Gothic Bold" size="50.0" />
          </font>
       </Label>
-      <Button fx:id="Players" layoutX="130.0" layoutY="165.0" mnemonicParsing="false" onAction="#GoToPlayers" prefHeight="60.0" prefWidth="285.0" text="Players">
+      <Button fx:id="Players" layoutX="255.0" layoutY="180.0" mnemonicParsing="false" onAction="#GoToPlayers" prefHeight="80.0" prefWidth="310.0" text="Players">
          <font>
-            <Font name="Century Gothic Bold" size="23.0" />
+            <Font name="Century Gothic Bold" size="30.0" />
          </font>
       </Button>
-      <Button fx:id="TransferMarket" layoutX="130.0" layoutY="235.0" mnemonicParsing="false" onAction="#GoToTransferHub" prefHeight="60.0" prefWidth="285.0" text="Transfer Market">
+      <Button fx:id="TransferMarket" layoutX="255.0" layoutY="280.0" mnemonicParsing="false" onAction="#GoToTransferHub" prefHeight="80.0" prefWidth="310.0" text="Transfer Market">
          <font>
-            <Font size="23.0" />
+            <Font size="30.0" />
          </font>
       </Button>
-      <Button id="logoutButton" fx:id="Logout" layoutX="130.0" layoutY="515.0" mnemonicParsing="false" onAction="#GoToMainMenu" prefHeight="60.0" prefWidth="285.0" text="Logout">
-         <font>
-            <Font size="23.0" />
-         </font>
-      </Button>
-      <Button fx:id="scoutPlayers" layoutX="130.0" layoutY="305.0" mnemonicParsing="false" onAction="#GoToScoutplayers" prefHeight="60.0" prefWidth="285.0" text="Scout Players">
+      <Button id="logoutButton" fx:id="Logout" layoutX="255.0" layoutY="680.0" mnemonicParsing="false" onAction="#GoToMainMenu" prefHeight="80.0" prefWidth="310.0" text="Logout">
          <font>
             <Font size="23.0" />
          </font>
       </Button>
-      <Label fx:id="NotifyBadge" layoutX="403.0" layoutY="228.0" prefHeight="15.0" prefWidth="25.0" styleClass="notification-badge" visible="false">
+      <Button fx:id="scoutPlayers" layoutX="255.0" layoutY="380.0" mnemonicParsing="false" onAction="#GoToScoutplayers" prefHeight="80.0" prefWidth="310.0" text="Scout Players">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Label fx:id="NotifyBadge" layoutX="553.0" layoutY="273.0" prefHeight="15.0" prefWidth="25.0" styleClass="notification-badge" visible="false">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font>
       </Label>
-      <Button fx:id="incomingOffers" layoutX="130.0" layoutY="375.0" mnemonicParsing="false" onAction="#GoToIncomingOffers" prefHeight="60.0" prefWidth="285.0" text="Incoming Offers">
+      <Button fx:id="incomingOffers" layoutX="255.0" layoutY="480.0" mnemonicParsing="false" onAction="#GoToIncomingOffers" prefHeight="80.0" prefWidth="310.0" text="Incoming Offers">
          <font>
-            <Font size="23.0" />
+            <Font size="30.0" />
          </font>
       </Button>
-      <Label fx:id="OfferNotifyBadge" layoutX="403.0" layoutY="368.0" prefHeight="15.0" prefWidth="25.0" styleClass="notification-badge" visible="false">
+      <Label fx:id="OfferNotifyBadge" layoutX="553.0" layoutY="473.0" prefHeight="15.0" prefWidth="25.0" styleClass="notification-badge" visible="false">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font>
       </Label>
-      <ImageView fx:id="teamCrest" fitHeight="61.0" fitWidth="62.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="teamName" layoutX="82.0" layoutY="14.0" prefHeight="36.0" prefWidth="212.0" textFill="WHITE">
+      <ImageView fx:id="teamCrest" fitHeight="80.0" fitWidth="94.0" layoutX="14.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="teamName" layoutX="101.0" layoutY="16.0" prefHeight="42.0" prefWidth="258.0" textFill="WHITE">
          <font>
-            <Font name="Century Gothic" size="18.0" />
+            <Font name="Century Gothic" size="26.0" />
          </font>
       </Label>
-      <Label fx:id="budgetLabel" layoutX="82.0" layoutY="45.0" prefHeight="36.0" prefWidth="212.0" textFill="WHITE">
+      <Label fx:id="budgetLabel" layoutX="101.0" layoutY="56.0" prefHeight="42.0" prefWidth="258.0" textFill="WHITE">
          <font>
-            <Font name="Century Gothic" size="18.0" />
+            <Font name="Century Gothic" size="26.0" />
          </font>
       </Label>
-      <Button id="musicButton" fx:id="musicButton" layoutX="870.0" layoutY="574.0" mnemonicParsing="false" onAction="#musicControl" prefHeight="52.0" prefWidth="94.0" text="Music On">
+      <Button id="musicButton" fx:id="musicButton" layoutX="1274.0" layoutY="797.0" mnemonicParsing="false" onAction="#musicControl" prefHeight="52.0" prefWidth="94.0" text="Music On">
          <font>
             <Font name="Century Gothic" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="notificButton" layoutX="130.0" layoutY="445.0" mnemonicParsing="false" onAction="#GoToNotificationHub" prefHeight="60.0" prefWidth="285.0" text="Notifications">
+      <Button fx:id="notificButton" layoutX="255.0" layoutY="580.0" mnemonicParsing="false" onAction="#GoToNotificationHub" prefHeight="80.0" prefWidth="310.0" text="Notifications">
          <font>
             <Font name="Century Gothic" size="23.0" />
          </font>
       </Button>
-      <Label fx:id="NotificBagde" layoutX="403.0" layoutY="438.0" prefHeight="15.0" prefWidth="25.0" styleClass="notification-badge" visible="false">
+      <Label fx:id="NotificBagde" layoutX="553.0" layoutY="573.0" prefHeight="15.0" prefWidth="25.0" styleClass="notification-badge" visible="false">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font>
       </Label>
-      <Button id="musicButton" layoutX="748.0" layoutY="574.0" mnemonicParsing="false" onAction="#GotoAccount" prefHeight="52.0" prefWidth="94.0" text="Account">
+      <Button id="musicButton" layoutX="1146.0" layoutY="797.0" mnemonicParsing="false" onAction="#GotoAccount" prefHeight="52.0" prefWidth="94.0" text="Account">
          <font>
             <Font name="Century Gothic" size="15.0" />
          </font>

@@ -9,41 +9,41 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.footballmanager.footballmanager.ScoutTeamSquadController">
+<AnchorPane prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.footballmanager.footballmanager.ScoutTeamSquadController">
     <children>
-        <ImageView fitHeight="655.0" fitWidth="1000.0">
+        <ImageView fitHeight="900.0" fitWidth="1440.0">
             <image>
                 <Image url="@../../../Images/bg02.jpg" />
             </image>
         </ImageView>
-        <ListView fx:id="PlayerList" layoutX="40.0" layoutY="231.0" prefHeight="312.0" prefWidth="583.0" stylesheets="@../../../Stylings/ScoutTeamsSquad.css" />
-        <Label fx:id="teamName" alignment="TOP_CENTER" layoutX="101.0" layoutY="78.0" prefHeight="74.0" prefWidth="822.0" textFill="WHITE">
+        <ListView fx:id="PlayerList" layoutX="35.0" layoutY="302.0" prefHeight="465.0" prefWidth="858.0" stylesheets="@../../../Stylings/ScoutTeamsSquad.css" />
+        <Label fx:id="teamName" alignment="TOP_CENTER" layoutX="309.0" layoutY="37.0" prefHeight="74.0" prefWidth="822.0" textFill="WHITE">
             <font>
                 <Font name="Century Gothic Bold" size="56.0" />
             </font>
         </Label>
-        <Label fx:id="playerLabel" alignment="TOP_CENTER" layoutX="331.0" layoutY="576.0" prefHeight="17.0" prefWidth="339.0" textFill="WHITE">
+        <Label fx:id="playerLabel" alignment="TOP_CENTER" layoutX="551.0" layoutY="819.0" prefHeight="56.0" prefWidth="396.0" textFill="WHITE">
             <font>
                 <Font name="Century Gothic Bold" size="31.0" />
             </font>
         </Label>
-        <Button fx:id="backButton" layoutX="46.0" layoutY="583.0" mnemonicParsing="false" onAction="#GoToScoutplayers" prefHeight="43.0" prefWidth="98.0" stylesheets="@../../../Stylings/ScoutTeamsSquad.css" text="Back">
+        <Button fx:id="backButton" layoutX="35.0" layoutY="813.0" mnemonicParsing="false" onAction="#GoToScoutplayers" prefHeight="50.0" prefWidth="130.0" stylesheets="@../../../Stylings/ScoutTeamsSquad.css" text="Back">
             <font>
                 <Font size="18.0" />
             </font>
         </Button>
-        <Button fx:id="reqButton" layoutX="803.0" layoutY="585.0" mnemonicParsing="false" onAction="#reqTransfer" stylesheets="@../../../Stylings/ScoutTeamsSquad.css" text="Request Transfer" visible="false">
+        <Button fx:id="reqButton" layoutX="1235.0" layoutY="813.0" mnemonicParsing="false" onAction="#reqTransfer" prefHeight="50.0" prefWidth="170.0" stylesheets="@../../../Stylings/ScoutTeamsSquad.css" text="Request Transfer">
             <font>
                 <Font size="18.0" />
             </font>
         </Button>
-      <ImageView fx:id="playerCard" fitHeight="403.0" fitWidth="319.0" layoutX="660.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true" />
-        <ComboBox fx:id="posList" layoutX="21.0" layoutY="154.0" prefHeight="39.0" prefWidth="115.0" promptText="Position" stylesheets="@../../../Stylings/ListStyle.css" />
-        <ComboBox fx:id="ratingList" layoutX="141.0" layoutY="154.0" prefHeight="39.0" prefWidth="115.0" promptText="Rating" stylesheets="@../../../Stylings/ListStyle.css" />
-        <ComboBox fx:id="nationList" layoutX="261.0" layoutY="154.0" prefHeight="39.0" prefWidth="115.0" promptText="Nation" stylesheets="@../../../Stylings/ListStyle.css" />
-        <Button fx:id="filterButton" layoutX="501.0" layoutY="154.0" mnemonicParsing="false" onAction="#filter" prefHeight="0.0" prefWidth="69.0" stylesheets="@../../../Stylings/ListStyle.css" text="Filter" />
-        <ComboBox fx:id="salaryList" layoutX="381.0" layoutY="154.0" prefHeight="39.0" prefWidth="115.0" promptText="Salary" stylesheets="@../../../Stylings/ListStyle.css" />
-        <Button fx:id="resetFilter" layoutX="576.0" layoutY="154.0" mnemonicParsing="false" onAction="#resetFilter" prefHeight="39.0" prefWidth="75.0" stylesheets="@../../../Stylings/ListStyle.css" text="Reset" />
+      <ImageView fx:id="playerCard" fitHeight="568.0" fitWidth="425.0" layoutX="956.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true" />
+        <ComboBox fx:id="posList" layoutX="20.0" layoutY="213.0" prefHeight="50.0" prefWidth="160.0" promptText="Position" stylesheets="@../../../Stylings/ListStyle.css" />
+        <ComboBox fx:id="ratingList" layoutX="187.0" layoutY="213.0" prefHeight="50.0" prefWidth="160.0" promptText="Rating" stylesheets="@../../../Stylings/ListStyle.css" />
+        <ComboBox fx:id="nationList" layoutX="359.0" layoutY="213.0" prefHeight="50.0" prefWidth="160.0" promptText="Nation" stylesheets="@../../../Stylings/ListStyle.css" />
+        <Button fx:id="filterButton" layoutX="702.0" layoutY="213.0" mnemonicParsing="false" onAction="#filter" prefHeight="50.0" prefWidth="90.0" stylesheets="@../../../Stylings/ListStyle.css" text="Filter" />
+        <ComboBox fx:id="salaryList" layoutX="527.0" layoutY="213.0" prefHeight="50.0" prefWidth="160.0" promptText="Salary" stylesheets="@../../../Stylings/ListStyle.css" />
+        <Button fx:id="resetFilter" layoutX="810.0" layoutY="213.0" mnemonicParsing="false" onAction="#resetFilter" prefHeight="50.0" prefWidth="90.0" stylesheets="@../../../Stylings/ListStyle.css" text="Reset" />
 
     </children>
 </AnchorPane>

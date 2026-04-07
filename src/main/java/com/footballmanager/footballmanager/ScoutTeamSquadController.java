@@ -63,7 +63,7 @@ public class ScoutTeamSquadController implements Initializable {
             "Real Madrid CF", "FC Bayern München", "Paris Saint-Germain", "Manchester City"};
     String[] ratings = {"60+","70+","80+","85+","90+"};
     String[] nations = {"ARG", "AUS", "BEL", "BRA", "CAM", "COL", "CRO", "DEN", "ECU", "EGY", "ENG", "ESP", "FRA", "GER", "GHA", "GOR", "ITA", "IVO", "JAP", "KOR", "MOR", "NED", "NOR", "POL", "POR", "RUS", "SEN", "SLO", "SWE", "TUR", "UKR", "URU", "UZB"};
-    String[] positions = {"GK","CB","RB","LB","CDM","CM","RM","LM","LW","RW","ST"};
+    String[] positions = {"GK","CB","RB","LB","CDM","CM","CAM","RM","LM","LW","RW","ST"};
     String[] salaries = {"30000+", "40000+", "50000+", "60000+", "70000+", "80000+", "90000+", "100000+", "110000+", "120000+", "130000+", "140000+", "150000+", "160000+", "170000+", "180000+", "190000+", "200000+", "210000+", "220000+", "230000+", "240000+", "250000+", "260000+", "270000+", "280000+", "290000+", "300000+", "310000+", "320000+", "330000+", "340000+", "350000+", "360000+", "370000+", "380000+", "390000+", "400000+"};
 
 
