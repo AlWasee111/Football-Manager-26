@@ -43,6 +43,8 @@ public class PlayerListController implements Initializable {
     private ComboBox<String> nationList;
     @FXML
     private ComboBox<String> salaryList;
+    @FXML
+    private Button salaryButton;
 
     private Stage stage;
     private Scene scene;
@@ -96,6 +98,7 @@ public class PlayerListController implements Initializable {
                 if (currentPlayer == null) return;
 
                 sellButton.setVisible(true);
+                salaryButton.setVisible(true);
                 playerLabel.setText(currentPlayer);
                 String cardPath = getPlayer(currentPlayer).cardPath;
                 Image image = new Image(getClass().getResourceAsStream("/playerCards/" + cardPath + ".png"));
@@ -230,6 +233,86 @@ public class PlayerListController implements Initializable {
             warningBox.setX(stage.getX() + (stage.getWidth()  - 600) / 2);
             warningBox.setY(stage.getY() + (stage.getHeight() - 350) / 2);
 
+            warningBox.showAndWait();
+        }
+    }
+
+    public void editSalary(){
+        stage = (Stage) sellButton.getScene().getWindow();
+        if(!currentPlayer.isEmpty()){
+            Stage warningBox = new Stage();
+            warningBox.initStyle(StageStyle.UNDECORATED); //removes default top bar
+            warningBox.initModality(Modality.APPLICATION_MODAL); //can't access other stuffs
+
+            Player curPlayerInfo = getPlayer(currentPlayer);
+
+            Label message = new Label("Set new salary for " + currentPlayer);
+            message.getStyleClass().add("warning-message");
+
+            Label currentSalaryLabel = new Label("Current Salary: €" + String.format("%,.0f", curPlayerInfo.salary));
+            currentSalaryLabel.getStyleClass().add("warning-message");
+
+            TextField priceField = new TextField();
+            //priceField.setPrefHeight(45);
+            //priceField.setPrefWidth(250);
+            priceField.setPromptText("Enter Salary");
+            priceField.getStyleClass().add("text-field");
+
+            Label errorMessage = new Label("");
+            errorMessage.getStyleClass().add("error-text");
+
+            Button confirm = new Button("Confirm");
+            Button cancel = new Button("Cancel");
+
+            confirm.getStyleClass().add("warning-button");
+            cancel.getStyleClass().add("warning-button");
+
+            confirm.setOnAction(event -> {
+                String input = priceField.getText().trim();
+                try {
+                    double newSalary = Double.parseDouble(input);
+
+                    if (newSalary < 0) {
+                        errorMessage.setText("Invalid salary! Enter a positive number.");
+                    } else {
+                        warningBox.close();
+                        curPlayerInfo.salary = newSalary;
+                        curPlayerInfo.setSeller(SelectedClub.clubIndex);
+
+                        try {
+                            FileWriter writer = new FileWriter(file, false);
+                            for (Player p : playerInfos) {
+                                writer.write(p.name + "," + p.nation + "," + p.rating + ","
+                                        + p.salary + "," + p.pos + "," + p.cardPath + "\n");
+                            }
+                            writer.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                } catch (NumberFormatException e) {
+                    errorMessage.setText("Invalid input! Enter a numeric value.");
+                }
+            });
+            cancel.setOnAction(event -> {
+                warningBox.close();
+            });
+
+            cancel.setOnAction(event -> warningBox.close());
+
+            HBox buttons = new HBox(25, confirm, cancel);
+            buttons.setAlignment(Pos.CENTER);
+
+            VBox root = new VBox(40, message, currentSalaryLabel, priceField, errorMessage, buttons);
+            root.setAlignment(Pos.CENTER);
+            root.getStyleClass().add("warning-pane");
+
+            Scene scene = new Scene(root, 600, 400);
+            scene.getStylesheets().add(getClass().getResource("/Stylings/AlertStyle3.css").toExternalForm());
+
+            warningBox.setScene(scene);
+            warningBox.setX(stage.getX() + (stage.getWidth()  - 600) / 2);
+            warningBox.setY(stage.getY() + (stage.getHeight() - 400) / 2);
             warningBox.showAndWait();
         }
     }

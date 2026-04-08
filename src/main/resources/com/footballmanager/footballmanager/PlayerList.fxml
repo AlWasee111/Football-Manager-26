@@ -32,7 +32,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="sellButton" layoutX="1275.0" layoutY="813.0" mnemonicParsing="false" onAction="#sellPlayer" prefHeight="50.0" prefWidth="130.0" stylesheets="@../../../Stylings/ListStyle.css" text="Sell">
+      <Button fx:id="sellButton" layoutX="1275.0" layoutY="813.0" mnemonicParsing="false" onAction="#sellPlayer" prefHeight="50.0" prefWidth="130.0" stylesheets="@../../../Stylings/ListStyle.css" text="Sell" visible="false">
          <font>
             <Font size="18.0" />
          </font>
@@ -44,5 +44,10 @@
       <Button fx:id="filterButton" layoutX="702.0" layoutY="213.0" mnemonicParsing="false" onAction="#filter" prefHeight="50.0" prefWidth="90.0" stylesheets="@../../../Stylings/ListStyle.css" text="Filter" />
       <ComboBox fx:id="salaryList" layoutX="527.0" layoutY="213.0" prefHeight="50.0" prefWidth="160.0" promptText="Salary" stylesheets="@../../../Stylings/ListStyle.css" />
       <Button fx:id="resetFilter" layoutX="810.0" layoutY="213.0" mnemonicParsing="false" onAction="#resetFilter" prefHeight="50.0" prefWidth="90.0" stylesheets="@../../../Stylings/ListStyle.css" text="Reset" />
+      <Button fx:id="salaryButton" layoutX="1104.0" layoutY="813.0" mnemonicParsing="false" onAction="#editSalary" prefHeight="50.0" prefWidth="130.0" stylesheets="@../../../Stylings/ListStyle.css" text="Edit Salary" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
