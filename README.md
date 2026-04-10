@@ -115,4 +115,6 @@ This project is open source. Feel free to use, modify, and distribute it.
 
 ## 👤 Author
 
+**AsiFiq2024** — [GitHub Profile](https://github.com/AsiFiq2024)
 **AlWasee111** — [GitHub Profile](https://github.com/AlWasee111)
+
