@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -26,7 +27,7 @@ public class NotificationHubController implements Initializable {
     @FXML
     private ListView<String> NotificationList;
     @FXML
-    private Button acceptButton;
+    private Button backButton;
 
     private Parent root;
     private Stage stage;
@@ -89,6 +90,7 @@ public class NotificationHubController implements Initializable {
         for(int i = notifics.size() - 1; i >= 0; i--){
             NotificationList.getItems().add(notifics.get(i));
         }
+        addSoundEffects(backButton);
     }
 
     public void backToMenu(ActionEvent event) throws IOException {
@@ -99,5 +101,26 @@ public class NotificationHubController implements Initializable {
 
         stage.setScene(scene);
         stage.show();
+    }
+
+    private void addSoundEffects(Button button) {
+
+        AudioClip hoverSound = new AudioClip(
+                getClass().getResource("/music/hovering.mp3").toExternalForm()
+        );
+
+        AudioClip clickSound = new AudioClip(
+                getClass().getResource("/music/clicking.mp3").toExternalForm()
+        );
+
+        button.setOnMouseEntered(e -> {
+            hoverSound.setVolume(2.0 * volume.sfxVol);
+            hoverSound.play();
+        });
+
+        button.addEventHandler(ActionEvent.ACTION, e -> {
+            clickSound.setVolume(1.6 * volume.sfxVol);
+            clickSound.play();
+        });
     }
 }

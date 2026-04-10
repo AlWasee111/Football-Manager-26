@@ -1,10 +1,7 @@
 package com.footballmanager.footballmanager;
 
 import javafx.animation.FadeTransition;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,12 +12,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.*;
 import java.net.URL;
-import java.nio.Buffer;
 import java.util.*;
 
 public class SignUpController implements Initializable {
@@ -35,6 +32,12 @@ public class SignUpController implements Initializable {
     private Label myLabel;
     @FXML
     private ComboBox<String> myCombobox;
+    @FXML
+    private Button EnterPage;
+    @FXML
+    private Button login;
+    @FXML
+    private Button backButton;
 
     private Stage stage;
     private Scene scene;
@@ -69,6 +72,10 @@ public class SignUpController implements Initializable {
         }
 
         myCombobox.getItems().addAll(nonSignedUp);
+
+        addSoundEffects(EnterPage);
+        addSoundEffects(login);
+        addSoundEffects(backButton);
     }
 
     // Returns to main menu if back button is clicked
@@ -200,5 +207,26 @@ public class SignUpController implements Initializable {
         fade.setToValue(0.0);
 
         fade.play();
+    }
+
+    private void addSoundEffects(Button button) {
+
+        AudioClip hoverSound = new AudioClip(
+                getClass().getResource("/music/hovering.mp3").toExternalForm()
+        );
+
+        AudioClip clickSound = new AudioClip(
+                getClass().getResource("/music/clicking.mp3").toExternalForm()
+        );
+
+        button.setOnMouseEntered(e -> {
+            hoverSound.setVolume(2.0 * volume.sfxVol);
+            hoverSound.play();
+        });
+
+        button.addEventHandler(ActionEvent.ACTION, e -> {
+            clickSound.setVolume(1.6 * volume.sfxVol);
+            clickSound.play();
+        });
     }
 }

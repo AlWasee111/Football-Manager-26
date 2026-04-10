@@ -22,3 +22,4 @@ Gonzalo García,ST,76,100000.0,ESP,Gonzalo
 Vinícius Júnior,LW,89,350000.0,BRA,Vini
 Rodrygo,RW,85,300000.0,BRA,Rodrygo
 Thibaut Courtois,GK,89,350000.0,BEL,Courtois
+Antoine Semenyo,RW,80,140000.0,GHA,Semenyo

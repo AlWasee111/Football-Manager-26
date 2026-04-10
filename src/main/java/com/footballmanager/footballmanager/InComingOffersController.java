@@ -18,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -48,6 +49,15 @@ public class InComingOffersController implements Initializable {
     private ComboBox<String> nationList;
     @FXML
     private ComboBox<String> salaryList;
+
+    @FXML
+    private Button resetFilter;
+    @FXML
+    private Button filterButton;
+    @FXML
+    private Button backButton;
+
+
 
     private Parent root;
     private Stage stage;
@@ -125,6 +135,10 @@ public class InComingOffersController implements Initializable {
                 playerLabel.setText(currentPlayer);
             }
         });
+        addSoundEffects(resetFilter);
+        addSoundEffects(filterButton);
+        addSoundEffects(backButton);
+        addSoundEffects(acceptButton);
     }
 
     private Player getPlayer(String name){
@@ -194,6 +208,27 @@ public class InComingOffersController implements Initializable {
         }
     }
 
+    private void addSoundEffects(Button button) {
+
+        AudioClip hoverSound = new AudioClip(
+                getClass().getResource("/music/hovering.mp3").toExternalForm()
+        );
+
+        AudioClip clickSound = new AudioClip(
+                getClass().getResource("/music/clicking.mp3").toExternalForm()
+        );
+
+        button.setOnMouseEntered(e -> {
+            hoverSound.setVolume(2.0 * volume.sfxVol);
+            hoverSound.play();
+        });
+
+        button.addEventHandler(ActionEvent.ACTION, e -> {
+            clickSound.setVolume(1.6 * volume.sfxVol);
+            clickSound.play();
+        });
+    }
+
     public void sellPlayer(){
         stage = (Stage) acceptButton.getScene().getWindow();
         if(!currentOffer.isEmpty()){
@@ -207,6 +242,10 @@ public class InComingOffersController implements Initializable {
             Button accept = new Button("Accept");
             Button reject = new Button("Reject");
             Button stall = new Button("Stall");
+
+            addSoundEffects(accept);
+            addSoundEffects(reject);
+            addSoundEffects(stall);
 
             accept.getStyleClass().add("warning-button");
             reject.getStyleClass().add("warning-button");

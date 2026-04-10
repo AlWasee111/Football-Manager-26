@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -30,6 +31,8 @@ public class ScoutTeamsController implements Initializable {
     private Button scoutButton;
     @FXML
     private ImageView teamCrest;
+    @FXML
+    private Button backButton;
 
     String selectedTeam;
 
@@ -70,6 +73,9 @@ public class ScoutTeamsController implements Initializable {
                 teamCrest.setImage(image);
             }
         });
+
+        addSoundEffects(backButton);
+        addSoundEffects(scoutButton);
     }
 
     public void GoToScoutTeamPlayer(ActionEvent event) throws IOException{
@@ -80,6 +86,28 @@ public class ScoutTeamsController implements Initializable {
         scene.getStylesheets().add(getClass().getResource("/Stylings/ScoutTeamsSquad.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
+    }
+
+    private void addSoundEffects(Button button) {
+
+        AudioClip hoverSound = new AudioClip(
+                getClass().getResource("/music/hovering.mp3").toExternalForm()
+        );
+
+        AudioClip clickSound = new AudioClip(
+                getClass().getResource("/music/clicking.mp3").toExternalForm()
+        );
+
+        hoverSound.setVolume(2.0 * volume.sfxVol);
+        clickSound.setVolume(1.6 * volume.sfxVol);
+
+        button.setOnMouseEntered(e -> {
+            hoverSound.play();
+        });
+
+        button.addEventHandler(ActionEvent.ACTION, e -> {
+            clickSound.play();
+        });
     }
 
     public void backToMenu(ActionEvent event) throws IOException {

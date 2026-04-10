@@ -16,7 +16,7 @@
                 <Image url="@../../../Images/cover.jpg" />
             </image>
         </ImageView>
-        <Button layoutX="504.0" layoutY="577.0" mnemonicParsing="false" onAction="#LoginScreen" prefHeight="70.0" prefWidth="150.0" text="Login">
+        <Button fx:id="login" layoutX="504.0" layoutY="577.0" mnemonicParsing="false" onAction="#LoginScreen" prefHeight="70.0" prefWidth="150.0" text="Login">
             <font>
                 <Font name="Century Gothic" size="31.0" />
             </font>
@@ -29,11 +29,6 @@
         <Button fx:id="exitButton" layoutX="199.0" layoutY="577.0" mnemonicParsing="false" onAction="#ExitApplication" prefHeight="70.0" prefWidth="150.0" text="Exit">
             <font>
                 <Font name="Century Gothic" size="31.0" />
-            </font>
-        </Button>
-        <Button id="musicButton" fx:id="musicButton" layoutX="823.0" layoutY="826.0" mnemonicParsing="false" onAction="#musicControl" prefHeight="48.0" prefWidth="91.0" text="Music On">
-            <font>
-                <Font name="Century Gothic" size="14.0" />
             </font>
         </Button>
     </children>

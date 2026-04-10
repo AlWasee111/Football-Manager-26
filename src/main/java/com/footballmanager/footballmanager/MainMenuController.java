@@ -21,6 +21,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -32,11 +33,34 @@ public class MainMenuController implements Initializable {
     private AnchorPane MainScene;
     @FXML
     private Button musicButton;
+    @FXML
+    private Button login;
 
     private Stage stage;
     private Scene scene;
     private Parent root;
     private String passwordPath = "src/main/resources/Passwords/password.txt";
+
+    private void addSoundEffects(Button button) {
+
+        AudioClip hoverSound = new AudioClip(
+                getClass().getResource("/music/hovering.mp3").toExternalForm()
+        );
+
+        AudioClip clickSound = new AudioClip(
+                getClass().getResource("/music/clicking.mp3").toExternalForm()
+        );
+
+        button.setOnMouseEntered(e -> {
+            hoverSound.setVolume(2.0 * volume.sfxVol);
+            hoverSound.play();
+        });
+
+        button.addEventHandler(ActionEvent.ACTION, e -> {
+            clickSound.setVolume(1.6 * volume.sfxVol);
+            clickSound.play();
+        });
+    }
 
     public void LoginScreen (ActionEvent event) throws IOException {
         File file = new File(passwordPath);
@@ -89,6 +113,9 @@ public class MainMenuController implements Initializable {
         Button yes = new Button("Yes");
         Button no = new Button("No");
 
+        addSoundEffects(yes);
+        addSoundEffects(no);
+
         yes.getStyleClass().add("warning-button");
         no.getStyleClass().add("warning-button");
 
@@ -121,11 +148,8 @@ public class MainMenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if(MusicPlayer.isPlay){
-            musicButton.setText("Music On");
-        }
-        else{
-            musicButton.setText("Music Off");
-        }
+
+        addSoundEffects(exitButton);
+        addSoundEffects(login);
     }
 }

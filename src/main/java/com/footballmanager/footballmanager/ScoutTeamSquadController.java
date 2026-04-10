@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -47,6 +48,12 @@ public class ScoutTeamSquadController implements Initializable {
     private ComboBox<String> nationList;
     @FXML
     private ComboBox<String> salaryList;
+    @FXML
+    private Button backButton;
+    @FXML
+    private Button resetFilter;
+    @FXML
+    private Button filterButton;
 
     private Stage stage;
     private Scene scene;
@@ -110,6 +117,10 @@ public class ScoutTeamSquadController implements Initializable {
                 playerLabel.setText(currentPlayer);
             }
         });
+        addSoundEffects(backButton);
+        addSoundEffects(filterButton);
+        addSoundEffects(resetFilter);
+        addSoundEffects(reqButton);
     }
 
     private Player getPlayer(String name){
@@ -176,6 +187,27 @@ public class ScoutTeamSquadController implements Initializable {
         }
     }
 
+    private void addSoundEffects(Button button) {
+
+        AudioClip hoverSound = new AudioClip(
+                getClass().getResource("/music/hovering.mp3").toExternalForm()
+        );
+
+        AudioClip clickSound = new AudioClip(
+                getClass().getResource("/music/clicking.mp3").toExternalForm()
+        );
+
+        button.setOnMouseEntered(e -> {
+            hoverSound.setVolume(2.0 * volume.sfxVol);
+            hoverSound.play();
+        });
+
+        button.addEventHandler(ActionEvent.ACTION, e -> {
+            clickSound.setVolume(1.6 * volume.sfxVol);
+            clickSound.play();
+        });
+    }
+
 
     public void reqTransfer(){
         stage = (Stage) reqButton.getScene().getWindow();
@@ -192,6 +224,7 @@ public class ScoutTeamSquadController implements Initializable {
             //priceField.setPrefWidth(250);
             priceField.setPromptText("Enter Transfer Fee in €M");
             priceField.getStyleClass().add("text-field");
+            priceField.setMaxWidth(300);
 
             Label errorMessage = new Label("");
             errorMessage.getStyleClass().add("error-text");
@@ -199,12 +232,15 @@ public class ScoutTeamSquadController implements Initializable {
             Button confirm = new Button("Confirm");
             Button cancel = new Button("Cancel");
 
+            addSoundEffects(confirm);
+            addSoundEffects(cancel);
+
             confirm.getStyleClass().add("warning-button");
             cancel.getStyleClass().add("warning-button");
 
             confirm.setOnAction(event -> {
                 String input = priceField.getText().trim();
-                double fee = Double.parseDouble(input);
+                double fee;
 
                 File file3 = new File("src/main/resources/Squads/SquadBudgets.txt");
 
@@ -222,21 +258,27 @@ public class ScoutTeamSquadController implements Initializable {
 
                 double buyerBudget = Double.parseDouble(budgets.get(SelectedClub.clubIndex));
 
-                if(fee < 0){
+                try{
+                    fee = Double.parseDouble(input);
+                    if(fee < 0){
+                        errorMessage.setText("Invalid Transfer Fee! Enter a positive number.");
+                    }
+                    else if(fee > buyerBudget){
+                        errorMessage.setText("You do not have enough budget!");
+                    }
+                    else {
+                        warningBox.close();
+                        Player player = getPlayer(currentPlayer);
+                        player.setFee(fee);
+                        player.setBuyer(SelectedClub.clubIndex);
+                        player.setSeller(ScoutTeamsController.scoutIDX);
+                        PlayerClient.sendCommand("R",player);
+                        PlayerList.getItems().remove(currentPlayer);
+                        players.remove(player);
+                    }
+                }
+                catch (Exception e){
                     errorMessage.setText("Invalid Transfer Fee! Enter a positive number.");
-                }
-                else if(fee > buyerBudget){
-                    errorMessage.setText("You do not have enough budget!");
-                }
-                else {
-                    warningBox.close();
-                    Player player = getPlayer(currentPlayer);
-                    player.setFee(fee);
-                    player.setBuyer(SelectedClub.clubIndex);
-                    player.setSeller(ScoutTeamsController.scoutIDX);
-                    PlayerClient.sendCommand("R",player);
-                    PlayerList.getItems().remove(currentPlayer);
-                    players.remove(player);
                 }
             });
             cancel.setOnAction(event -> {

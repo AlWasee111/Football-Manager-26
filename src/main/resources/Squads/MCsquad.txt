@@ -1,17 +1,16 @@
-James Trafford,GK,76,80000,ENG,Trafford
-Gianluigi Donnarumma,GK,89,300000,ITA,Donnarumma
-Rúben Dias,CB,86,300000,POR,RúbenDias
-John Stones,CB,82,240000,ENG,Stones
-Nathan Aké,CB,83,200000,NED,Aké
-Joško Gvardiol,LB,84,260000,CRO,Gvardiol
-Abdukodir Khusanov,CB,78,90000,UZB,Khusanov
-Tijjani Reijnders,CM,86,180000,NED,Reijnders
-Mateo Kovačić,CM,83,220000,CRO,Kovačić
-Bernardo Silva,CAM,84,280000,POR,BernardoSilva
-Rayan Cherki,RW,81,200000,FRA,Cherki
-Jeremy Doku,LW,80,240000,BEL,Doku
-Rodri,CDM,90,350000,ESP,Rodri
-Phil Foden,RW,85,320000,ENG,Foden
-Omar Marmoush,ST,84,150000,EGY,Marmoush
-Erling Haaland,ST,90,400000,NOR,Haaland
-Antoine Semenyo,RW,80,140000,GHA,Semenyo
+James Trafford,GK,76,80000.0,ENG,Trafford
+Gianluigi Donnarumma,GK,89,300000.0,ITA,Donnarumma
+Rúben Dias,CB,86,300000.0,POR,RúbenDias
+John Stones,CB,82,240000.0,ENG,Stones
+Nathan Aké,CB,83,200000.0,NED,Aké
+Joško Gvardiol,LB,84,260000.0,CRO,Gvardiol
+Abdukodir Khusanov,CB,78,90000.0,UZB,Khusanov
+Tijjani Reijnders,CM,86,180000.0,NED,Reijnders
+Mateo Kovačić,CM,83,220000.0,CRO,Kovačić
+Bernardo Silva,CAM,84,280000.0,POR,BernardoSilva
+Rayan Cherki,RW,81,200000.0,FRA,Cherki
+Jeremy Doku,LW,80,240000.0,BEL,Doku
+Rodri,CDM,90,350000.0,ESP,Rodri
+Phil Foden,RW,85,320000.0,ENG,Foden
+Omar Marmoush,ST,84,150000.0,EGY,Marmoush
+Erling Haaland,ST,90,400000.0,NOR,Haaland

@@ -4,19 +4,24 @@ import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.*;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class AccountDeleteController {
+public class AccountDeleteController implements Initializable {
     @FXML
     private PasswordField password;
     @FXML
@@ -26,6 +31,38 @@ public class AccountDeleteController {
     private String passwordPath = "src/main/resources/Passwords/password.txt";
     private final String[] clubs = {"Barcelona", "Arsenal", "Chelsea", "Manchester United",
             "Real Madrid", "Bayern", "PSG", "Manchester City"};
+
+    @FXML
+    private Button confirm;
+    @FXML
+    private Button backButton;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        addSoundEffects(confirm);
+        addSoundEffects(backButton);
+    }
+
+    private void addSoundEffects(Button button) {
+
+        AudioClip hoverSound = new AudioClip(
+                getClass().getResource("/music/hovering.mp3").toExternalForm()
+        );
+
+        AudioClip clickSound = new AudioClip(
+                getClass().getResource("/music/clicking.mp3").toExternalForm()
+        );
+
+        button.setOnMouseEntered(e -> {
+            hoverSound.setVolume(2.0 * volume.sfxVol);
+            hoverSound.play();
+        });
+
+        button.addEventHandler(ActionEvent.ACTION, e -> {
+            clickSound.setVolume(1.6 * volume.sfxVol);
+            clickSound.play();
+        });
+    }
 
     public void InvokeAccountDelete(ActionEvent event) throws IOException {
         String currentClub;

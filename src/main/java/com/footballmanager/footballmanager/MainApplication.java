@@ -1,12 +1,14 @@
 package com.footballmanager.footballmanager;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -26,7 +28,7 @@ public class MainApplication extends Application {
     public void start(Stage stage) throws IOException {
         PlayerClient.connect();
 
-        MusicPlayer.playMusic();
+        MusicPlayer.initPlaylist();
 
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("mainmenu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1440, 900);
@@ -56,6 +58,9 @@ public class MainApplication extends Application {
 
         Button yes = new Button("Yes");
         Button no = new Button("No");
+
+        addSoundEffects(yes);
+        addSoundEffects(no);
 
         yes.getStyleClass().add("warning-button");
         no.getStyleClass().add("warning-button");
@@ -89,5 +94,26 @@ public class MainApplication extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    private void addSoundEffects(Button button) {
+
+        AudioClip hoverSound = new AudioClip(
+                getClass().getResource("/music/hovering.mp3").toExternalForm()
+        );
+
+        AudioClip clickSound = new AudioClip(
+                getClass().getResource("/music/clicking.mp3").toExternalForm()
+        );
+
+        button.setOnMouseEntered(e -> {
+            hoverSound.setVolume(2.0 * volume.sfxVol);
+            hoverSound.play();
+        });
+
+        button.addEventHandler(ActionEvent.ACTION, e -> {
+            clickSound.setVolume(1.6 * volume.sfxVol);
+            clickSound.play();
+        });
     }
 }

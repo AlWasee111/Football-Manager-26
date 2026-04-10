@@ -65,7 +65,7 @@
             <Font name="Century Gothic" size="26.0" />
          </font>
       </Label>
-      <Button id="musicButton" fx:id="musicButton" layoutX="1274.0" layoutY="797.0" mnemonicParsing="false" onAction="#musicControl" prefHeight="52.0" prefWidth="94.0" text="Music On">
+      <Button id="musicButton" fx:id="musicButton" layoutX="1274.0" layoutY="797.0" mnemonicParsing="false" onAction="#musicControl" prefHeight="52.0" prefWidth="94.0" text="Settings">
          <font>
             <Font name="Century Gothic" size="15.0" />
          </font>
@@ -80,7 +80,7 @@
             <Font name="Century Gothic" size="12.0" />
          </font>
       </Label>
-      <Button id="musicButton" layoutX="1146.0" layoutY="797.0" mnemonicParsing="false" onAction="#GotoAccount" prefHeight="52.0" prefWidth="94.0" text="Account">
+      <Button id="musicButton" fx:id="account" layoutX="1146.0" layoutY="797.0" mnemonicParsing="false" onAction="#GotoAccount" prefHeight="52.0" prefWidth="94.0" text="Account">
          <font>
             <Font name="Century Gothic" size="15.0" />
          </font>

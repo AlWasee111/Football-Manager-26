@@ -18,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -46,6 +47,12 @@ public class TransferHubController implements Initializable {
     private ComboBox<String> nationList;
     @FXML
     private ComboBox<String> salaryList;
+    @FXML
+    private Button backButton;
+    @FXML
+    private Button resetFilter;
+    @FXML
+    private Button filterButton;
 
     private Stage stage;
     private Scene scene;
@@ -126,6 +133,10 @@ public class TransferHubController implements Initializable {
                 playerLabel.setText(curName);
             }
         });
+        addSoundEffects(backButton);
+        addSoundEffects(filterButton);
+        addSoundEffects(resetFilter);
+        addSoundEffects(buyButton);
     }
 
     private Player getPlayer(String name){
@@ -185,6 +196,27 @@ public class TransferHubController implements Initializable {
         }
     }
 
+    private void addSoundEffects(Button button) {
+
+        AudioClip hoverSound = new AudioClip(
+                getClass().getResource("/music/hovering.mp3").toExternalForm()
+        );
+
+        AudioClip clickSound = new AudioClip(
+                getClass().getResource("/music/clicking.mp3").toExternalForm()
+        );
+
+        button.setOnMouseEntered(e -> {
+            hoverSound.setVolume(2.0 * volume.sfxVol);
+            hoverSound.play();
+        });
+
+        button.addEventHandler(ActionEvent.ACTION, e -> {
+            clickSound.setVolume(1.6 * volume.sfxVol);
+            clickSound.play();
+        });
+    }
+
     public void buyPlayer(){
         stage = (Stage) buyButton.getScene().getWindow();
         if(!curName.isEmpty()){
@@ -206,6 +238,9 @@ public class TransferHubController implements Initializable {
 
             Button yes = new Button("Yes");
             Button no = new Button("No");
+
+            addSoundEffects(yes);
+            addSoundEffects(no);
 
             yes.getStyleClass().add("warning-button");
             no.getStyleClass().add("warning-button");

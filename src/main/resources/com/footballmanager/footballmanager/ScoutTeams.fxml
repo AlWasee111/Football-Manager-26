@@ -31,7 +31,7 @@
                 <Font size="18.0" />
             </font>
         </Button>
-        <Button fx:id="scoutButton" layoutX="1275.0" layoutY="813.0" mnemonicParsing="false" onAction="#GoToScoutTeamPlayer" prefHeight="50.0" prefWidth="130.0" stylesheets="@../../../Stylings/ScoutTeams.css" text="Scout">
+        <Button fx:id="scoutButton" layoutX="1275.0" layoutY="813.0" mnemonicParsing="false" onAction="#GoToScoutTeamPlayer" prefHeight="50.0" prefWidth="130.0" stylesheets="@../../../Stylings/ScoutTeams.css" text="Scout" visible="false">
             <font>
                 <Font size="18.0" />
             </font>

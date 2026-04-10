@@ -10,10 +10,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -41,9 +43,23 @@ public class ClubMenuController implements Initializable {
     @FXML
     private ImageView teamCrest;
     @FXML
+    private Label NotificBagde;
+    @FXML
+    private Button Players;
+    @FXML
+    private Button TransferMarket;
+    @FXML
+    private Button scoutPlayers;
+    @FXML
+    private Button incomingOffers;
+    @FXML
+    private Button notificButton;
+    @FXML
+    private Button Logout;
+    @FXML
     private Button musicButton;
     @FXML
-    private Label NotificBagde;
+    private Button account;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -75,16 +91,17 @@ public class ClubMenuController implements Initializable {
 
         budgetLabel.setText("Budget: €" + budgets.get(idx) + "M");
 
-        if(MusicPlayer.isPlay){
-            musicButton.setText("Music On");
-        }
-        else{
-            musicButton.setText("Music Off");
-        }
-
         updateNotifBadge();
         updateTransferBadge();
         updateOfferBadge();
+        addSoundEffects(Players);
+        addSoundEffects(TransferMarket);
+        addSoundEffects(scoutPlayers);
+        addSoundEffects(incomingOffers);
+        addSoundEffects(notificButton);
+        addSoundEffects(Logout);
+        addSoundEffects(musicButton);
+        addSoundEffects(account);
     }
 
     private void updateTransferBadge(){
@@ -256,17 +273,111 @@ public class ClubMenuController implements Initializable {
         stage.show();
     }
 
-    public void musicControl(ActionEvent event) throws IOException{
-        if(MusicPlayer.isPlay){
-            MusicPlayer.pauseMusic();
-            MusicPlayer.isPlay = false;
-            musicButton.setText("Music Off");
-        }
-        else{
-            MusicPlayer.playMusic();
-            MusicPlayer.isPlay = true;
-            musicButton.setText("Music On");
-        }
+    public void musicControl(){
+
+        stage = (Stage) musicButton.getScene().getWindow();
+
+        double oldSfx = volume.sfxVol;
+        double oldMusic = volume.musicVol;
+
+        Stage warningBox = new Stage();
+        warningBox.initStyle(StageStyle.UNDECORATED);
+        warningBox.initModality(Modality.APPLICATION_MODAL);
+
+        Label message = new Label("Settings");
+        message.getStyleClass().add("warning-message");
+
+        Button confirm = new Button("Confirm");
+        Button cancel = new Button("Cancel");
+
+        addSoundEffects(confirm);
+        addSoundEffects(cancel);
+
+        confirm.getStyleClass().add("warning-button");
+        cancel.getStyleClass().add("warning-button");
+
+        Slider sfx = new Slider(0, 1, volume.sfxVol);
+        Slider music = new Slider(0, 1, volume.musicVol);
+
+        sfx.setMaxWidth(220);
+        music.setMaxWidth(220);
+
+        Label sfxLabel = new Label("SFX Volume");
+        Label musicLabel = new Label("Music Volume");
+
+        sfxLabel.getStyleClass().add("warning-message");
+        musicLabel.getStyleClass().add("warning-message");
+
+        sfx.valueProperty().addListener((obs, oldVal, newVal) -> {
+            volume.sfxVol = newVal.doubleValue();
+            MusicPlayer.refreshVolume();
+        });
+
+        music.valueProperty().addListener((obs, oldVal, newVal) -> {
+            volume.musicVol = newVal.doubleValue();
+            MusicPlayer.refreshVolume();
+        });
+
+
+        confirm.setOnAction(event -> {
+            warningBox.close();
+        });
+
+        cancel.setOnAction(event -> {
+            warningBox.close();
+
+            volume.sfxVol = oldSfx;
+            volume.musicVol = oldMusic;
+
+            MusicPlayer.refreshVolume();
+        });
+
+        VBox sfxBox = new VBox(10, sfxLabel, sfx);
+        sfxBox.setAlignment(Pos.CENTER);
+
+        VBox musicBox = new VBox(10, musicLabel, music);
+        musicBox.setAlignment(Pos.CENTER);
+
+        HBox buttons = new HBox(25, confirm, cancel);
+        buttons.setAlignment(Pos.CENTER);
+
+        VBox root = new VBox(25, message, sfxBox, musicBox, buttons);
+        root.setAlignment(Pos.CENTER);
+
+        root.getStyleClass().add("warning-pane");
+
+        Scene scene = new Scene(root, 600, 350);
+        scene.getStylesheets().add(
+                getClass().getResource("/Stylings/AlertStyle2.css").toExternalForm()
+        );
+
+        warningBox.setScene(scene);
+
+        warningBox.setX(stage.getX() + (stage.getWidth()  - 600) / 2);
+        warningBox.setY(stage.getY() + (stage.getHeight() - 350) / 2);
+
+        warningBox.showAndWait();
+    }
+
+    private void addSoundEffects(Button button) {
+
+        AudioClip hoverSound = new AudioClip(
+                getClass().getResource("/music/hovering.mp3").toExternalForm()
+        );
+
+        AudioClip clickSound = new AudioClip(
+                getClass().getResource("/music/clicking.mp3").toExternalForm()
+        );
+
+        button.setOnMouseEntered(e -> {
+            hoverSound.setVolume(2.0 * volume.sfxVol);
+            hoverSound.play();
+        });
+
+        button.addEventHandler(ActionEvent.ACTION, e -> {
+            clickSound.setVolume(1.6 * volume.sfxVol);
+            clickSound.play();
+        });
     }
 
     public void logout(Stage stage){
@@ -279,6 +390,9 @@ public class ClubMenuController implements Initializable {
 
         Button yes = new Button("Yes");
         Button no = new Button("No");
+
+        addSoundEffects(yes);
+        addSoundEffects(no);
 
         yes.getStyleClass().add("warning-button");
         no.getStyleClass().add("warning-button");

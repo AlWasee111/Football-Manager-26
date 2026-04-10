@@ -32,7 +32,7 @@
                 <Font size="18.0" />
             </font>
         </Button>
-        <Button fx:id="reqButton" layoutX="1235.0" layoutY="813.0" mnemonicParsing="false" onAction="#reqTransfer" prefHeight="50.0" prefWidth="170.0" stylesheets="@../../../Stylings/ScoutTeamsSquad.css" text="Request Transfer">
+        <Button fx:id="reqButton" layoutX="1235.0" layoutY="813.0" mnemonicParsing="false" onAction="#reqTransfer" prefHeight="50.0" prefWidth="170.0" stylesheets="@../../../Stylings/ScoutTeamsSquad.css" text="Request Transfer" visible="false">
             <font>
                 <Font size="18.0" />
             </font>

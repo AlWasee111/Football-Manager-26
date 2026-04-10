@@ -1,0 +1,28 @@
+/* =========================
+   PROGRESS BAR (THEMED)
+   ========================= */
+
+.progress-bar {
+    -fx-background-color: transparent;
+}
+
+/* Track (background container) */
+.progress-bar .track {
+    -fx-background-color: rgba(0, 0, 0, 0.5); /* same as list-view */
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+
+    -fx-border-color: #00BFFF; /* your theme blue */
+    -fx-border-width: 2;
+
+    -fx-padding: 2; /* gives inner spacing */
+}
+
+/* Actual progress fill */
+.progress-bar .bar {
+    -fx-background-color: linear-gradient(to right, #0fe6f6, #0b59ce);
+    -fx-background-radius: 0;
+
+    /* Glow effect like modern games */
+    -fx-effect: dropshadow(gaussian, #0fe6f6, 10, 0.6, 0, 0);
+}

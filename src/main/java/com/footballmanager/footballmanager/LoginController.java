@@ -1,10 +1,7 @@
 package com.footballmanager.footballmanager;
 
 import javafx.animation.FadeTransition;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,12 +12,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.*;
 import java.net.URL;
-import java.nio.Buffer;
 import java.util.*;
 
 public class LoginController implements Initializable {
@@ -46,6 +43,34 @@ public class LoginController implements Initializable {
 
     int idx = -1;
 
+    @FXML
+    private Button EnterButton;
+    @FXML
+    private Button signUp;
+    @FXML
+    private Button backButton;
+
+    private void addSoundEffects(Button button) {
+
+        AudioClip hoverSound = new AudioClip(
+                getClass().getResource("/music/hovering.mp3").toExternalForm()
+        );
+
+        AudioClip clickSound = new AudioClip(
+                getClass().getResource("/music/clicking.mp3").toExternalForm()
+        );
+
+        button.setOnMouseEntered(e -> {
+            hoverSound.setVolume(2.0 * volume.sfxVol);
+            hoverSound.play();
+        });
+
+        button.addEventHandler(ActionEvent.ACTION, e -> {
+            clickSound.setVolume(1.6 * volume.sfxVol);
+            clickSound.play();
+        });
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try (BufferedReader reader = new BufferedReader(new FileReader(passwordPath));){
@@ -62,6 +87,10 @@ public class LoginController implements Initializable {
         }
 
         myCombobox.getItems().addAll(signedUp);
+
+        addSoundEffects(EnterButton);
+        addSoundEffects(signUp);
+        addSoundEffects(backButton);
     }
 
     // Returns to main menu if back button is clicked
@@ -135,10 +164,10 @@ public class LoginController implements Initializable {
             throw new RuntimeException(e);
         }
 
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ClubMenu.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LoadingScreen.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Stylings/Styles2.css")).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Stylings/loadingScreen.css")).toExternalForm());
 
         stage.setScene(scene);
         stage.show();

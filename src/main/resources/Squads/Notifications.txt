@@ -46,3 +46,6 @@ Désiré Doué,5,6,12.0,A
 Viktor Gyökeres,1,1,1.0,A
 David Alaba,1,4,1.0,A
 Benoit Badiashile,3,2,2.0,R
+Antoine Semenyo,2,7,12.0,A
+Luis Díaz,4,5,1.0,R
+Antoine Semenyo,4,2,1.0,A

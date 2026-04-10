@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -45,6 +46,12 @@ public class PlayerListController implements Initializable {
     private ComboBox<String> salaryList;
     @FXML
     private Button salaryButton;
+    @FXML
+    private Button resetFilter;
+    @FXML
+    private Button filterButton;
+    @FXML
+    private Button backButton;
 
     private Stage stage;
     private Scene scene;
@@ -105,6 +112,11 @@ public class PlayerListController implements Initializable {
                 playerCard.setImage(image);
             }
         });
+        addSoundEffects(backButton);
+        addSoundEffects(salaryButton);
+        addSoundEffects(filterButton);
+        addSoundEffects(resetFilter);
+        addSoundEffects(sellButton);
     }
 
     private Player getPlayer(String name){
@@ -171,6 +183,28 @@ public class PlayerListController implements Initializable {
         }
     }
 
+    private void addSoundEffects(Button button) {
+
+        AudioClip hoverSound = new AudioClip(
+                getClass().getResource("/music/hovering.mp3").toExternalForm()
+        );
+
+        AudioClip clickSound = new AudioClip(
+                getClass().getResource("/music/clicking.mp3").toExternalForm()
+        );
+
+        hoverSound.setVolume(2.0 * volume.sfxVol);
+        clickSound.setVolume(1.6 * volume.sfxVol);
+
+        button.setOnMouseEntered(e -> {
+            hoverSound.play();
+        });
+
+        button.addEventHandler(ActionEvent.ACTION, e -> {
+            clickSound.play();
+        });
+    }
+
     public void sellPlayer(){
         stage = (Stage) sellButton.getScene().getWindow();
         if(!currentPlayer.isEmpty()){
@@ -186,6 +220,7 @@ public class PlayerListController implements Initializable {
             //priceField.setPrefWidth(250);
             priceField.setPromptText("Enter Transfer Fee in €M");
             priceField.getStyleClass().add("text-field");
+            priceField.setMaxWidth(300);
 
             Label errorMessage = new Label("");
             errorMessage.getStyleClass().add("error-text");
@@ -193,24 +228,32 @@ public class PlayerListController implements Initializable {
             Button confirm = new Button("Confirm");
             Button cancel = new Button("Cancel");
 
+            addSoundEffects(confirm);
+            addSoundEffects(cancel);
+
             confirm.getStyleClass().add("warning-button");
             cancel.getStyleClass().add("warning-button");
 
             confirm.setOnAction(event -> {
                 String input = priceField.getText().trim();
-                double fee = Double.parseDouble(input);
-
-                if(fee < 0){
-                    errorMessage.setText("Invalid Transfer Fee! Enter a positive number.");
+                double fee;
+                try{
+                    fee = Double.parseDouble(input);
+                    if(fee < 0 || input == null){
+                        errorMessage.setText("Invalid Transfer Fee! Enter a positive number.");
+                    }
+                    else {
+                        warningBox.close();
+                        Player curPlayerInfo = getPlayer(currentPlayer);
+                        curPlayerInfo.setSeller(SelectedClub.clubIndex);
+                        curPlayerInfo.setFee(fee);
+                        PlayerClient.sendCommand("S",curPlayerInfo);
+                        PlayerList.getItems().remove(currentPlayer);
+                        playerInfos.remove(curPlayerInfo);
+                    }
                 }
-                else {
-                    warningBox.close();
-                    Player curPlayerInfo = getPlayer(currentPlayer);
-                    curPlayerInfo.setSeller(SelectedClub.clubIndex);
-                    curPlayerInfo.setFee(fee);
-                    PlayerClient.sendCommand("S",curPlayerInfo);
-                    PlayerList.getItems().remove(currentPlayer);
-                    playerInfos.remove(curPlayerInfo);
+                catch (Exception e){
+                    errorMessage.setText("Invalid Transfer Fee! Enter a positive number.");
                 }
             });
             cancel.setOnAction(event -> {
@@ -257,12 +300,16 @@ public class PlayerListController implements Initializable {
             //priceField.setPrefWidth(250);
             priceField.setPromptText("Enter Salary");
             priceField.getStyleClass().add("text-field");
+            priceField.setMaxWidth(300);
 
             Label errorMessage = new Label("");
             errorMessage.getStyleClass().add("error-text");
 
             Button confirm = new Button("Confirm");
             Button cancel = new Button("Cancel");
+
+            addSoundEffects(confirm);
+            addSoundEffects(cancel);
 
             confirm.getStyleClass().add("warning-button");
             cancel.getStyleClass().add("warning-button");
@@ -282,8 +329,9 @@ public class PlayerListController implements Initializable {
                         try {
                             FileWriter writer = new FileWriter(file, false);
                             for (Player p : playerInfos) {
-                                writer.write(p.name + "," + p.nation + "," + p.rating + ","
-                                        + p.salary + "," + p.pos + "," + p.cardPath + "\n");
+                                writer.write(p.name + "," + p.pos + "," + p.rating + ","
+                                        + p.salary + "," + p.nation + "," + p.cardPath + "\n");
+                                //Kai Havertz,ST,82,220000,GER,Havertz
                             }
                             writer.close();
                         } catch (IOException e) {
